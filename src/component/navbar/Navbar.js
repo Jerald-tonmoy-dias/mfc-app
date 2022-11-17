@@ -20,16 +20,6 @@ export default function Navbar() {
     display: inline-flex;
     flex-basis: 20%;
     position: relative;
-    `;
-
-    const Anchor = styled.a`
-    padding: 15px 28px 13px 12px;
-    font-size: 17.5px;
-    line-height: 1.1;
-    font-weight: bold;
-    width: 100%;
-    background-color: #fafafa;
-    text-decoration: none !important;
     &.active {
         background-color: #002a6e;
         color: #002a6e;
@@ -44,10 +34,28 @@ export default function Navbar() {
             border-width: 40px 0 40px 15px;
             
         }
+        &:after {
+            bottom: 0;
+            border-bottom-color: #002a6e;
+        }
+        &:before {
+            top: 0;
+            border-top-color: #002a6e;
+        }
         padding-left: 5px;
         background-color: #d6d6d6;
         color: #d6d6d6;
       }
+    `;
+
+    const Anchor = styled.a`
+    padding: 15px 28px 13px 12px;
+    font-size: 17.5px;
+    line-height: 1.1;
+    font-weight: bold;
+    width: 100%;
+    background-color: #fafafa;
+    text-decoration: none !important;
     `;
 
     const SpanOne = styled.span`
@@ -63,33 +71,33 @@ export default function Navbar() {
 
         <Navbar>
             <OrderList>
-                <List>
-                    <Anchor className='active'>
+                <List className='active'>
+                    <Anchor >
                         <SpanOne>your vehicle</SpanOne>
                         <SpanTwo>1</SpanTwo>
                     </Anchor>
                 </List>
-                <List>
-                    <Anchor className='disable'>
+                <List className='disable'>
+                    <Anchor>
                         <SpanOne>your details</SpanOne>
                         <SpanTwo>2</SpanTwo>
                     </Anchor>
                 </List>
-                <List>
-                    <Anchor className='disable'>
+                <List className='disable'>
+                    <Anchor>
                         <SpanOne> your policy</SpanOne>
                         <SpanTwo>3</SpanTwo>
                     </Anchor>
                 </List>
-                <List>
-                    <Anchor className='disable'>
+                <List className='disable'>
+                    <Anchor>
                         <SpanOne>your summary</SpanOne>
                         <SpanTwo>4</SpanTwo>
                     </Anchor>
                 </List>
 
-                <List>
-                    <Anchor className='disable'>
+                <List className='disable'>
+                    <Anchor>
                         <SpanOne> your quotes</SpanOne>
                         <SpanTwo>5</SpanTwo>
                     </Anchor>
