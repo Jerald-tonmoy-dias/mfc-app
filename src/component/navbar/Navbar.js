@@ -93,12 +93,15 @@ export default function Navbar() {
     `));
 
     const SpanOne = styled.span`
+    text-transform: capitalize;
     color: #fff;
     opacity: 1;
     `;
     const SpanTwo = styled.span`
+    text-transform: capitalize;
     color: #fff;
-    opacity: 1;
+    opacity: 0;
+
     `;
 
     return (
