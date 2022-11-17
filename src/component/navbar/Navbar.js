@@ -23,27 +23,30 @@ export default function Navbar() {
     `;
 
     const Anchor = styled.a`
-    background-color: #002a6e;
-    color: #002a6e;
-    &:after {
-        content: "a";
-        margin-right: -2px;
-        position: absolute;
-        right: 100%;
-        z-index: 1;
-        color: #fafafa;
-        border: 30px solid transparent;
-        border-width: 40px 0 40px 15px;
+    padding: 15px 28px 13px 12px;
+    font-size: 17.5px;
+    line-height: 1.1;
+    font-weight: bold;
+    width: 100%;
+    background-color: #fafafa;
+    text-decoration: none !important;
+    &.active {
+        background-color: #002a6e;
+        color: #002a6e;
       }
-    &:before {
-        content: "b";
-        margin-right: -2px;
-        position: absolute;
-        right: 100%;
-        z-index: 1;
-        color: #fafafa;
-        border: 30px solid transparent;
-        border-width: 40px 0 40px 15px;
+    &.disable {
+        &:after, &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            right: 100%;
+            border: 30px solid transparent;
+            border-width: 40px 0 40px 15px;
+            
+        }
+        padding-left: 5px;
+        background-color: #d6d6d6;
+        color: #d6d6d6;
       }
     `;
 
@@ -60,27 +63,37 @@ export default function Navbar() {
 
         <Navbar>
             <OrderList>
-                <List><Anchor>
-                    <SpanOne>your vehicle</SpanOne>
-                    <SpanTwo>1</SpanTwo>
-                </Anchor></List>
-                <List><Anchor>
-                    <SpanOne>your details</SpanOne>
-                    <SpanTwo>2</SpanTwo>
-                </Anchor></List>
-                <List><Anchor>
-                    <SpanOne> your policy</SpanOne>
-                    <SpanTwo>3</SpanTwo>
-                </Anchor></List>
-                <List><Anchor>
-                    <SpanOne>your summary</SpanOne>
-                    <SpanTwo>4</SpanTwo>
-                </Anchor></List>
+                <List>
+                    <Anchor className='active'>
+                        <SpanOne>your vehicle</SpanOne>
+                        <SpanTwo>1</SpanTwo>
+                    </Anchor>
+                </List>
+                <List>
+                    <Anchor className='disable'>
+                        <SpanOne>your details</SpanOne>
+                        <SpanTwo>2</SpanTwo>
+                    </Anchor>
+                </List>
+                <List>
+                    <Anchor className='disable'>
+                        <SpanOne> your policy</SpanOne>
+                        <SpanTwo>3</SpanTwo>
+                    </Anchor>
+                </List>
+                <List>
+                    <Anchor className='disable'>
+                        <SpanOne>your summary</SpanOne>
+                        <SpanTwo>4</SpanTwo>
+                    </Anchor>
+                </List>
 
-                <List><Anchor>
-                    <SpanOne> your quotes</SpanOne>
-                    <SpanTwo>5</SpanTwo>
-                </Anchor></List>
+                <List>
+                    <Anchor className='disable'>
+                        <SpanOne> your quotes</SpanOne>
+                        <SpanTwo>5</SpanTwo>
+                    </Anchor>
+                </List>
             </OrderList>
 
         </Navbar>
