@@ -25,25 +25,29 @@ margin-top: 30px;
     width: 40px;
     border-radius: 50%;
     margin-right: 10px;
+    cursor: pointer;
+    display: none;
+    transition: .3s;
+    &:hover {
+        transform: scale(1.1);
+    }
+    @media (max-width: 991px) {
+    display: inline-block;
+
+  }
 }
 
 @media (max-width: 991px) {
     flex-wrap: wrap;
   }
 
-&:hover ${ToolTipWrapper} {
- @media (max-width: 991px) {
-opacity: 1;
-  visible: visible;
-  }
-  opacity: 1;
-  visible: visible;
+    &:hover ${ToolTipWrapper} {
+    opacity: 1;
+    visible: visible;
 
-    
 }
 `));
 export const RegisterCarWrapper = styled.div(props => (`
-    // background: ${props.bg};
     padding: 30px;
     border-radius: 2px;
     width: 80%;
@@ -59,7 +63,6 @@ export const RegisterCarWrapper = styled.div(props => (`
   }
 
   .inputWrapper {
-     
     max-width: 380px;
     border: 3px solid #F3516B;
     display:flex;
@@ -69,7 +72,7 @@ export const RegisterCarWrapper = styled.div(props => (`
         font-size: 19px;
         display: inline-block;
         background: #FF6600;
-        padding: 8px;
+        padding: 15px;
     }
     input {
         font-size: 35px;
@@ -127,7 +130,11 @@ export const ToolTipWrapper = styled.div(props => (`
     opacity: 0;
     visible: hidden;
     @media (max-width: 991px) {
-     width: 100%;
+    width: 80%;
+    margin-top: 30px;
+    opacity: ${props.open == true ? '1' : '0'};
+    visible:  ${props.open == true ? 'visible' : 'hidden'};
+     
   }
 
     .help-text {
