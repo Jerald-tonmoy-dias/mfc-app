@@ -1,14 +1,10 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components';
 import { ThemeContext } from 'styled-components';
+import Vehicle from './form/vehicle/Vehicle';
 import Navbar from './navbar/Navbar';
 
 export default function Wrapper() {
-
-    const themeContext = useContext(ThemeContext)
-
-    console.log('Current theme: ', themeContext)
-
     const Wrapper = styled.div`
     width: 95%;
     max-width: 1190px;
@@ -19,6 +15,7 @@ export default function Wrapper() {
     return (
         <Wrapper>
             <Navbar />
+            <Vehicle />
         </Wrapper>
     )
 }
