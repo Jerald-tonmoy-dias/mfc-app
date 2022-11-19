@@ -13,11 +13,38 @@ text-transform: capitalize;
 export const MainWrapper = styled.div(props => (`
 display:flex;
 align-items: flex-start;
-margin-top: 30px
+margin-top: 30px;
+
+.mobile_trigger {
+    font-size: 21px;
+    background: white;
+    border: none;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+@media (max-width: 991px) {
+    flex-wrap: wrap;
+  }
+
+&:hover ${ToolTipWrapper} {
+ @media (max-width: 991px) {
+opacity: 1;
+  visible: visible;
+  }
+  opacity: 1;
+  visible: visible;
+
+    
+}
 `));
 export const RegisterCarWrapper = styled.div(props => (`
     // background: ${props.bg};
-    padding: 15px 10px;
+    padding: 30px;
     border-radius: 2px;
     width: 80%;
     color: white;
@@ -36,24 +63,38 @@ export const RegisterCarWrapper = styled.div(props => (`
     max-width: 380px;
     border: 3px solid #F3516B;
     display:flex;
-    // justify-content:center;
-    span {
-           font-size: 19px;
+   align-items:center;
+
+    .country {
+        font-size: 19px;
         display: inline-block;
         background: #FF6600;
         padding: 8px;
     }
     input {
-           font-size: 19px;
-           padding: 8px;
+        font-size: 35px;
+        font-weight: 700;
+        padding: 8px;
         background: white;
         outline: none;
         border: none;
-         color: #8D8E8F;
+        color: #FF6600;
+        text-transform: uppercase;
         flex: 1;
+
         &::placeholder {
-            color: #8D8E8F;
+        font-weight: 400;
+        font-size: 19px;
+        color: #8D8E8F;
+        text-transform: lowercase;
         }
+    }
+
+    .Mark_icon {
+        color: '#ffffff';
+        transform: rotate(118deg);
+        font-size: 35px;
+        margin-left: 13px;
     }
   }
 
@@ -65,7 +106,9 @@ export const SVGElement = styled.div(props => (`
     vertical-align: top;
     margin-top: 2px;
     margin-right: 2px;
+    font-size: 20px;
     width: 27px;
+    color: #fff;
     height: 27px;
 
 `));
@@ -81,7 +124,11 @@ export const ToolTipWrapper = styled.div(props => (`
     border-radius: 2px; 
     padding: 10px;
     color: white;
-
+    opacity: 0;
+    visible: hidden;
+    @media (max-width: 991px) {
+     width: 100%;
+  }
 
     .help-text {
             max-width: 80%;
