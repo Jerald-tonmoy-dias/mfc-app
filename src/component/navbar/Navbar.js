@@ -5,6 +5,7 @@ import { Nav, OrderList, List, Anchor, SpanOne, SpanTwo } from './Navbar.styled'
 
 export default function Navbar() {
     const theme = useContext(ThemeContext);
+    
     let {
         loading,
         setLoading,

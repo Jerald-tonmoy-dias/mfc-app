@@ -5,6 +5,7 @@ import axios from "axios";
 import { RegisterCarWrapper, Title, SVGElement, ToolTipWrapper, MainWrapper } from '../Form.styled';
 import { BASE_URL } from '../../../BaseUrl';
 import { StoreContext } from '../../../context/Store';
+import NotFoundVehicle from './NotFoundVehicle';
 
 export default function Vehicle() {
     // gettting context value
@@ -78,6 +79,7 @@ export default function Vehicle() {
                 </MainWrapper>
             </form>
 
+            <NotFoundVehicle/>
 
         </div>
     )
