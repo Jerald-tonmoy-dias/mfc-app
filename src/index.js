@@ -3,11 +3,26 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { StoreProvider } from './context/Store';
+import { ThemeProvider } from 'styled-components';
+
+const theme = {
+  primaryColor: '#FF6600',
+  secondaryColor: '#F3516B',
+  grayColor: '#8D8E8F',
+  liteBlackColor: '#00000026',
+  litewhiteColor: '#F7F8F9',
+  whiteColor: '#ffffff'
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <StoreProvider>
+    <ThemeProvider theme={theme}>
+      <App />
+      </ThemeProvider>
+    </StoreProvider>
   </React.StrictMode>
 );
 

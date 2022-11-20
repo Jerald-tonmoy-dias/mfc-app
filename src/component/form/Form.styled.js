@@ -8,8 +8,6 @@ margin: 0;
 text-transform: capitalize;
 `));
 
-
-
 export const MainWrapper = styled.div(props => (`
 display:flex;
 align-items: flex-start;
@@ -47,6 +45,7 @@ margin-top: 30px;
 
 }
 `));
+
 export const RegisterCarWrapper = styled.div(props => (`
     padding: 30px;
     border-radius: 2px;
@@ -100,8 +99,6 @@ export const RegisterCarWrapper = styled.div(props => (`
         margin-left: 13px;
     }
   }
-
-
 `));
 
 export const SVGElement = styled.div(props => (`
