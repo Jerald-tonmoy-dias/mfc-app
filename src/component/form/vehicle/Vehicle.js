@@ -15,12 +15,13 @@ export default function Vehicle() {
         setLoading,
         vehicleDetails,
         setvehicleDetails,
+        notFound,
+        setnotFound,
     } = useContext(StoreContext);
 
     // local states
     const [openToolTip, setopenToolTip] = useState(false);
     const [modelNo, setModelNo] = useState(null);
-    const [notFound, setnotFound] = useState(false);
 
     // functions
     const getVehicleInfoFunction = (e, modelNo) => {
@@ -33,7 +34,7 @@ export default function Vehicle() {
             .get(url)
             .then((res) => {
                 console.log('response from context value ', res);
-                if(res.data != undefined) {
+                if(res.data.Response.StatusCode != "KeyInvalid") {
                     setvehicleDetails(res.data);
                     setLoading(false);
                 } else {
@@ -89,7 +90,7 @@ export default function Vehicle() {
                    </MainWrapper>
                </form>
             ] :
-            <NotFoundVehicle />
+            <NotFoundVehicle/>
             }
          
 

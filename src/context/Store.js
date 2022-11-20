@@ -8,7 +8,7 @@ const StoreProvider = ({ children }) => {
     //loading
     const [loading, setLoading] = useState(false);
     const [vehicleDetails, setvehicleDetails] = useState(null);
-
+    const [notFound, setnotFound] = useState(false);
     const [navList,setnavList] = useState([
         {
             id:1,
@@ -51,6 +51,8 @@ const StoreProvider = ({ children }) => {
             setnavList,
             vehicleDetails,
             setvehicleDetails,
+            notFound,
+            setnotFound
             
         }}>
             {children}

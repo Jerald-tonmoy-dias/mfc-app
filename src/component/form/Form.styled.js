@@ -126,6 +126,7 @@ export const ToolTipWrapper = styled.div(props => (`
     color: white;
     opacity: 0;
     visible: hidden;
+    
     @media (max-width: 991px) {
     width: 80%;
     margin-top: 30px;
