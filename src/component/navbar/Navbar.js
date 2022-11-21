@@ -5,7 +5,7 @@ import { Nav, OrderList, List, Anchor, SpanOne, SpanTwo } from './Navbar.styled'
 
 export default function Navbar() {
     const theme = useContext(ThemeContext);
-    
+
     let {
         loading,
         setLoading,
@@ -18,18 +18,20 @@ export default function Navbar() {
     return (
         <Nav>
             <OrderList>
-                {navList && navList.map((navItem,index) => {
+                {navList && navList.map((navItem, index) => {
                     return (
                         <List
-                            secondaryColor={theme.secondaryColor}
-                            grayColor={theme.grayColor}
-                            className={`${navItem.current == true ? 'active':  'disable'}`}>
+                            active={theme.primaryColor}
+                            disable={theme.secondaryColor}
+                            color={theme.whiteColor}
+                            className={`${navItem.current == true ? 'active' : 'disable'}`}>
                             <Anchor
-                                secondaryColor={theme.secondaryColor}
-                                grayColor={theme.grayColor}
-                                className={`${navItem.current == true ? 'is_current':  'is_disabled'}`}>
-                                <SpanOne>{navItem.name}</SpanOne>
-                                <SpanTwo>{index+1}</SpanTwo>
+                                active={theme.primaryColor}
+                                disable={theme.secondaryColor}
+                                color={theme.whiteColor}
+                                className={`${navItem.current == true ? 'is_current' : 'is_disabled'}`}>
+                                <SpanOne color={theme.whiteColor}>{navItem.name}</SpanOne>
+                                <SpanTwo color={theme.whiteColor}>{index + 1}</SpanTwo>
                             </Anchor>
                         </List>
                     )

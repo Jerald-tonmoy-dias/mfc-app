@@ -10,8 +10,8 @@
 
   @font-face {
   font-family: 'UTMAvoBold';
-  font-style: normal;
-  font-weight: normal;
+  font-style: bold;
+  font-weight: bold;
   src: local('UTMAvoBold'), url('../fonts/utm-avobold.woff') format('woff');
   }
 
