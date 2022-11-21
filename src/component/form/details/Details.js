@@ -129,24 +129,6 @@ export default function Details() {
                 </div>
             </ContentWrapper>
 
-            <ContentWrapper borderColor={theme.liteBlackColor} primaryColor={theme.primaryColor} whiteColor={theme.whiteColor} blackColor={theme.blackColor} secondaryColor={theme.secondaryColor}>
-                <div className='content-left'>
-                    Has the car been modified in any way?
-                </div>
-                <div className='content-right'>
-                    <RadioButtons
-                        primaryColor={theme.primaryColor}
-                        blackColor={theme.blackColor}
-                        whiteColor={theme.whiteColor}>
-                        <input type="radio" id="radio5" name="radios" value="yes" />
-                        <label for="radio5">yes</label>
-
-                        <input type="radio" id="radio6" name="radios" value="no" />
-                        <label for="radio6">no</label>
-                    </RadioButtons>
-
-                </div>
-            </ContentWrapper>
         </div>
     )
 }
