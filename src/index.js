@@ -8,8 +8,8 @@ import { ThemeProvider } from 'styled-components';
 
 const theme = {
   primaryColor: '#FF6600',
-  secondaryColor: '#F3516B',
-  grayColor: '#8D8E8F',
+  secondaryColor: '#FBAF7D',
+  grayColor: '#F7F8F9',
   liteBlackColor: '#00000026',
   litewhiteColor: '#F7F8F9',
   whiteColor: '#ffffff'
@@ -19,8 +19,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <StoreProvider>
-    <ThemeProvider theme={theme}>
-      <App />
+      <ThemeProvider theme={theme}>
+        <App />
       </ThemeProvider>
     </StoreProvider>
   </React.StrictMode>
