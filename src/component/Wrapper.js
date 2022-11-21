@@ -1,7 +1,8 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components';
-import { ThemeContext } from 'styled-components';
 import Vehicle from './form/vehicle/Vehicle';
+import Details from './form/details/Details';
+import Honesty from './static/Honesty';
 import Navbar from './navbar/Navbar';
 
 export default function Wrapper() {
@@ -16,6 +17,8 @@ export default function Wrapper() {
         <Wrapper>
             <Navbar />
             <Vehicle />
+            <Details/>
+            <Honesty/>
         </Wrapper>
     )
 }
