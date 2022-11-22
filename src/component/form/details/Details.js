@@ -23,9 +23,6 @@ export default function Details() {
             >
                 vehicle details
             </Title>
-
-
-
         </div>
     )
 }
