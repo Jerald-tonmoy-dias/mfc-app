@@ -21,6 +21,8 @@ export default function Vehicle() {
   let { loading, setLoading, vehicleDetails, setvehicleDetails } =
     useContext(StoreContext);
 
+  let { VehicleRegistration } = vehicleDetails;
+
   return (
     <div>
       <Title color={theme.blackColor}>vehicle details</Title>
@@ -38,8 +40,23 @@ export default function Vehicle() {
         <div className="content-right">
           <div className="has_bg">
             <p>
-              2012 VOLKSWAGEN SHARAN SEL BLUEMOTION TECH TDI (170) KM12AKK
-              <br/>1968cc Diesel, 5DR Estate, Automatic
+              <span className="lg-text">
+              {VehicleRegistration.YearMonthFirstRegistered}{" "}
+              </span>
+              <span className="lg-text">
+              {VehicleRegistration.MakeModel} {VehicleRegistration.Vrm}
+              </span>
+              
+              <br />
+              <span className="small-text">
+                {VehicleRegistration.EngineCapacity}{" "}
+              </span>
+              <span className="small-text">
+                {VehicleRegistration.FuelType} ,{" "}
+              </span>
+              <span className="small-text">
+                {VehicleRegistration.TransmissionType}
+              </span>
             </p>
           </div>
         </div>
@@ -47,7 +64,7 @@ export default function Vehicle() {
       </ContentWrapper>
 
       <ContentWrapper
-          liteBlackColor={theme.liteBlackColor}
+        liteBlackColor={theme.liteBlackColor}
         borderColor={theme.liteBlackColor}
         whiteColor={theme.whiteColor}
         blackColor={theme.blackColor}

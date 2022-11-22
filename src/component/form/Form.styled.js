@@ -192,6 +192,17 @@ export const ContentWrapper = styled.div(props => (`
      border-radius: 8px;
     }
 
+    .lg-text {
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 1.8;
+    }
+    .small-text {
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.8;
+    }
+
     .check_box_wrapper {
       margin-top: 20px; 
 

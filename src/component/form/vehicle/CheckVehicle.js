@@ -38,7 +38,7 @@ export default function CheckVehicle() {
       .get(url)
       .then((res) => {
         if (res.data.Response.StatusCode != "KeyInvalid") {
-          setvehicleDetails(res.data.Response);
+          setvehicleDetails(res.data.Response.DataItems);
           setLoading(false);
           setcheckVehicle(true);
           console.log(res.data.Response);
