@@ -14,11 +14,12 @@ import {
 } from "../Form.styled";
 import { BASE_URL } from "../../../BaseUrl";
 import { StoreContext } from "../../../context/Store";
+import { BsPencil } from "react-icons/bs";
 
 export default function Vehicle() {
   // gettting context value
   const theme = useContext(ThemeContext);
-  let { loading, setLoading, vehicleDetails, setvehicleDetails } =
+  let { loading, setLoading, vehicleDetails, setvehicleDetails ,setcheckVehicle} =
     useContext(StoreContext);
 
   let { VehicleRegistration } = vehicleDetails;
@@ -58,6 +59,7 @@ export default function Vehicle() {
                 {VehicleRegistration.TransmissionType}
               </span>
             </p>
+            <button className="change_vehicle" type="button" onClick={()=>setcheckVehicle(false)} > <BsPencil/> change vehicle</button>
           </div>
         </div>
         <div className="tooltip"></div>

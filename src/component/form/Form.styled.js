@@ -183,13 +183,27 @@ export const ContentWrapper = styled.div(props => (`
     }
 
     .content-right {
-    color: ${props.blackColor};
-    width: 64%;
+     color: ${props.blackColor};
+     width: 64%;
     .has_bg {
     background: ${props.whiteColor};
     box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
     padding: 10px 20px;
      border-radius: 8px;
+    }
+
+    .change_vehicle {
+      border: none;
+      background: transparent;
+      font-size: 17px;
+      line-height: 19px;
+      text-transform: capitalize;
+      text-decoration: underline;
+      cursor: pointer;
+      color: ${props.primaryColor};
+      &:hover {
+        text-decoration: none;
+      }
     }
 
     .lg-text {
