@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
-export default styled.button`
-    background: #000;
+export default styled.button(props=> (
+    `
+    background: ${props.primaryColor};
     color: #fff;
     margin-top: 20px;
     font-size: 21px;
@@ -18,7 +19,8 @@ export default styled.button`
     box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1), 0 0 0 0 #42bc32, 2px 2px 2px 0 rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.35s;
     align-self: flex-start;
-`;
+`
+));
 
 
    

@@ -15,8 +15,8 @@ function App() {
   return (
     <Wrapper>
       <Navbar />
-      {/* <Vehicle /> */}
-      <Details />
+      <Vehicle />
+      {/* <Details /> */}
       <Honesty />
     </Wrapper>
   );

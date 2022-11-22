@@ -11,8 +11,8 @@ const theme = {
   secondaryColor: '#FBAF7D',
   grayColor: '#F7F8F9',
   liteBlackColor: '#00000026',
-  litewhiteColor: '#F7F8F9',
-  whiteColor: '#ffffff'
+  whiteColor: '#ffffff',
+  blackColor: '#000000'
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

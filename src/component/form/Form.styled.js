@@ -4,6 +4,7 @@ export const Title = styled.h1(props => (`
 color: ${props.color};
 margin-top: 30px;
 font-size: 30px;
+padding: 40px 20px;
 line-height: normal;
 font-weight: 700;
 
@@ -11,6 +12,7 @@ text-transform: capitalize;
 `));
 
 export const MainWrapper = styled.div(props => (`
+position: relative;
 display:flex;
 align-items: flex-start;
 margin-top: 30px;
@@ -21,59 +23,72 @@ margin-top: 30px;
     border: none;
     display: inline-block;
     height: 40px;
-    line-height: 40px;
     width: 40px;
     border-radius: 50%;
     margin-right: 10px;
     cursor: pointer;
     display: none;
     transition: .3s;
-    &:hover {
-        transform: scale(1.1);
-    }
+    //------- media query---------//
     @media (max-width: 991px) {
     display: inline-block;
-
   }
 }
-
+// main wrapper hover useEffect
+@media (min-width: 992px) {
+  flex-wrap: wrap;
+  &:hover ${ToolTipWrapper} {
+   opacity: 1;
+   visible: visible;
+ }
+}   
 @media (max-width: 991px) {
     flex-wrap: wrap;
+    &.active ${ToolTipWrapper} {
+     display: block;
+    }
   }
-
-    &:hover ${ToolTipWrapper} {
-    opacity: 1;
-    visible: visible;
-
-}
 `));
 
 export const RegisterCarWrapper = styled.div(props => (`
     padding: 30px;
     border-radius: 2px;
     width: 80%;
-    color: white;
+    font-weight: 700;
+    color: ${props.blackColor};
     &:hover {
-        background: #00000026;
+        background: ${props.liteBlackColor};
     }
 
-  label {
-    font-size: 19px;
-    margin-bottom: 20px;
-    display: inline-block;
-  }
+    label {
+      font-size: 19px;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
 
-  .inputWrapper {
-    max-width: 380px;
-    border: 3px solid #F3516B;
-    display:flex;
-   align-items:center;
+    .div_wrapper {
+      display: flex;
+    }
+
+    .Mark_icon {
+      font-size: 35px;
+      margin-left: 30px;
+      color:${props.primaryColor};
+    }
+    .inputWrapper {
+      max-width: 380px;
+      border: 2px solid ${props.primaryColor};
+      display:flex;
+      align-items:center;
+      border-radius: 5px;
 
     .country {
         font-size: 19px;
         display: inline-block;
         background: #FF6600;
         padding: 15px;
+        font-weight: 700;
+        color: ${props.whiteColor};
     }
     input {
         font-size: 35px;
@@ -85,6 +100,7 @@ export const RegisterCarWrapper = styled.div(props => (`
         color: #FF6600;
         text-transform: uppercase;
         flex: 1;
+        width: 100%;
 
         &::placeholder {
         font-weight: 400;
@@ -94,82 +110,99 @@ export const RegisterCarWrapper = styled.div(props => (`
         }
     }
 
-    .Mark_icon {
-        color: '#ffffff';
-        transform: rotate(118deg);
-        font-size: 35px;
-        margin-left: 13px;
-    }
   }
 `));
 
 export const SVGElement = styled.div(props => (`
-    display: inline-block;
-    vertical-align: top;
-    margin-top: 2px;
-    margin-right: 2px;
     font-size: 20px;
-    width: 27px;
-    color: #fff;
-    height: 27px;
-
+    color: ${props.primaryColor};
+   
 `));
 
-
 export const ToolTipWrapper = styled.div(props => (`
+    position: absolute;
+    top: 0;
+    right: 0;    
+    margin-left: 10px;
     flex-direction: row;
     flex-wrap: wrap;
     width: 20%;
     display: flex;
-    background: ${props.bg};
-    border: 5px solid ${props.borderColor};
-    border-radius: 2px; 
-    padding: 10px;
-    color: white;
+    background: ${props.whiteColor};
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 0px 10px 2px;
+    border: 2px solid ${props.primaryColor};
+    border-radius: 2px;
+    padding: 10px 20px;
+    color: ${props.color};
+    font-weight: 700;
     opacity: 0;
     visible: hidden;
-    
+    border-radius: 5px;
+    text-align: justify;
+    text-justify: inter-word;
+
+    .icon_p_wrapper {
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .hint-icon {
+      color: ${props.primaryColor};
+      font-size: 60px;
+      margin-right: 10px;
+    }
+
     @media (max-width: 991px) {
+    display: none;
+    position: static;
     width: 80%;
     margin-top: 30px;
-    opacity: ${props.open == true ? '1' : '0'};
-    visible:  ${props.open == true ? 'visible' : 'hidden'};
-     
+    opacity: 1;
+    visible: visible;
   }
 
-    .help-text {
-            max-width: 80%;
-    }
+
 `));
 
 export const ContentWrapper = styled.div(props => (`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 16px 8px;
+    font-weight: 700;
     border-bottom: 1px solid ${props.borderColor};
-    
-    padding: 10px 15px;
+    padding: 40px 20px;
 
     &:hover {
-      background: ${props.secondaryColor};
+      // background: ${props.secondaryColor};
+      background: #00000026;
       border-radius: 5px;
-      
     }
     .content-left {
       color: ${props.blackColor};
       width: 34%;
     }
 
-
     .content-right {
     color: ${props.blackColor};
     width: 64%;
     .has_bg {
     background: ${props.whiteColor};
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
     padding: 10px 20px;
      border-radius: 8px;
     }
+
+    .check_box_wrapper {
+      margin-top: 20px; 
+
+      input {
+        margin-right: 10px;
+      }
+      label {
+        text-transform: capitalize;
+      }
+    }
+
     .selectClass {
      max-width: 380px;
     padding-bottom: 0.5px;
@@ -196,12 +229,14 @@ export const ContentWrapper = styled.div(props => (`
     }
 
 .text_input {
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
     max-width: 380px;
     text-transform: capitalize;
     font-weight: 700;
     padding: 15px 40px;
     border-radius: 2px;
     outline: none;
+    margin-right: 10px;
     border: 1px solid ${props.blackColor};
 }
 
@@ -222,9 +257,11 @@ label {
     padding: 15px 40px;
     border-radius: 2px;
     cursor: pointer;
-    &:nth-child(2) {
-      margin-right: 10px;
-    }
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+    margin: 0 10px 10px 0 ;
+    // &:nth-child(2) {
+    //   margin-right: 10px;
+    // }
 }
 
 input[type="radio"]:checked+label {

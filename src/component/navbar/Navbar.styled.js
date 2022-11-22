@@ -20,6 +20,7 @@ export const List = styled.li(props => (
     display: inline-flex;
     flex-basis: 20%;
     position: relative;
+    text-transform: uppercase;
     &.active {
         background-color: ${props.active};
         color: ${props.active};
