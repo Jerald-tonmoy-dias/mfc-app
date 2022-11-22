@@ -18,7 +18,7 @@ const StoreProvider = ({ children }) => {
             id: 1,
             name: 'Your vehicle',
             status: false,//pass
-            current: true,
+            current: false,
         },
         {
             id: 2,
@@ -36,7 +36,7 @@ const StoreProvider = ({ children }) => {
             id: 4,
             name: 'Your summary',
             status: false,//pass
-            current: false,
+            current: true,
         },
         {
             id: 5,

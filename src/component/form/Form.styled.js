@@ -295,3 +295,28 @@ input[type="radio"]:checked+label {
 }
 
 `));
+
+export const NextPrevWrapper = styled.div(props=>(`
+  display: flex;
+  justify-content: flex-end;
+  margin: 30px 0;
+  .btn {
+    font-size: 21px;
+    line-height: 27px;
+    display: inline-block;
+    background: ${props.whiteColor};
+    color: ${props.blackColor};
+    text-transform: capitalize;
+    font-weight: 700;
+    padding: 15px 40px;
+    border-radius: 2px;
+    cursor: pointer;
+    box-shadow: rgba(33,35,38,0.1) 0px 10px 10px -10px;
+    margin: 0 10px 10px 0;
+    border: none;
+    &.next {
+      margin-left: 20px;
+    }
+    // float: right;
+  }
+`));

@@ -11,6 +11,7 @@ import {
   MainWrapper,
   ContentWrapper,
   RadioButtons,
+  NextPrevWrapper,
 } from "../Form.styled";
 import { BASE_URL } from "../../../BaseUrl";
 import { StoreContext } from "../../../context/Store";
@@ -19,10 +20,27 @@ import { BsPencil } from "react-icons/bs";
 export default function Vehicle() {
   // gettting context value
   const theme = useContext(ThemeContext);
-  let { loading, setLoading, vehicleDetails, setvehicleDetails ,setcheckVehicle} =
-    useContext(StoreContext);
+  let {
+    loading,
+    setLoading,
+    vehicleDetails,
+    setvehicleDetails,
+    setcheckVehicle,
+    navList,
+    setnavList,
+  } = useContext(StoreContext);
 
   let { VehicleRegistration } = vehicleDetails;
+
+  //   nextpageFunction function
+  const nextpageFunction = () => {
+    console.log(navList[0]);
+    // navList.map(nav=> {
+    //     if(nav.id ==1) {
+    //         setnavList(...navList,nav.current=true,nav.status=true)
+    //     }
+    // })
+  };
 
   return (
     <div>
@@ -42,12 +60,12 @@ export default function Vehicle() {
           <div className="has_bg">
             <p>
               <span className="lg-text">
-              {VehicleRegistration.YearMonthFirstRegistered}{" "}
+                {VehicleRegistration.YearMonthFirstRegistered}{" "}
               </span>
               <span className="lg-text">
-              {VehicleRegistration.MakeModel} {VehicleRegistration.Vrm}
+                {VehicleRegistration.MakeModel} {VehicleRegistration.Vrm}
               </span>
-              
+
               <br />
               <span className="small-text">
                 {VehicleRegistration.EngineCapacity}{" "}
@@ -59,7 +77,14 @@ export default function Vehicle() {
                 {VehicleRegistration.TransmissionType}
               </span>
             </p>
-            <button className="change_vehicle" type="button" onClick={()=>setcheckVehicle(false)} > <BsPencil/> change vehicle</button>
+            <button
+              className="change_vehicle"
+              type="button"
+              onClick={() => setcheckVehicle(false)}
+            >
+              {" "}
+              <BsPencil /> change vehicle
+            </button>
           </div>
         </div>
         <div className="tooltip"></div>
@@ -276,6 +301,15 @@ export default function Vehicle() {
           <label>miles per year</label>
         </div>
       </ContentWrapper>
+
+      <NextPrevWrapper
+        whiteColor={theme.whiteColor}
+        blackColor={theme.blackColor}
+      >
+        <button type="button" onClick={nextpageFunction} className="btn next">
+          next
+        </button>
+      </NextPrevWrapper>
     </div>
   );
 }
