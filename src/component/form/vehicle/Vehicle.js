@@ -2,130 +2,261 @@ import React, { useContext, useState, useEffect } from "react";
 import { ThemeContext } from "styled-components";
 import Button from "../../button/Button";
 import axios from "axios";
+
 import {
   RegisterCarWrapper,
   Title,
   SVGElement,
   ToolTipWrapper,
   MainWrapper,
+  ContentWrapper,
+  RadioButtons,
 } from "../Form.styled";
 import { BASE_URL } from "../../../BaseUrl";
 import { StoreContext } from "../../../context/Store";
-import NotFoundVehicle from "./NotFoundVehicle";
-import { BsFillPencilFill, BsQuestionLg, BsX, BsXOctagonFill } from "react-icons/bs";
 
 export default function Vehicle() {
   // gettting context value
   const theme = useContext(ThemeContext);
-  let {
-    loading,
-    setLoading,
-    vehicleDetails,
-    setvehicleDetails,
-    notFound,
-    setnotFound,
-  } = useContext(StoreContext);
-
-  // local states
-  const [openToolTip, setopenToolTip] = useState(false);
-  const [modelNo, setModelNo] = useState(null);
-
-  // functions
-  const getVehicleInfoFunction = (e, modelNo) => {
-    e.preventDefault();
-    setLoading(true);
-    const url = BASE_URL + modelNo;
-    return axios
-      .get(url)
-      .then((res) => {
-        if (res.data.Response.StatusCode != "KeyInvalid") {
-          setvehicleDetails(res.data);
-          setLoading(false);
-        } else {
-          setnotFound(true);
-        }
-      })
-      .catch((err) => {
-        setnotFound(true);
-        console.log(err);
-      });
-  };
+  let { loading, setLoading, vehicleDetails, setvehicleDetails } =
+    useContext(StoreContext);
 
   return (
     <div>
       <Title color={theme.blackColor}>vehicle details</Title>
-      {notFound === false ? (
-        [
-          <form onSubmit={(e) => getVehicleInfoFunction(e, modelNo)}>
-            <MainWrapper className={openToolTip== true ? 'active' : ''}>
-              <RegisterCarWrapper
-                whiteColor={theme.whiteColor}
-                primaryColor={theme.primaryColor}
-                secondaryColor={theme.secondaryColor}
-                liteBlackColor={theme.liteBlackColor}
-              >
-                <button
-                type="button"
-                  onClick={(e) => setopenToolTip(prevOpen=>!prevOpen)}
-                  className="mobile_trigger"
-                >
-                    {openToolTip == true ? <BsXOctagonFill/> :   <BsQuestionLg />}
-                
-                </button>
 
-                <label htmlFor="">What's your car's registration?</label>
-                <div className="div_wrapper">
-                  <div className="inputWrapper">
-                    <span className="country">UK</span>
-                    <input
-                      type="text"
-                      onChange={(e) => setModelNo(e.target.value)}
-                      placeholder="Enter registration..."
-                    />
-                  </div>
-                  <span className="Mark_icon">
-                    <BsFillPencilFill />
-                  </span>
-                </div>
+      {/* first step */}
+      <ContentWrapper
+        borderColor={theme.liteBlackColor}
+        liteBlackColor={theme.liteBlackColor}
+        whiteColor={theme.whiteColor}
+        blackColor={theme.blackColor}
+        primaryColor={theme.primaryColor}
+        secondaryColor={theme.secondaryColor}
+      >
+        <div className="content-left">We’ve found your vehicle</div>
+        <div className="content-right">
+          <div className="has_bg">
+            <p>
+              2012 VOLKSWAGEN SHARAN SEL BLUEMOTION TECH TDI (170) KM12AKK
+              <br/>1968cc Diesel, 5DR Estate, Automatic
+            </p>
+          </div>
+        </div>
+        <div className="tooltip"></div>
+      </ContentWrapper>
 
-                <Button
-                  whiteColor={theme.whiteColor}
-                  primaryColor={theme.primaryColor}
-                  type="submit"
-                >
-                  Find vehicle
-                </Button>
-              </RegisterCarWrapper>
-              <ToolTipWrapper
-                open={openToolTip}
-                primaryColor={theme.primaryColor}
-                whiteColor={theme.whiteColor}
-                blackColor={theme.blackColor}
-              >
-                <div className="icon_p_wrapper">
-                  <BsQuestionLg className="hint-icon" />
-                  <p>
-                    Entering the registration is the quickest way to get a
-                    quote.
-                  </p>
-                </div>
-                <p>
-                  If your car is brand new the registration might not be
-                  recognised. Don’t worry we can still compare insurance for
-                  you, just enter the details manually - it won’t take long.
-                </p>
-                <p>
-                  Unfortunately we can’t provide quotes for vehicles
-                  manufactured before 1970, motor homes or commercial vehicles
-                  weighing more than 3.5 tonnes.
-                </p>
-              </ToolTipWrapper>
-            </MainWrapper>
-          </form>,
-        ]
-      ) : (
-        <NotFoundVehicle />
-      )}
+      <ContentWrapper
+          liteBlackColor={theme.liteBlackColor}
+        borderColor={theme.liteBlackColor}
+        whiteColor={theme.whiteColor}
+        blackColor={theme.blackColor}
+        secondaryColor={theme.secondaryColor}
+      >
+        <div className="content-left">
+          What type of alarm and/or immobiliser does the car have?
+        </div>
+        <div className="content-right">
+          <select className="selectClass">
+            <option value="" disabled="">
+              Please select...
+            </option>
+            <option value="99991">
+              Factory Fitted Thatcham Approved Alarm/Immobiliser
+            </option>
+            <option value="99992">
+              Factory Fitted Thatcham Approved Alarm
+            </option>
+            <option value="99993">
+              Factory Fitted Non-Thatcham Alarm/Immobiliser
+            </option>
+            <option value="99994">Factory Fitted Non-Thatcham Alarm</option>
+            <option value="#F">Factory Fitted</option>
+            <option value="#N">None</option>
+          </select>
+        </div>
+      </ContentWrapper>
+
+      <ContentWrapper
+        borderColor={theme.liteBlackColor}
+        liteBlackColor={theme.liteBlackColor}
+        primaryColor={theme.primaryColor}
+        whiteColor={theme.whiteColor}
+        blackColor={theme.blackColor}
+        secondaryColor={theme.secondaryColor}
+      >
+        <div className="content-left">
+          Is the car fitted with a tracking device?
+        </div>
+        <div className="content-right">
+          <RadioButtons
+            primaryColor={theme.primaryColor}
+            blackColor={theme.blackColor}
+            whiteColor={theme.whiteColor}
+          >
+            <input type="radio" id="radio1" name="radios" value="yes" />
+            <label for="radio1">yes</label>
+
+            <input type="radio" id="radio2" name="radios" value="no" />
+            <label for="radio2">no</label>
+          </RadioButtons>
+        </div>
+      </ContentWrapper>
+
+      <ContentWrapper
+        borderColor={theme.liteBlackColor}
+        primaryColor={theme.primaryColor}
+        whiteColor={theme.whiteColor}
+        blackColor={theme.blackColor}
+        liteBlackColor={theme.liteBlackColor}
+        secondaryColor={theme.secondaryColor}
+      >
+        <div className="content-left">Is the car left or right hand drive?</div>
+        <div className="content-right">
+          <RadioButtons
+            primaryColor={theme.primaryColor}
+            blackColor={theme.blackColor}
+            whiteColor={theme.whiteColor}
+          >
+            <input type="radio" id="radio3" name="radios" value="yes" />
+            <label for="radio3">left hand</label>
+
+            <input type="radio" id="radio4" name="radios" value="no" />
+            <label for="radio4">right hand</label>
+          </RadioButtons>
+        </div>
+      </ContentWrapper>
+
+      <ContentWrapper
+        borderColor={theme.liteBlackColor}
+        whiteColor={theme.whiteColor}
+        blackColor={theme.blackColor}
+        secondaryColor={theme.secondaryColor}
+        liteBlackColor={theme.liteBlackColor}
+      >
+        <div className="content-left">How many seats are there in the car?</div>
+        <div className="content-right">
+          <select className="selectClass">
+            <option value="" disabled="">
+              Please select...
+            </option>
+            <option value="99991">1</option>
+            <option value="99992">2</option>
+            <option value="99993">3</option>
+            <option value="99994">4</option>
+            <option value="#F">5</option>
+            <option value="#N">6</option>
+            <option value="#f">7</option>
+          </select>
+        </div>
+      </ContentWrapper>
+
+      <ContentWrapper
+        borderColor={theme.liteBlackColor}
+        whiteColor={theme.whiteColor}
+        blackColor={theme.blackColor}
+        secondaryColor={theme.secondaryColor}
+        liteBlackColor={theme.liteBlackColor}
+      >
+        <div className="content-left">
+          Do you know the current value of the car?
+        </div>
+        <div className="content-right">
+          <input type="text" className="text_input" value="$8810" />
+        </div>
+        <div>
+          <p>
+            Where possible, we’ve estimated your car’s current market value
+            using an independent provider.
+          </p>
+          <p>
+            If a value isn’t shown or you’d like to amend it, simply enter the
+            current market value in the box.
+          </p>
+        </div>
+      </ContentWrapper>
+
+      {/* second step */}
+      <ContentWrapper
+        borderColor={theme.liteBlackColor}
+        whiteColor={theme.whiteColor}
+        blackColor={theme.blackColor}
+        secondaryColor={theme.secondaryColor}
+        liteBlackColor={theme.liteBlackColor}
+      >
+        <div className="content-left">
+          When did you buy or start to lease this car?
+        </div>
+        <div className="content-right">
+          <input type="date" className="text_input" /> <br />
+          <div className="check_box_wrapper">
+            <input id="check11" type="checkbox" className="text_input" />
+            <label htmlFor="check11">i don't have this car yet</label>
+          </div>
+        </div>
+      </ContentWrapper>
+
+      <ContentWrapper
+        borderColor={theme.liteBlackColor}
+        primaryColor={theme.primaryColor}
+        whiteColor={theme.whiteColor}
+        blackColor={theme.blackColor}
+        secondaryColor={theme.secondaryColor}
+      >
+        <div className="content-left">What do you use the car for?</div>
+        <div className="content-right">
+          <RadioButtons
+            primaryColor={theme.primaryColor}
+            blackColor={theme.blackColor}
+            whiteColor={theme.whiteColor}
+          >
+            <input
+              type="radio"
+              id="car_used_1"
+              name="radios"
+              value="Social, Domestic and Pleasure (SDP) only"
+            />
+            <label for="car_used_1">
+              Social, Domestic and Pleasure (SDP) only
+            </label>
+
+            <input
+              type="radio"
+              id="car_user_2"
+              name="radios"
+              value="Social, Domestic Pleasure & Commuting (SDPC)"
+            />
+            <label for="car_user_2">
+              Social, Domestic Pleasure & Commuting (SDPC)
+            </label>
+
+            <input
+              type="radio"
+              id="car_user_3"
+              name="radios"
+              value="SDPC & Business Use"
+            />
+            <label for="car_user_3">SDPC & Business Use</label>
+          </RadioButtons>
+        </div>
+      </ContentWrapper>
+
+      <ContentWrapper
+        borderColor={theme.liteBlackColor}
+        primaryColor={theme.primaryColor}
+        whiteColor={theme.whiteColor}
+        blackColor={theme.blackColor}
+        secondaryColor={theme.secondaryColor}
+        liteBlackColor={theme.liteBlackColor}
+      >
+        <div className="content-left">
+          What is the total annual personal mileage for this car?
+        </div>
+        <div className="content-right">
+          <input type="text" className="text_input" name="radios" />
+          <label>miles per year</label>
+        </div>
+      </ContentWrapper>
     </div>
   );
 }

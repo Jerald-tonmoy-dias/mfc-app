@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Title = styled.h1(props => (`
 color: ${props.color};
-margin-top: 30px;
+// margin-top: 30px;
 font-size: 30px;
 padding: 40px 20px;
 line-height: normal;

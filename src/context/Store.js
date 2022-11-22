@@ -7,8 +7,12 @@ const StoreContext = createContext();
 const StoreProvider = ({ children }) => {
     //loading
     const [loading, setLoading] = useState(false);
+    // get all vehicle data
     const [vehicleDetails, setvehicleDetails] = useState(null);
+    // not found data
     const [notFound, setnotFound] = useState(false);
+
+    // all nav list
     const [navList, setnavList] = useState([
         {
             id: 1,
@@ -42,6 +46,9 @@ const StoreProvider = ({ children }) => {
         }
     ]);
 
+    // check value passed
+    const [checkVehicle,setcheckVehicle] = useState(false);
+
     return (
         <StoreContext.Provider value={{
             // states
@@ -52,7 +59,9 @@ const StoreProvider = ({ children }) => {
             vehicleDetails,
             setvehicleDetails,
             notFound,
-            setnotFound
+            setnotFound,
+            checkVehicle,
+            setcheckVehicle
 
         }}>
             {children}

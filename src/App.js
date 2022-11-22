@@ -1,11 +1,19 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components';
-import Vehicle from '../src/component/form/vehicle/Vehicle';
-import Details from '../src/component/form/details/Details';
+import CheckVehicle from './component/form/vehicle/CheckVehicle';
 import Honesty from '../src/component/static/Honesty';
 import Navbar from '../src/component/navbar/Navbar';
+import Vehicle from './component/form/vehicle/Vehicle';
+import { StoreContext } from './context/Store';
 
 function App() {
+  // get context value
+  let {
+    checkVehicle,
+    setcheckVehicle
+  } = useContext(StoreContext);
+
+  // styles
   const Wrapper = styled.div`
     width: 95%;
     max-width: 1190px;
@@ -15,8 +23,9 @@ function App() {
   return (
     <Wrapper>
       <Navbar />
-      <Vehicle />
-      {/* <Details /> */}
+      {checkVehicle == false ?  <CheckVehicle /> : [
+         <Vehicle />
+      ]}
       <Honesty />
     </Wrapper>
   );
