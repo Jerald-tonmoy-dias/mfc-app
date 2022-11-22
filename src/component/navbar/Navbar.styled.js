@@ -21,8 +21,8 @@ export const List = styled.li(props => (
     flex-basis: 20%;
     position: relative;
     &.active {
-        background-color: ${props.secondaryColor};
-        color: ${props.secondaryColor};
+        background-color: ${props.active};
+        color: ${props.active};
       }
     &.disable {
         &:after, &:before {
@@ -36,15 +36,15 @@ export const List = styled.li(props => (
         }
         &:after {
             bottom: 0;
-            border-bottom-color: ${props.secondaryColor};
+            border-bottom-color: ${props.active};
         }
         &:before {
             top: 0;
-            border-top-color: ${props.secondaryColor};
+            border-top-color: ${props.active};
         }
         padding-left: 5px;
-        background-color: #d6d6d6;
-        color: #d6d6d6;
+        background-color: ${props.disable};
+        color: ${props.disable};
       }
     `
 ));
@@ -55,16 +55,17 @@ export const Anchor = styled.a(props => (`
     line-height: 1.1;
     font-weight: bold;
     width: 100%;
+    text-align: center;
     background-color: #fafafa;
     text-decoration: none !important;
     &.is_current {
-        background-color: ${props.secondaryColor};
-        color: ${props.secondaryColor};
+        background-color: ${props.active};
+        color: ${props.active};
     }
     &.is_disabled {
         padding-left: 5px;
-        background-color: #d6d6d6;
-        color: #d6d6d6;
+        background-color: ${props.disable};
+        color: ${props.disable};
         &:after,&:before {
             content: "";
             display: block;
@@ -78,12 +79,12 @@ export const Anchor = styled.a(props => (`
         }
 
         &:before {
-                color: #d6d6d6;
+                color: ${props.disable};
                 top: 0;
                 border-top-color: inherit;
         }
         &:after {
-            color: #d6d6d6;
+            color: ${props.disable};
             bottom: 0;
             border-bottom-color: inherit;
         }
@@ -91,14 +92,16 @@ export const Anchor = styled.a(props => (`
     }
     `));
 
-export const SpanOne = styled.span`
-    text-transform: capitalize;
-    color: #fff;
+export const SpanOne = styled.span(props => (
+    `
+    color: ${props.color};
     opacity: 1;
-    `;
-export const SpanTwo = styled.span`
-    text-transform: capitalize;
-    color: #fff;
+    `
+));
+export const SpanTwo = styled.span(props => (
+    `
+    color: ${props.color};
     opacity: 0;
 
-    `;
+    `
+));

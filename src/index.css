@@ -10,8 +10,8 @@
 
   @font-face {
   font-family: 'UTMAvoBold';
-  font-style: normal;
-  font-weight: normal;
+  font-style: bold;
+  font-weight: bold;
   src: local('UTMAvoBold'), url('../fonts/utm-avobold.woff') format('woff');
   }
 
@@ -21,7 +21,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #FF6600;
+  background: #F7F8F9;
 }
 
 code {

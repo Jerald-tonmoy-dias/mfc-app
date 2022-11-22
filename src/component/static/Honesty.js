@@ -1,4 +1,4 @@
-import React,{useContext} from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components';
 import { ThemeContext } from 'styled-components';
 
@@ -9,10 +9,11 @@ export default function Honesty() {
 
     // styles
     const Container = styled.div`
+        margin-top: 50px;
         padding: 10px 20px;
         border-radius: 10px;
-        background: ${theme.liteBlackColor};
-        color: ${theme.whiteColor};
+        background: ${theme.whiteColor};
+        color: ${theme.blackColor};
 
         h4 {
             margin-bottom: 0px;
