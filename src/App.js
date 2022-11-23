@@ -24,17 +24,17 @@ function App() {
   const displayComponent = () => {
     switch (countSteps) {
       case 1:
-        return <Vehicle />;
+        return <Vehicle key='vehicle_1' />;
       case 2:
-        return <Details />;
+        return <Details key='details_2'/>;
       case 3:
-        return <Policy />;
+        return <Policy key='policy_3'/>;
       case 4:
-        return <Summary />;
+        return <Summary key='summary_4'/>;
       case 5:
-        return <Quotes />;
+        return <Quotes key='quotes_5'/>;
       default:
-        return <Vehicle />;
+        return <Vehicle key='vehicle_2'/>;
     }
   };
 
@@ -48,8 +48,8 @@ function App() {
   return (
     <Wrapper>
       {/* <Navbar /> */}
+      {/* <Vehicle /> */}
       {checkVehicle == false ?  <CheckVehicle /> : [
-        //  <Vehicle />
         displayComponent()
       ]}
       <Honesty />

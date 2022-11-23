@@ -26,6 +26,7 @@ export default function Navbar({ navItem, navpassed }) {
     <Nav>
       <OrderList>
         <List
+          key="list_1"
           active={theme.primaryColor}
           disable={theme.secondaryColor}
           color={theme.whiteColor}
@@ -42,6 +43,7 @@ export default function Navbar({ navItem, navpassed }) {
           </Anchor>
         </List>
         <List
+          key="list_2"
           active={theme.primaryColor}
           disable={theme.secondaryColor}
           color={theme.whiteColor}
@@ -58,6 +60,7 @@ export default function Navbar({ navItem, navpassed }) {
           </Anchor>
         </List>
         <List
+          key="list_3"
           active={theme.primaryColor}
           disable={theme.secondaryColor}
           color={theme.whiteColor}
@@ -74,6 +77,7 @@ export default function Navbar({ navItem, navpassed }) {
           </Anchor>
         </List>
         <List
+          key="list_4"
           active={theme.primaryColor}
           disable={theme.secondaryColor}
           color={theme.whiteColor}
@@ -90,6 +94,7 @@ export default function Navbar({ navItem, navpassed }) {
           </Anchor>
         </List>
         <List
+          key="list_5"
           active={theme.primaryColor}
           disable={theme.secondaryColor}
           color={theme.whiteColor}

@@ -28,24 +28,40 @@ export default function Vehicle() {
    ******************************************/
   const theme = useContext(ThemeContext);
   let {
-    // global
+    // global states
     loading,
     setLoading,
-    vehicleDetails,
-    countSteps,
-    setCountSteps,
-    setvehicleDetails,
-    setcheckVehicle,
     navList,
     setnavList,
+    countSteps,
+    setCountSteps,
+    vehicleDetails,
+    setvehicleDetails,
+    notFound,
+    setnotFound,
+    checkVehicle,
+    setcheckVehicle,
 
-    // vehicle
+    // vehicle states
     typeofAlarm,
     settypeofAlarm,
     tranckingDevice,
     settranckingDevice,
     imported,
     setImported,
+    driveHand,
+    setdriveHand,
+    isModified,
+    setisModified,
+    modifiedCaused,
+    setmodifiedCaused,
+    leaseCarDate,
+    setleaseCarDate,
+    dontHvCar,
+    setdontHvCar,
+    usedCarFor, setusedCarFor,
+    sdpcBusinessUse,setsdpcBusinessUse,
+    businessuseFor,setbusinessuseFor
   } = useContext(StoreContext);
 
   /******************************************
@@ -53,7 +69,6 @@ export default function Vehicle() {
    ******************************************/
   let { VehicleRegistration } = vehicleDetails;
   const [openToolTip, setopenToolTip] = useState(false);
-  const [modelNo, setModelNo] = useState(null);
 
   /******************************************
    * FUNCTIONS
@@ -209,7 +224,7 @@ export default function Vehicle() {
                 name="radios"
                 value="Yes"
               />
-              <label for="radio1">yes</label>
+              <label htmlFor="radio1">yes</label>
 
               <input
                 onChange={(e) => settranckingDevice(e.target.value)}
@@ -218,7 +233,7 @@ export default function Vehicle() {
                 name="radios"
                 value="No"
               />
-              <label for="radio2">no</label>
+              <label htmlFor="radio2">no</label>
             </RadioButtons>
           </div>
         </ContentWrapper>
@@ -251,11 +266,23 @@ export default function Vehicle() {
               blackColor={theme.blackColor}
               whiteColor={theme.whiteColor}
             >
-              <input onChange={(e)=> setImported(e.target.value)} type="radio" id="import_vehicle_1" name="radios" value="Yes" />
-              <label for="import_vehicle_1">yes</label>
+              <input
+                onChange={(e) => setImported(e.target.value)}
+                type="radio"
+                id="import_vehicle_1"
+                name="radios"
+                value="Yes"
+              />
+              <label htmlFor="import_vehicle_1">yes</label>
 
-              <input onChange={(e)=> setImported(e.target.value)} type="radio" id="import_vehicle_2" name="radios" value="No" />
-              <label for="import_vehicle_2">no</label>
+              <input
+                onChange={(e) => setImported(e.target.value)}
+                type="radio"
+                id="import_vehicle_2"
+                name="radios"
+                value="No"
+              />
+              <label htmlFor="import_vehicle_2">no</label>
             </RadioButtons>
           </div>
         </ContentWrapper>
@@ -279,14 +306,218 @@ export default function Vehicle() {
         </ToolTipWrapper>
       </MainWrapper>
 
-      {/* <NextPrevWrapper
+      {/* Is the car left or right hand drive? */}
+      <MainWrapper
+        id="vh_3"
+        primaryColor={theme.primaryColor}
         whiteColor={theme.whiteColor}
-        blackColor={theme.blackColor}
       >
-        <button type="button" onClick={nextpageFunction} className="btn next">
-          next
-        </button>
-      </NextPrevWrapper> */}
+        <ContentWrapper
+          liteBlackColor={theme.liteBlackColor}
+          borderColor={theme.liteBlackColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+          secondaryColor={theme.secondaryColor}
+        >
+          <button
+            type="button"
+            onClick={(e) => toggleClassForHover("vh_3")}
+            className="mobile_trigger"
+          >
+            <BsQuestionLg />
+          </button>
+          <div className="content-left">
+            Is the car left or right hand drive?
+          </div>
+          <div className="content-right">
+            <RadioButtons
+              primaryColor={theme.primaryColor}
+              blackColor={theme.blackColor}
+              whiteColor={theme.whiteColor}
+            >
+              <input
+                onChange={(e) => setdriveHand(e.target.value)}
+                type="radio"
+                id="hand_drive_1"
+                name="radios"
+                value="left"
+              />
+              <label htmlFor="hand_drive_1">Left</label>
+
+              <input
+                onChange={(e) => setdriveHand(e.target.value)}
+                type="radio"
+                id="hand_drive_2"
+                name="radios"
+                value="right"
+              />
+              <label htmlFor="hand_drive_2">Right</label>
+            </RadioButtons>
+          </div>
+        </ContentWrapper>
+        <ToolTipWrapper
+          open={openToolTip}
+          primaryColor={theme.primaryColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+        >
+          <div className="icon_p_wrapper">
+            <BsQuestionLg className="hint-icon" />
+            <p>
+              Right hand drive is the UK standard. This means that when you are
+              sat in the vehicle facing the windscreen, the steering wheel is on
+              the right side.
+            </p>
+          </div>
+        </ToolTipWrapper>
+      </MainWrapper>
+
+      {/* When did you buy or start to lease this car? */}
+      <MainWrapper
+        id="vh_4"
+        primaryColor={theme.primaryColor}
+        whiteColor={theme.whiteColor}
+      >
+        <ContentWrapper
+          liteBlackColor={theme.liteBlackColor}
+          borderColor={theme.liteBlackColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+          secondaryColor={theme.secondaryColor}
+        >
+          <button
+            type="button"
+            onClick={(e) => toggleClassForHover("vh_4")}
+            className="mobile_trigger"
+          >
+            <BsQuestionLg />
+          </button>
+          <div className="content-left">
+            When did you buy or start to lease this car?
+          </div>
+          <div className="content-right">
+            <input
+              disabled={dontHvCar}
+              className="text_input"
+              type="date"
+              onChange={(e) => setleaseCarDate(e.target.value)}
+            />
+            <div className="car_checkbox_wrapper">
+              <input
+                id="have_car"
+                type="checkbox"
+                onChange={(e) => setdontHvCar(e.target.checked)}
+              />
+              <label htmlFor="have_car">I don't have car</label>
+            </div>
+          </div>
+        </ContentWrapper>
+        <ToolTipWrapper
+          open={openToolTip}
+          primaryColor={theme.primaryColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+        >
+          <div className="icon_p_wrapper">
+            <BsQuestionLg className="hint-icon" />
+            <p>
+              Right hand drive is the UK standard. This means that when you are
+              sat in the vehicle facing the windscreen, the steering wheel is on
+              the right side.
+            </p>
+          </div>
+        </ToolTipWrapper>
+      </MainWrapper>
+
+      {/* What do you use the car for? */}
+      <MainWrapper
+        id="vh_4"
+        primaryColor={theme.primaryColor}
+        whiteColor={theme.whiteColor}
+      >
+        <ContentWrapper
+          liteBlackColor={theme.liteBlackColor}
+          borderColor={theme.liteBlackColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+          secondaryColor={theme.secondaryColor}
+        >
+          <button
+            type="button"
+            onClick={(e) => toggleClassForHover("vh_4")}
+            className="mobile_trigger"
+          >
+            <BsQuestionLg />
+          </button>
+          <div className="content-left">What do you use the car for?</div>
+
+          <div className="content-right">
+            <RadioButtons
+              primaryColor={theme.primaryColor}
+              blackColor={theme.blackColor}
+              whiteColor={theme.whiteColor}
+            >
+              <input
+                onChange={(e) => setusedCarFor(e.target.value)}
+                type="radio"
+                id="usedForCar1"
+                value="Social, Domestic and Pleasure (SDP) only"
+              />
+              <label htmlFor="usedForCar1">Social, Domestic and Pleasure (SDP) only</label>
+
+              <input
+                onChange={(e) => setusedCarFor(e.target.value)}
+                type="radio"
+                id="usedForCar2"
+                value="Social, Domestic Pleasure & Commuting (SDPC)"
+              />
+              <label htmlFor="usedForCar2">Social, Domestic Pleasure & Commuting (SDPC)</label>
+
+              <input
+                onChange={(e) => {
+                  setusedCarFor(null);
+                  setsdpcBusinessUse(!sdpcBusinessUse);
+                }}
+                type="radio"
+                id="usedForCar3"
+                value="SDPC & Business Use"
+              />
+              <label htmlFor="usedForCar3">SDPC & Business Use</label>
+            </RadioButtons>
+          </div>
+        </ContentWrapper>
+        <ToolTipWrapper
+          open={openToolTip}
+          primaryColor={theme.primaryColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+        >
+        <h4>Social, Domestic and Pleasure (SDP) only</h4>
+        <p>
+        This is when you use the car for general day to day appointments, visiting family and friends, shopping.
+        </p>
+        <h4>Social, Domestic Pleasure & Commuting (SDPC)</h4>
+        <p>
+        This is the above but also includes commuting to and from your single permanent place of work.
+        </p>
+        <h4>SDPC & Business Use</h4>
+        <p>
+        This is the above but also includes business use. Business use is travelling to and from more than one location for business purposes. Business use can be selected to include your spouse / additional drivers.
+        </p>
+        </ToolTipWrapper>
+      </MainWrapper>
+
+      {/* next prev buttons */}
+      <MainWrapper>
+        <NextPrevWrapper
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+        >
+          <button type="button" onClick={nextpageFunction} className="btn next">
+            next
+          </button>
+        </NextPrevWrapper>
+      </MainWrapper>
     </div>
   );
 }

@@ -128,7 +128,8 @@ export const SVGElement = styled.div(props => (`
 export const ToolTipWrapper = styled.div(props => (`
     position: absolute;
     top: 0;
-    right: 0;    
+    right: -91px;
+    z-index: 1;
     margin-left: 10px;
     flex-direction: row;
     flex-wrap: wrap;
@@ -147,6 +148,15 @@ export const ToolTipWrapper = styled.div(props => (`
     text-align: justify;
     text-justify: inter-word;
 
+    h4 {
+      margin:0;
+      font-weight: 700;
+      color: ${props.primaryColor};
+    }
+    p {
+      font-size: 14px;
+      font-weight: 400;
+    }
     .icon_p_wrapper {
       display: flex;
       justify-content: flex-start;
@@ -187,7 +197,7 @@ export const ContentWrapper = styled.div(props => (`
     font-weight: 700;
     border-bottom: 1px solid ${props.borderColor};
     padding: 40px 20px;
-    width: 100%;
+    width: 80%;
     &:hover {
       // background: ${props.secondaryColor};
       background: #00000026;
@@ -214,6 +224,17 @@ export const ContentWrapper = styled.div(props => (`
     box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
     padding: 10px 20px;
      border-radius: 8px;
+    }
+
+    .car_checkbox_wrapper {
+      margin-top: 20px;
+      input {
+        cursor: pointer;
+      }
+      label {
+        cursor: pointer;
+        margin-left: 10px;
+      }
     }
 
     .change_vehicle {
@@ -302,6 +323,7 @@ label {
     background: ${props.whiteColor};
     color: ${props.blackColor};
     text-transform: capitalize;
+ max-width:    380px;
     font-weight: 700;
     padding: 15px 40px;
     border-radius: 2px;
@@ -321,8 +343,12 @@ input[type="radio"]:checked+label {
 `));
 
 export const NextPrevWrapper = styled.div(props=>(`
+  width: 80%;
   display: flex;
+  justify-self: end;
   justify-content: flex-end;
+  // position: relative;
+  // z-index: 1;
   margin: 30px 0;
   .btn {
     font-size: 21px;
