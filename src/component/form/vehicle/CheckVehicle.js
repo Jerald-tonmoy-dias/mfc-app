@@ -16,7 +16,9 @@ import { BsFillPencilFill, BsQuestionLg, BsX, BsXOctagonFill } from "react-icons
 import Navbar from "../../navbar/Navbar";
 
 export default function CheckVehicle() {
-  // gettting context value
+  /******************************************
+  * GETTING CONTEXT VALUE
+  ******************************************/
   const theme = useContext(ThemeContext);
   let {
     setLoading,
@@ -26,11 +28,15 @@ export default function CheckVehicle() {
     setcheckVehicle
   } = useContext(StoreContext);
 
-  // local states
+  /******************************************
+  * VARIABLES AND STATES
+  ******************************************/
   const [openToolTip, setopenToolTip] = useState(false);
   const [modelNo, setModelNo] = useState(null);
 
-  // functions
+  /******************************************
+  * FUNCTIONS
+  ******************************************/
   const getVehicleInfoFunction = (e, modelNo) => {
     e.preventDefault();
     setLoading(true);

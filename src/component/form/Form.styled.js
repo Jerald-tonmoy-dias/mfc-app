@@ -16,6 +16,7 @@ position: relative;
 display:flex;
 align-items: flex-start;
 margin-top: 30px;
+width: 100%;
 
 .mobile_trigger {
     font-size: 21px;
@@ -29,12 +30,18 @@ margin-top: 30px;
     cursor: pointer;
     display: none;
     transition: .3s;
-    //------- media query---------//
     @media (max-width: 991px) {
     display: inline-block;
   }
 }
-// main wrapper hover useEffect
+&.active {
+  .mobile_trigger {
+    background: ${props.primaryColor};
+    color: ${props.whiteColor};
+  }
+}
+
+// main wrapper hover Effect
 @media (min-width: 992px) {
   flex-wrap: wrap;
   &:hover ${ToolTipWrapper} {
@@ -109,7 +116,6 @@ export const RegisterCarWrapper = styled.div(props => (`
         text-transform: lowercase;
         }
     }
-
   }
 `));
 
@@ -150,6 +156,14 @@ export const ToolTipWrapper = styled.div(props => (`
       color: ${props.primaryColor};
       font-size: 60px;
       margin-right: 10px;
+
+      &.search-icon {
+        font-size: 3px;
+      }
+      @media (max-width: 991px) {
+        font-size: 24px;
+        margin-top: 18px;
+      }
     }
 
     @media (max-width: 991px) {
@@ -171,7 +185,7 @@ export const ContentWrapper = styled.div(props => (`
     font-weight: 700;
     border-bottom: 1px solid ${props.borderColor};
     padding: 40px 20px;
-
+    width: 100%;
     &:hover {
       // background: ${props.secondaryColor};
       background: #00000026;
@@ -180,11 +194,19 @@ export const ContentWrapper = styled.div(props => (`
     .content-left {
       color: ${props.blackColor};
       width: 34%;
+      @media (max-width: 991px) {
+        width: 100%;
+        margin-top: 30px;
+      }
     }
 
     .content-right {
      color: ${props.blackColor};
      width: 64%;
+     @media (max-width: 991px) {
+      width: 100%;
+      margin-top: 30px;
+    }
     .has_bg {
     background: ${props.whiteColor};
     box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
