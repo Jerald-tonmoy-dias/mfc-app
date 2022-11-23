@@ -81,6 +81,11 @@ const StoreProvider = ({ children }) => {
   const [sdpcBusinessUse,setsdpcBusinessUse] = useState(false);
   // business use for 
   const [businessuseFor,setbusinessuseFor] = useState(null);
+  // who uses car for business use 
+  const [whobusinessuseFor,setwhobusinessuseFor] = useState(null);
+  // who uses car for business use 
+  const [annualBusinessMileage,setannualBusinessMileage] = useState('');
+  const [annualPersonalMileage,setannualPersonalMileage] = useState('');
 
   return (
     <StoreContext.Provider
@@ -104,8 +109,10 @@ const StoreProvider = ({ children }) => {
         dontHvCar, setdontHvCar,
         usedCarFor, setusedCarFor,
         sdpcBusinessUse,setsdpcBusinessUse,
-        businessuseFor,setbusinessuseFor
-
+        businessuseFor,setbusinessuseFor,
+        whobusinessuseFor,setwhobusinessuseFor,
+        annualBusinessMileage,setannualBusinessMileage,
+        annualPersonalMileage,setannualPersonalMileage
       }}
     >
       {children}

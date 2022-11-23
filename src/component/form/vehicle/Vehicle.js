@@ -20,6 +20,7 @@ import {
   BsXOctagonFill,
 } from "react-icons/bs";
 import { GrFormClose } from "react-icons/gr";
+import { HiUsers } from "react-icons/hi";
 import Navbar from "../../navbar/Navbar";
 
 export default function Vehicle() {
@@ -59,9 +60,18 @@ export default function Vehicle() {
     setleaseCarDate,
     dontHvCar,
     setdontHvCar,
-    usedCarFor, setusedCarFor,
-    sdpcBusinessUse,setsdpcBusinessUse,
-    businessuseFor,setbusinessuseFor
+    usedCarFor,
+    setusedCarFor,
+    sdpcBusinessUse,
+    setsdpcBusinessUse,
+    businessuseFor,
+    setbusinessuseFor,
+    whobusinessuseFor,
+    setwhobusinessuseFor,
+    annualBusinessMileage,
+    setannualBusinessMileage,
+    annualPersonalMileage,
+    setannualPersonalMileage,
   } = useContext(StoreContext);
 
   /******************************************
@@ -84,8 +94,13 @@ export default function Vehicle() {
     settypeofAlarm(e.target.value);
   };
 
+  // businesUseCarFun
+  const businesUseCarFun = (e) => {
+    setwhobusinessuseFor(e.target.value);
+  };
+
   return (
-    <div>
+    <form onSubmit={(e) => e.preventDefault}>
       <Navbar navItem={1} navpassed={false} />
       <Title color={theme.blackColor}>vehicle details</Title>
 
@@ -158,8 +173,8 @@ export default function Vehicle() {
           <div className="content-left">
             What type of alarm and/or immobiliser does the car have?
           </div>
-          <div className="content-right" onChange={typeofAlermFunc}>
-            <select className="selectClass">
+          <div className="content-right">
+            <select className="selectClass" onChange={typeofAlermFunc}>
               <option value="" disabled="">
                 Please select...
               </option>
@@ -431,7 +446,7 @@ export default function Vehicle() {
 
       {/* What do you use the car for? */}
       <MainWrapper
-        id="vh_4"
+        id="vh_5"
         primaryColor={theme.primaryColor}
         whiteColor={theme.whiteColor}
       >
@@ -444,7 +459,7 @@ export default function Vehicle() {
         >
           <button
             type="button"
-            onClick={(e) => toggleClassForHover("vh_4")}
+            onClick={(e) => toggleClassForHover("vh_5")}
             className="mobile_trigger"
           >
             <BsQuestionLg />
@@ -458,20 +473,30 @@ export default function Vehicle() {
               whiteColor={theme.whiteColor}
             >
               <input
-                onChange={(e) => setusedCarFor(e.target.value)}
+                onChange={(e) => {
+                  setusedCarFor(e.target.value);
+                  setsdpcBusinessUse(false);
+                }}
                 type="radio"
                 id="usedForCar1"
                 value="Social, Domestic and Pleasure (SDP) only"
               />
-              <label htmlFor="usedForCar1">Social, Domestic and Pleasure (SDP) only</label>
+              <label htmlFor="usedForCar1">
+                Social, Domestic and Pleasure (SDP) only
+              </label>
 
               <input
-                onChange={(e) => setusedCarFor(e.target.value)}
+                onChange={(e) => {
+                  setusedCarFor(e.target.value);
+                  setsdpcBusinessUse(false);
+                }}
                 type="radio"
                 id="usedForCar2"
                 value="Social, Domestic Pleasure & Commuting (SDPC)"
               />
-              <label htmlFor="usedForCar2">Social, Domestic Pleasure & Commuting (SDPC)</label>
+              <label htmlFor="usedForCar2">
+                Social, Domestic Pleasure & Commuting (SDPC)
+              </label>
 
               <input
                 onChange={(e) => {
@@ -492,20 +517,102 @@ export default function Vehicle() {
           whiteColor={theme.whiteColor}
           blackColor={theme.blackColor}
         >
-        <h4>Social, Domestic and Pleasure (SDP) only</h4>
-        <p>
-        This is when you use the car for general day to day appointments, visiting family and friends, shopping.
-        </p>
-        <h4>Social, Domestic Pleasure & Commuting (SDPC)</h4>
-        <p>
-        This is the above but also includes commuting to and from your single permanent place of work.
-        </p>
-        <h4>SDPC & Business Use</h4>
-        <p>
-        This is the above but also includes business use. Business use is travelling to and from more than one location for business purposes. Business use can be selected to include your spouse / additional drivers.
-        </p>
+          <h4>Social, Domestic and Pleasure (SDP) only</h4>
+          <p>
+            This is when you use the car for general day to day appointments,
+            visiting family and friends, shopping.
+          </p>
+          <h4>Social, Domestic Pleasure & Commuting (SDPC)</h4>
+          <p>
+            This is the above but also includes commuting to and from your
+            single permanent place of work.
+          </p>
+          <h4>SDPC & Business Use</h4>
+          <p>
+            This is the above but also includes business use. Business use is
+            travelling to and from more than one location for business purposes.
+            Business use can be selected to include your spouse / additional
+            drivers.
+          </p>
         </ToolTipWrapper>
       </MainWrapper>
+
+      {sdpcBusinessUse == true
+        ? [
+            <>
+              {/* Who uses the car for business use? */}
+              <MainWrapper
+                primaryColor={theme.primaryColor}
+                whiteColor={theme.whiteColor}
+              >
+                <ContentWrapper
+                  liteBlackColor={theme.liteBlackColor}
+                  borderColor={theme.liteBlackColor}
+                  whiteColor={theme.whiteColor}
+                  blackColor={theme.blackColor}
+                  secondaryColor={theme.secondaryColor}
+                >
+                  <div className="content-left">
+                    Who uses the car for business use?
+                  </div>
+
+                  <div className="content-right">
+                    <select className="selectClass" onChange={businesUseCarFun}>
+                      <option value="" disabled="">
+                        Please select...
+                      </option>
+                      <option value="only you">only you</option>
+                      <option value="any named drive">Any named drive</option>
+                    </select>
+
+                    {whobusinessuseFor == "any named drive"
+                      ? [
+                          <div className="hint-text-wrapper">
+                            <HiUsers className="icon" />
+                            <span className="hint-text">
+                              Don’t forget to add your named driver(s) in the
+                              additional drivers section.
+                            </span>
+                          </div>,
+                        ]
+                      : null}
+                  </div>
+                </ContentWrapper>
+              </MainWrapper>
+
+              {/* What is the total annual business mileage for this car?*/}
+              <MainWrapper
+                primaryColor={theme.primaryColor}
+                whiteColor={theme.whiteColor}
+              >
+                <ContentWrapper
+                  liteBlackColor={theme.liteBlackColor}
+                  borderColor={theme.liteBlackColor}
+                  whiteColor={theme.whiteColor}
+                  blackColor={theme.blackColor}
+                  secondaryColor={theme.secondaryColor}
+                >
+                  <div className="content-left">
+                    What is the total annual business mileage for this car?
+                  </div>
+
+<h1>working on this file onchange is not working</h1>
+                  {/* <div className="content-right">
+                    <div className="text_input_box">
+                      <input
+                        type="text"
+                        value={annualBusinessMileage}
+                     
+                   
+                      />
+                      <label>miles per year</label>
+                    </div>
+                  </div> */}
+                </ContentWrapper>
+              </MainWrapper>
+            </>,
+          ]
+        : null}
 
       {/* next prev buttons */}
       <MainWrapper>
@@ -518,6 +625,6 @@ export default function Vehicle() {
           </button>
         </NextPrevWrapper>
       </MainWrapper>
-    </div>
+    </form>
   );
 }

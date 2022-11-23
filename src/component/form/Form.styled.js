@@ -310,6 +310,33 @@ export const ContentWrapper = styled.div(props => (`
     border: 1px solid ${props.blackColor};
 }
 
+.hint-text-wrapper {
+  margin-top: 20px;
+  display:flex;
+  align-items: center;
+
+  .icon {
+    font-size: 60px;
+    margin-right: 10px;
+  }
+  .hint-text {
+    font-size: 14px;
+  }
+}
+
+.text_input_box {
+  input {
+    display: inline-block;
+    text-transform: capitalize;
+    max-width: 380px;
+    font-weight: 700;
+    padding: 15px 40px;
+    border-radius: 4px;
+    box-shadow: rgba(33,35,38,0.1) 0px 10px 10px -10px;
+    margin: 0 10px 10px 0;
+  }
+}
+
 
 `));
 
