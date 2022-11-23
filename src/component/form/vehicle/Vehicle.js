@@ -34,8 +34,7 @@ export default function Vehicle() {
   } = useContext(StoreContext);
 
   let { VehicleRegistration } = vehicleDetails;
-
-  //   nextpageFunction function
+    // nextpageFunction function
   const nextpageFunction = () => {
     // after validation is done
     setCountSteps(2);

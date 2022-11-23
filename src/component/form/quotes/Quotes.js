@@ -38,7 +38,8 @@ export default function Quotes() {
   //   nextpageFunction function
   const nextpageFunction = () => {
     // after validation is done
-    // setCountSteps(5);
+    setCountSteps(0);
+    setcheckVehicle(false);
   };
 
   return (
@@ -95,7 +96,7 @@ export default function Quotes() {
         blackColor={theme.blackColor}
       >
         <button type="button" onClick={nextpageFunction} className="btn next">
-          next
+      get quote
         </button>
       </NextPrevWrapper>
     </div>
