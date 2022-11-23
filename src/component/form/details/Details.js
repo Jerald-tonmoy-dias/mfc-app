@@ -18,7 +18,7 @@ import { StoreContext } from "../../../context/Store";
 import { BsPencil } from "react-icons/bs";
 import Navbar from "../../navbar/Navbar";
 
-export default function Summary() {
+export default function Details() {
   // gettting context value
   const theme = useContext(ThemeContext);
   let {
@@ -38,12 +38,12 @@ export default function Summary() {
   //   nextpageFunction function
   const nextpageFunction = () => {
     // after validation is done
-    setCountSteps(5);
+    setCountSteps(3);
   };
 
   return (
     <div>
-      <Navbar navItem={4} navpassed={false}/>
+      <Navbar navItem={2} navpassed={false}/>
       <Title color={theme.blackColor}>vehicle details</Title>
 
       {/* first step */}

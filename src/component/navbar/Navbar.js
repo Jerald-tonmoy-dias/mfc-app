@@ -51,9 +51,7 @@ export default function Navbar({ navItem, navpassed }) {
             active={theme.primaryColor}
             disable={theme.secondaryColor}
             color={theme.whiteColor}
-            className={`${
-              navItem == 2 ? "is_current" : "is_disabled"
-            }`}
+            className={`${navItem == 2 ? "is_current" : "is_disabled"}`}
           >
             <SpanOne color={theme.whiteColor}>Your details</SpanOne>
             <SpanTwo color={theme.whiteColor}>2</SpanTwo>
@@ -63,13 +61,13 @@ export default function Navbar({ navItem, navpassed }) {
           active={theme.primaryColor}
           disable={theme.secondaryColor}
           color={theme.whiteColor}
-          className={`${navItem == 3 ? 'active' : 'disable'}`}
+          className={`${navItem == 3 ? "active" : "disable"}`}
         >
           <Anchor
             active={theme.primaryColor}
             disable={theme.secondaryColor}
             color={theme.whiteColor}
-            className={`${navItem == 3 ? 'is_current' : 'is_disabled'}`}
+            className={`${navItem == 3 ? "is_current" : "is_disabled"}`}
           >
             <SpanOne color={theme.whiteColor}>Your policy</SpanOne>
             <SpanTwo color={theme.whiteColor}>3</SpanTwo>
@@ -79,13 +77,13 @@ export default function Navbar({ navItem, navpassed }) {
           active={theme.primaryColor}
           disable={theme.secondaryColor}
           color={theme.whiteColor}
-          className={`${navItem == 4 ? 'active' : 'disable'}`}
+          className={`${navItem == 4 ? "active" : "disable"}`}
         >
           <Anchor
             active={theme.primaryColor}
             disable={theme.secondaryColor}
             color={theme.whiteColor}
-            className={`${navItem == 4 ? 'is_current' : 'is_disabled'}`}
+            className={`${navItem == 4 ? "is_current" : "is_disabled"}`}
           >
             <SpanOne color={theme.whiteColor}>Your summary</SpanOne>
             <SpanTwo color={theme.whiteColor}>4</SpanTwo>
@@ -95,13 +93,13 @@ export default function Navbar({ navItem, navpassed }) {
           active={theme.primaryColor}
           disable={theme.secondaryColor}
           color={theme.whiteColor}
-          className={`${navItem == 5 ? 'active' : 'disable'}`}
+          className={`${navItem == 5 ? "active" : "disable"}`}
         >
           <Anchor
             active={theme.primaryColor}
             disable={theme.secondaryColor}
             color={theme.whiteColor}
-            className={`${navItem == 5 ? 'is_current' : 'is_disabled'}`}
+            className={`${navItem == 5 ? "is_current" : "is_disabled"}`}
           >
             <SpanOne color={theme.whiteColor}>Your quotes</SpanOne>
             <SpanTwo color={theme.whiteColor}>5</SpanTwo>

@@ -25,6 +25,8 @@ export default function Vehicle() {
     loading,
     setLoading,
     vehicleDetails,
+    countSteps,
+    setCountSteps,
     setvehicleDetails,
     setcheckVehicle,
     navList,
@@ -35,7 +37,8 @@ export default function Vehicle() {
 
   //   nextpageFunction function
   const nextpageFunction = () => {
-
+    // after validation is done
+    setCountSteps(2);
   };
 
   return (

@@ -46,6 +46,9 @@ const StoreProvider = ({ children }) => {
         }
     ]);
 
+    // count steps
+    const [countSteps, setCountSteps] = useState(0);
+
     // check value passed
     const [checkVehicle,setcheckVehicle] = useState(false);
 
@@ -56,6 +59,8 @@ const StoreProvider = ({ children }) => {
             setLoading,
             navList,
             setnavList,
+            countSteps,
+            setCountSteps,
             vehicleDetails,
             setvehicleDetails,
             notFound,
