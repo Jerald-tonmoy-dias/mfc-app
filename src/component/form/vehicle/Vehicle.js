@@ -42,6 +42,10 @@ export default function Vehicle() {
     // vehicle
     typeofAlarm,
     settypeofAlarm,
+    tranckingDevice,
+    settranckingDevice,
+    imported,
+    setImported,
   } = useContext(StoreContext);
 
   /******************************************
@@ -70,7 +74,7 @@ export default function Vehicle() {
       <Navbar navItem={1} navpassed={false} />
       <Title color={theme.blackColor}>vehicle details</Title>
 
-      {/* first step */}
+      {/* We’ve found your vehicle */}
       <MainWrapper>
         <ContentWrapper
           borderColor={theme.liteBlackColor}
@@ -116,7 +120,12 @@ export default function Vehicle() {
         </ContentWrapper>
       </MainWrapper>
 
-      <MainWrapper id="vh_1" primaryColor={theme.primaryColor} whiteColor={theme.whiteColor}>
+      {/* What type of alarm and/or immobiliser does the car have? */}
+      <MainWrapper
+        id="vh_1"
+        primaryColor={theme.primaryColor}
+        whiteColor={theme.whiteColor}
+      >
         <ContentWrapper
           liteBlackColor={theme.liteBlackColor}
           borderColor={theme.liteBlackColor}
@@ -126,7 +135,7 @@ export default function Vehicle() {
         >
           <button
             type="button"
-            onClick={(e) => toggleClassForHover('vh_1')}
+            onClick={(e) => toggleClassForHover("vh_1")}
             className="mobile_trigger"
           >
             <BsQuestionLg />
@@ -175,6 +184,7 @@ export default function Vehicle() {
         </ToolTipWrapper>
       </MainWrapper>
 
+      {/* Is the car fitted with a tracking device? */}
       <MainWrapper>
         <ContentWrapper
           liteBlackColor={theme.liteBlackColor}
@@ -192,17 +202,34 @@ export default function Vehicle() {
               blackColor={theme.blackColor}
               whiteColor={theme.whiteColor}
             >
-              <input type="radio" id="radio1" name="radios" value="yes" />
+              <input
+                onChange={(e) => settranckingDevice(e.target.value)}
+                type="radio"
+                id="radio1"
+                name="radios"
+                value="Yes"
+              />
               <label for="radio1">yes</label>
 
-              <input type="radio" id="radio2" name="radios" value="no" />
+              <input
+                onChange={(e) => settranckingDevice(e.target.value)}
+                type="radio"
+                id="radio2"
+                name="radios"
+                value="No"
+              />
               <label for="radio2">no</label>
             </RadioButtons>
           </div>
         </ContentWrapper>
       </MainWrapper>
 
-      <MainWrapper id="vh_2" primaryColor={theme.primaryColor} whiteColor={theme.whiteColor}>
+      {/* Is the car an import? */}
+      <MainWrapper
+        id="vh_2"
+        primaryColor={theme.primaryColor}
+        whiteColor={theme.whiteColor}
+      >
         <ContentWrapper
           liteBlackColor={theme.liteBlackColor}
           borderColor={theme.liteBlackColor}
@@ -210,27 +237,25 @@ export default function Vehicle() {
           blackColor={theme.blackColor}
           secondaryColor={theme.secondaryColor}
         >
-           <button
+          <button
             type="button"
-            onClick={(e) => toggleClassForHover('vh_2')}
+            onClick={(e) => toggleClassForHover("vh_2")}
             className="mobile_trigger"
           >
             <BsQuestionLg />
           </button>
-          <div className="content-left">
-            Is the car fitted with a tracking device?
-          </div>
+          <div className="content-left">Is the car an import?</div>
           <div className="content-right">
             <RadioButtons
               primaryColor={theme.primaryColor}
               blackColor={theme.blackColor}
               whiteColor={theme.whiteColor}
             >
-              <input type="radio" id="radio1" name="radios" value="yes" />
-              <label for="radio1">yes</label>
+              <input onChange={(e)=> setImported(e.target.value)} type="radio" id="import_vehicle_1" name="radios" value="Yes" />
+              <label for="import_vehicle_1">yes</label>
 
-              <input type="radio" id="radio2" name="radios" value="no" />
-              <label for="radio2">no</label>
+              <input onChange={(e)=> setImported(e.target.value)} type="radio" id="import_vehicle_2" name="radios" value="No" />
+              <label for="import_vehicle_2">no</label>
             </RadioButtons>
           </div>
         </ContentWrapper>
@@ -243,24 +268,25 @@ export default function Vehicle() {
           <div className="icon_p_wrapper">
             <BsQuestionLg className="hint-icon" />
             <p>
-            Imports are vehicles made to be sold outside of the UK then imported into the UK.
+              Imports are vehicles made to be sold outside of the UK then
+              imported into the UK.
             </p>
           </div>
           <div className="icon_p_wrapper">
-          <BsSearch className="hint-icon" />
+            <BsSearch className="hint-icon" />
             <p>Check the log book if you are unsure.</p>
           </div>
         </ToolTipWrapper>
       </MainWrapper>
 
-      <NextPrevWrapper
+      {/* <NextPrevWrapper
         whiteColor={theme.whiteColor}
         blackColor={theme.blackColor}
       >
         <button type="button" onClick={nextpageFunction} className="btn next">
           next
         </button>
-      </NextPrevWrapper>
+      </NextPrevWrapper> */}
     </div>
   );
 }

@@ -150,16 +150,18 @@ export const ToolTipWrapper = styled.div(props => (`
     .icon_p_wrapper {
       display: flex;
       justify-content: flex-start;
+      flex-wrap: wrap;
+
+      p {
+      margin: 8px 0;
+      }
     }
 
     .hint-icon {
       color: ${props.primaryColor};
-      font-size: 60px;
+      font-size: 28px;
       margin-right: 10px;
-
-      &.search-icon {
-        font-size: 3px;
-      }
+      margin-top: 18px;
       @media (max-width: 991px) {
         font-size: 24px;
         margin-top: 18px;

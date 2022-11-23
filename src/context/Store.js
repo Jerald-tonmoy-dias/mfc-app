@@ -62,7 +62,10 @@ const StoreProvider = ({ children }) => {
 const [vehicleDetails, setvehicleDetails] = useState(null);
 // typeofAlarm
 const [typeofAlarm,settypeofAlarm] = useState(null);
-
+// trancking device
+const [tranckingDevice,settranckingDevice] = useState(null);
+// is imported
+const [imported,setImported] = useState(null);
 
 
   return (
@@ -84,7 +87,11 @@ const [typeofAlarm,settypeofAlarm] = useState(null);
 
         // vehicle states
         typeofAlarm,
-        settypeofAlarm
+        settypeofAlarm,
+        tranckingDevice,
+        settranckingDevice,
+        imported,
+        setImported,
       }}
     >
       {children}
