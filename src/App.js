@@ -22,7 +22,7 @@ function App() {
     `;
   return (
     <Wrapper>
-      <Navbar />
+      {/* <Navbar /> */}
       {checkVehicle == false ?  <CheckVehicle /> : [
          <Vehicle />
       ]}

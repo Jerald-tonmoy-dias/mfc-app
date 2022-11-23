@@ -16,6 +16,7 @@ import {
 import { BASE_URL } from "../../../BaseUrl";
 import { StoreContext } from "../../../context/Store";
 import { BsPencil } from "react-icons/bs";
+import Navbar from "../../navbar/Navbar";
 
 export default function Vehicle() {
   // gettting context value
@@ -34,16 +35,12 @@ export default function Vehicle() {
 
   //   nextpageFunction function
   const nextpageFunction = () => {
-    console.log(navList[0]);
-    // navList.map(nav=> {
-    //     if(nav.id ==1) {
-    //         setnavList(...navList,nav.current=true,nav.status=true)
-    //     }
-    // })
+
   };
 
   return (
     <div>
+      <Navbar navItem={1} navpassed={false}/>
       <Title color={theme.blackColor}>vehicle details</Title>
 
       {/* first step */}

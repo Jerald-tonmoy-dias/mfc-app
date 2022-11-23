@@ -13,6 +13,7 @@ import { BASE_URL } from "../../../BaseUrl";
 import { StoreContext } from "../../../context/Store";
 import NotFoundVehicle from "./NotFoundVehicle";
 import { BsFillPencilFill, BsQuestionLg, BsX, BsXOctagonFill } from "react-icons/bs";
+import Navbar from "../../navbar/Navbar";
 
 export default function CheckVehicle() {
   // gettting context value
@@ -55,6 +56,7 @@ export default function CheckVehicle() {
 
   return (
     <div>
+        <Navbar navItem={1} navpassed={false}/>
       <Title color={theme.blackColor}>vehicle details</Title>
       {notFound === false ? (
         [
