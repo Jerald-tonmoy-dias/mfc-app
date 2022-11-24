@@ -68,8 +68,8 @@ export default function Vehicle() {
     setbusinessuseFor,
     whobusinessuseFor,
     setwhobusinessuseFor,
-    annualBusinessMileage,
-    setannualBusinessMileage,
+    // annualBusinessMileage,
+    // setannualBusinessMileage,
     annualPersonalMileage,
     setannualPersonalMileage,
   } = useContext(StoreContext);
@@ -79,7 +79,7 @@ export default function Vehicle() {
    ******************************************/
   let { VehicleRegistration } = vehicleDetails;
   const [openToolTip, setopenToolTip] = useState(false);
-
+  const [annualBusinessMileage,setannualBusinessMileage] = useState('');
   /******************************************
    * FUNCTIONS
    ******************************************/
@@ -100,7 +100,7 @@ export default function Vehicle() {
   };
 
   return (
-    <form onSubmit={(e) => e.preventDefault}>
+    <form>
       <Navbar navItem={1} navpassed={false} />
       <Title color={theme.blackColor}>vehicle details</Title>
 
@@ -175,7 +175,7 @@ export default function Vehicle() {
           </div>
           <div className="content-right">
             <select className="selectClass" onChange={typeofAlermFunc}>
-              <option value="" disabled="">
+              <option value="" disabled>
                 Please select...
               </option>
               <option value="Factory Fitted Thatcham Approved Alarm/Immobiliser">
@@ -596,18 +596,17 @@ export default function Vehicle() {
                     What is the total annual business mileage for this car?
                   </div>
 
-<h1>working on this file onchange is not working</h1>
-                  {/* <div className="content-right">
+                  <div className="content-right">
                     <div className="text_input_box">
                       <input
                         type="text"
-                        value={annualBusinessMileage}
-                     
-                   
+                        onChange={(e)=>setannualBusinessMileage(e.target.value)}
+                        placeholder="$8,500"
+
                       />
                       <label>miles per year</label>
                     </div>
-                  </div> */}
+                  </div>
                 </ContentWrapper>
               </MainWrapper>
             </>,

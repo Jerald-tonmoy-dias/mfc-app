@@ -12,7 +12,8 @@ import {
 import { BASE_URL } from "../../../BaseUrl";
 import { StoreContext } from "../../../context/Store";
 import NotFoundVehicle from "./NotFoundVehicle";
-import { BsFillPencilFill, BsQuestionLg, BsX, BsXOctagonFill } from "react-icons/bs";
+import { BsFillPencilFill, BsQuestionLg } from "react-icons/bs";
+import { IoMdClose} from "react-icons/io";
 import Navbar from "../../navbar/Navbar";
 
 export default function CheckVehicle() {
@@ -79,8 +80,7 @@ export default function CheckVehicle() {
                   onClick={(e) => setopenToolTip(prevOpen=>!prevOpen)}
                   className="mobile_trigger"
                 >
-                    {openToolTip == true ? <BsXOctagonFill/> :   <BsQuestionLg />}
-                
+                   <span className="trigger-icon"> {openToolTip == true ? <IoMdClose/> :   <BsQuestionLg />}</span>
                 </button>
 
                 <label htmlFor="">What's your car's registration?</label>

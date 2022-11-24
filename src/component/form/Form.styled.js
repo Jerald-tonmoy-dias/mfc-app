@@ -30,6 +30,11 @@ width: 100%;
     cursor: pointer;
     display: none;
     transition: .3s;
+
+    .trigger-icon {
+      margin-top: 6px;
+      display: inline-block;
+    }
     @media (max-width: 991px) {
     display: inline-block;
   }

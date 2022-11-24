@@ -34,7 +34,7 @@ export default function NotFoundVehicle() {
             <p>
                 <span>Vehicle Lookup:</span> There were no vehicles found for this registration. Please check that you have entered it correctly
             </p>
-            <Button type='submit' onClick={()=>setnotFound(false)}>
+            <Button primaryColor={theme.primaryColor}  type='submit' onClick={()=>setnotFound(false)}>
                 Find again
             </Button>
         </Container>
