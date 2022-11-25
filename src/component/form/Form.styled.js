@@ -309,7 +309,7 @@ export const ContentWrapper = styled.div(props => (`
     text-transform: capitalize;
     font-weight: 700;
     padding: 15px 40px;
-    border-radius: 2px;
+    border-radius: 5px;
     outline: none;
     margin-right: 10px;
     border: 1px solid ${props.blackColor};
@@ -355,10 +355,10 @@ label {
     background: ${props.whiteColor};
     color: ${props.blackColor};
     text-transform: capitalize;
- max-width:    380px;
+    max-width:    380px;
     font-weight: 700;
     padding: 15px 40px;
-    border-radius: 2px;
+    border-radius: 5px;
     cursor: pointer;
     box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
     margin: 0 10px 10px 0 ;
@@ -374,7 +374,7 @@ input[type="radio"]:checked+label {
 
 `));
 
-export const NextPrevWrapper = styled.div(props=>(`
+export const NextPrevWrapper = styled.div(props => (`
   width: 80%;
   display: flex;
   justify-self: end;

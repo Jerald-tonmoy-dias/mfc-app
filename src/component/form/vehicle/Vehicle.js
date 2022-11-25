@@ -574,6 +574,7 @@ export default function Vehicle() {
             <MainWrapper
               primaryColor={theme.primaryColor}
               whiteColor={theme.whiteColor}
+              id="vh_6"
             >
               <ContentWrapper
                 liteBlackColor={theme.liteBlackColor}
@@ -582,6 +583,13 @@ export default function Vehicle() {
                 blackColor={theme.blackColor}
                 secondaryColor={theme.secondaryColor}
               >
+                <button
+                  type="button"
+                  onClick={(e) => toggleClassForHover("vh_6")}
+                  className="mobile_trigger"
+                >
+                  <BsQuestionLg />
+                </button>
                 <div className="content-left">
                   What is the total annual business mileage for this car?
                 </div>
@@ -590,20 +598,82 @@ export default function Vehicle() {
                   <div className="text_input_box">
                     <input
                       type="text"
-                      name="name"
-                      // onChange={(e) => setannualBusinessMileage(e.target.value)}
+                      name="annualBusinessMileage"
                       onChange={handleOnchangeVehicleData}
-                      placeholder="$8,500"
-
                     />
                     <label>miles per year</label>
                   </div>
                 </div>
               </ContentWrapper>
+              <ToolTipWrapper
+                open={openToolTip}
+                primaryColor={theme.primaryColor}
+                whiteColor={theme.whiteColor}
+                blackColor={theme.blackColor}
+              >
+                <BsQuestionLg className="hint-icon" />
+                <p>
+                  This is the total number of personal miles you expect this car to be driven over the next year by all drivers named on the policy.</p>
+
+                <p>
+                  This includes travelling for social and domestic use as well as commuting to and from a single place of work. It’s important this is as accurate as possible, underestimating the mileage could impact your cover or lead to increased charges.
+                </p>
+              </ToolTipWrapper>
             </MainWrapper>
           </>,
         ]
         : null}
+
+      {/* What is the total annual personal mileage for this car? */}
+      <MainWrapper
+        primaryColor={theme.primaryColor}
+        whiteColor={theme.whiteColor}
+        id="vh_6"
+      >
+        <ContentWrapper
+          liteBlackColor={theme.liteBlackColor}
+          borderColor={theme.liteBlackColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+          secondaryColor={theme.secondaryColor}
+        >
+          <button
+            type="button"
+            onClick={(e) => toggleClassForHover("vh_6")}
+            className="mobile_trigger"
+          >
+            <BsQuestionLg />
+          </button>
+          <div className="content-left">
+            What is the total annual personal mileage for this car?
+          </div>
+
+          <div className="content-right">
+            <div className="text_input_box">
+              <input
+                type="text"
+                name="annualPersonalMileage"
+                onChange={handleOnchangeVehicleData}
+              />
+              <label>miles per year</label>
+            </div>
+          </div>
+        </ContentWrapper>
+        <ToolTipWrapper
+          open={openToolTip}
+          primaryColor={theme.primaryColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+        >
+          <BsQuestionLg className="hint-icon" />
+          <p>
+            This is the total number of business miles you expect this car to be driven over the next year by all drivers named on the policy.</p>
+
+          <p>
+            This includes travelling to different sites or meetings away from a single place of work. It’s important this is as accurate as possible, underestimating the mileage could impact your cover or lead to increased charges.
+          </p>
+        </ToolTipWrapper>
+      </MainWrapper>
 
       {/* next prev buttons */}
       <MainWrapper>
