@@ -44,59 +44,53 @@ export default function Vehicle() {
     setcheckVehicle,
 
     // vehicle states
-    typeofAlarm,
-    settypeofAlarm,
-    tranckingDevice,
-    settranckingDevice,
-    imported,
-    setImported,
-    driveHand,
-    setdriveHand,
-    isModified,
-    setisModified,
-    modifiedCaused,
-    setmodifiedCaused,
-    leaseCarDate,
-    setleaseCarDate,
     dontHvCar,
     setdontHvCar,
-    usedCarFor,
-    setusedCarFor,
     sdpcBusinessUse,
     setsdpcBusinessUse,
-    businessuseFor,
-    setbusinessuseFor,
-    whobusinessuseFor,
-    setwhobusinessuseFor,
-    // annualBusinessMileage,
-    // setannualBusinessMileage,
-    annualPersonalMileage,
-    setannualPersonalMileage,
+
+
+    // all vehicle data
+    vehicleData, setVehicleData
   } = useContext(StoreContext);
 
   /******************************************
+   * 
+   * 
    * VARIABLES AND STATES
+   * 
+   * 
    ******************************************/
+
   let { VehicleRegistration } = vehicleDetails;
   const [openToolTip, setopenToolTip] = useState(false);
-  const [annualBusinessMileage,setannualBusinessMileage] = useState('');
+
   /******************************************
+   * 
+   * 
    * FUNCTIONS
+   * 
+   * 
    ******************************************/
+  // handle onchange function
+  const handleOnchangeVehicleData = (e) => {
+    setVehicleData({ ...vehicleData, [e.target.name]: e.target.value });
+  };
+
+
+  // handle usedcar function
+  const handleonChangeUsedCar = (e) => {
+    setVehicleData({ ...vehicleData, [e.target.name]: e.target.value });
+    setsdpcBusinessUse(false);
+  }
+  const handleonChangeBusinesUsed = (e) => {
+    setVehicleData({ ...vehicleData, [e.target.name]: e.target.value });
+    setsdpcBusinessUse(true);
+  }
   // nextpageFunction function
   const nextpageFunction = () => {
     // after validation is done
     setCountSteps(2);
-  };
-
-  // typeofAlermFunc
-  const typeofAlermFunc = (e) => {
-    settypeofAlarm(e.target.value);
-  };
-
-  // businesUseCarFun
-  const businesUseCarFun = (e) => {
-    setwhobusinessuseFor(e.target.value);
   };
 
   return (
@@ -174,7 +168,7 @@ export default function Vehicle() {
             What type of alarm and/or immobiliser does the car have?
           </div>
           <div className="content-right">
-            <select className="selectClass" onChange={typeofAlermFunc}>
+            <select name="typeOfAlarm" className="selectClass" onChange={handleOnchangeVehicleData}>
               <option value="" disabled>
                 Please select...
               </option>
@@ -233,19 +227,19 @@ export default function Vehicle() {
               whiteColor={theme.whiteColor}
             >
               <input
-                onChange={(e) => settranckingDevice(e.target.value)}
+                onChange={handleOnchangeVehicleData}
                 type="radio"
                 id="radio1"
-                name="radios"
+                name="tranckingDevice"
                 value="Yes"
               />
               <label htmlFor="radio1">yes</label>
 
               <input
-                onChange={(e) => settranckingDevice(e.target.value)}
+                onChange={handleOnchangeVehicleData}
                 type="radio"
                 id="radio2"
-                name="radios"
+                name="tranckingDevice"
                 value="No"
               />
               <label htmlFor="radio2">no</label>
@@ -282,19 +276,19 @@ export default function Vehicle() {
               whiteColor={theme.whiteColor}
             >
               <input
-                onChange={(e) => setImported(e.target.value)}
+                onChange={handleOnchangeVehicleData}
                 type="radio"
                 id="import_vehicle_1"
-                name="radios"
+                name="imported"
                 value="Yes"
               />
               <label htmlFor="import_vehicle_1">yes</label>
 
               <input
-                onChange={(e) => setImported(e.target.value)}
+                onChange={handleOnchangeVehicleData}
                 type="radio"
                 id="import_vehicle_2"
-                name="radios"
+                name="imported"
                 value="No"
               />
               <label htmlFor="import_vehicle_2">no</label>
@@ -351,19 +345,19 @@ export default function Vehicle() {
               whiteColor={theme.whiteColor}
             >
               <input
-                onChange={(e) => setdriveHand(e.target.value)}
+                onChange={handleOnchangeVehicleData}
                 type="radio"
                 id="hand_drive_1"
-                name="radios"
+                name="driveHand"
                 value="left"
               />
               <label htmlFor="hand_drive_1">Left</label>
 
               <input
-                onChange={(e) => setdriveHand(e.target.value)}
+                onChange={handleOnchangeVehicleData}
                 type="radio"
                 id="hand_drive_2"
-                name="radios"
+                name="driveHand"
                 value="right"
               />
               <label htmlFor="hand_drive_2">Right</label>
@@ -415,13 +409,15 @@ export default function Vehicle() {
               disabled={dontHvCar}
               className="text_input"
               type="date"
-              onChange={(e) => setleaseCarDate(e.target.value)}
+              name="leaseCarDate"
+              onChange={handleOnchangeVehicleData}
             />
             <div className="car_checkbox_wrapper">
               <input
                 id="have_car"
                 type="checkbox"
-                onChange={(e) => setdontHvCar(e.target.checked)}
+                name="dontHvCar"
+                onChange={() => setdontHvCar(!dontHvCar)}
               />
               <label htmlFor="have_car">I don't have car</label>
             </div>
@@ -473,12 +469,10 @@ export default function Vehicle() {
               whiteColor={theme.whiteColor}
             >
               <input
-                onChange={(e) => {
-                  setusedCarFor(e.target.value);
-                  setsdpcBusinessUse(false);
-                }}
+                onChange={handleonChangeUsedCar}
                 type="radio"
                 id="usedForCar1"
+                name="usedCarFor"
                 value="Social, Domestic and Pleasure (SDP) only"
               />
               <label htmlFor="usedForCar1">
@@ -486,12 +480,10 @@ export default function Vehicle() {
               </label>
 
               <input
-                onChange={(e) => {
-                  setusedCarFor(e.target.value);
-                  setsdpcBusinessUse(false);
-                }}
+                onChange={handleonChangeUsedCar}
                 type="radio"
                 id="usedForCar2"
+                name="usedCarFor"
                 value="Social, Domestic Pleasure & Commuting (SDPC)"
               />
               <label htmlFor="usedForCar2">
@@ -499,10 +491,8 @@ export default function Vehicle() {
               </label>
 
               <input
-                onChange={(e) => {
-                  setusedCarFor(null);
-                  setsdpcBusinessUse(!sdpcBusinessUse);
-                }}
+                name="usedCarFor"
+                onChange={handleonChangeBusinesUsed}
                 type="radio"
                 id="usedForCar3"
                 value="SDPC & Business Use"
@@ -539,78 +529,80 @@ export default function Vehicle() {
 
       {sdpcBusinessUse == true
         ? [
-            <>
-              {/* Who uses the car for business use? */}
-              <MainWrapper
-                primaryColor={theme.primaryColor}
+          <>
+            {/* Who uses the car for business use? */}
+            <MainWrapper
+              primaryColor={theme.primaryColor}
+              whiteColor={theme.whiteColor}
+            >
+              <ContentWrapper
+                liteBlackColor={theme.liteBlackColor}
+                borderColor={theme.liteBlackColor}
                 whiteColor={theme.whiteColor}
+                blackColor={theme.blackColor}
+                secondaryColor={theme.secondaryColor}
               >
-                <ContentWrapper
-                  liteBlackColor={theme.liteBlackColor}
-                  borderColor={theme.liteBlackColor}
-                  whiteColor={theme.whiteColor}
-                  blackColor={theme.blackColor}
-                  secondaryColor={theme.secondaryColor}
-                >
-                  <div className="content-left">
-                    Who uses the car for business use?
-                  </div>
+                <div className="content-left">
+                  Who uses the car for business use?
+                </div>
 
-                  <div className="content-right">
-                    <select className="selectClass" onChange={businesUseCarFun}>
-                      <option value="" disabled="">
-                        Please select...
-                      </option>
-                      <option value="only you">only you</option>
-                      <option value="any named drive">Any named drive</option>
-                    </select>
+                <div className="content-right">
+                  <select name="whobusinessuseFor" className="selectClass" onChange={handleOnchangeVehicleData}>
+                    <option value="" disabled="">
+                      Please select...
+                    </option>
+                    <option value="only you">only you</option>
+                    <option value="any named drive">Any named drive</option>
+                  </select>
 
-                    {whobusinessuseFor == "any named drive"
-                      ? [
-                          <div className="hint-text-wrapper">
-                            <HiUsers className="icon" />
-                            <span className="hint-text">
-                              Don’t forget to add your named driver(s) in the
-                              additional drivers section.
-                            </span>
-                          </div>,
-                        ]
-                      : null}
-                  </div>
-                </ContentWrapper>
-              </MainWrapper>
+                  {vehicleData.whobusinessuseFor == "any named drive"
+                    ? [
+                      <div className="hint-text-wrapper">
+                        <HiUsers className="icon" />
+                        <span className="hint-text">
+                          Don’t forget to add your named driver(s) in the
+                          additional drivers section.
+                        </span>
+                      </div>,
+                    ]
+                    : null}
+                </div>
+              </ContentWrapper>
+            </MainWrapper>
 
-              {/* What is the total annual business mileage for this car?*/}
-              <MainWrapper
-                primaryColor={theme.primaryColor}
+            {/* What is the total annual business mileage for this car?*/}
+            <MainWrapper
+              primaryColor={theme.primaryColor}
+              whiteColor={theme.whiteColor}
+            >
+              <ContentWrapper
+                liteBlackColor={theme.liteBlackColor}
+                borderColor={theme.liteBlackColor}
                 whiteColor={theme.whiteColor}
+                blackColor={theme.blackColor}
+                secondaryColor={theme.secondaryColor}
               >
-                <ContentWrapper
-                  liteBlackColor={theme.liteBlackColor}
-                  borderColor={theme.liteBlackColor}
-                  whiteColor={theme.whiteColor}
-                  blackColor={theme.blackColor}
-                  secondaryColor={theme.secondaryColor}
-                >
-                  <div className="content-left">
-                    What is the total annual business mileage for this car?
-                  </div>
+                <div className="content-left">
+                  What is the total annual business mileage for this car?
+                </div>
 
-                  <div className="content-right">
-                    <div className="text_input_box">
-                      <input
-                        type="text"
-                        onChange={(e)=>setannualBusinessMileage(e.target.value)}
-                        placeholder="$8,500"
+                <div className="content-right">
+                  <div className="text_input_box">
+                    <input
+                      type="text"
+                      name="name"
+                      // onChange={(e) => setannualBusinessMileage(e.target.value)}
+                      onChange={handleOnchangeVehicleData}
+                      placeholder="$8,500"
 
-                      />
-                      <label>miles per year</label>
-                    </div>
+                    />
+                    <label>miles per year</label>
                   </div>
-                </ContentWrapper>
-              </MainWrapper>
-            </>,
-          ]
+                </div>
+              </ContentWrapper>
+            </MainWrapper>
+          </>,
+        ]
         : null}
 
       {/* next prev buttons */}

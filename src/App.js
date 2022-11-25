@@ -9,6 +9,7 @@ import Details from './component/form/details/Details';
 import Policy from './component/form/policy/Policy';
 import Summary from './component/form/summary/Summary';
 import Quotes from './component/form/quotes/Quotes';
+import { Wrapper } from './styles/Global.styled';
 
 function App() {
   // get context value
@@ -24,32 +25,25 @@ function App() {
   const displayComponent = () => {
     switch (countSteps) {
       case 1:
-        return <Vehicle key='vehicle_1' />;
+        return <Vehicle />;
       case 2:
-        return <Details key='details_2'/>;
+        return <Details />;
       case 3:
-        return <Policy key='policy_3'/>;
+        return <Policy />;
       case 4:
-        return <Summary key='summary_4'/>;
+        return <Summary />;
       case 5:
-        return <Quotes key='quotes_5'/>;
+        return <Quotes />;
       default:
-        return <Vehicle key='vehicle_2'/>;
+        return <Vehicle />;
     }
   };
 
-  // styles
-  const Wrapper = styled.div`
-    width: 95%;
-    max-width: 1190px;
-    margin: 0 auto 20px;
-    padding: 0 5px;
-    `;
   return (
     <Wrapper>
       {/* <Navbar /> */}
       {/* <Vehicle /> */}
-      {checkVehicle == false ?  <CheckVehicle /> : [
+      {checkVehicle == false ? <CheckVehicle /> : [
         displayComponent()
       ]}
       <Honesty />

@@ -20,7 +20,7 @@ root.render(
   <React.StrictMode>
     <StoreProvider>
       <ThemeProvider theme={theme}>
-        <App />
+        <App key='app_key' />
       </ThemeProvider>
     </StoreProvider>
   </React.StrictMode>

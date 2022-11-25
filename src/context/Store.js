@@ -58,61 +58,48 @@ const StoreProvider = ({ children }) => {
    *
    **********************************/
   // get all vehicle data
-  const [vehicleDetails, setvehicleDetails] = useState(null);
-  // typeofAlarm
-  const [typeofAlarm, settypeofAlarm] = useState(null);
-  // trancking device
-  const [tranckingDevice, settranckingDevice] = useState(null);
-  // is imported
-  const [imported, setImported] = useState(null);
-  // current value of car
-  const [driveHand, setdriveHand] = useState(null);
-  // modified
-  const [isModified, setisModified] = useState(false);
-  // modified caused
-  const [modifiedCaused, setmodifiedCaused] = useState(false);
+  const [vehicleDetails, setvehicleDetails] = useState(null);//coming from api data
+
   // lease car date
-  const [leaseCarDate, setleaseCarDate] = useState(new Date());
-  // lease car date
-  const [dontHvCar, setdontHvCar] = useState(true);
-  // lease car date
-  const [usedCarFor, setusedCarFor] = useState(null);
+  const [dontHvCar, setdontHvCar] = useState(false);
+
   // SDPC and Business Use
-  const [sdpcBusinessUse,setsdpcBusinessUse] = useState(false);
-  // business use for 
-  const [businessuseFor,setbusinessuseFor] = useState(null);
-  // who uses car for business use 
-  const [whobusinessuseFor,setwhobusinessuseFor] = useState(null);
-  // who uses car for business use 
-  const [annualBusinessMileage,setannualBusinessMileage] = useState('');
-  const [annualPersonalMileage,setannualPersonalMileage] = useState('');
+  const [sdpcBusinessUse, setsdpcBusinessUse] = useState(false);
+
+  // setVeicle data
+  const [vehicleData, setVehicleData] = useState({
+    typeOfAlarm: '',//select option
+    tranckingDevice: '',//radio option
+    imported: '',//radio option
+    driveHand: '',
+    isModified: false,//not assign yet
+    modifiedCaused: '',//not assign yet
+    leaseCarDate: new Date(),
+    usedCarFor: '',
+    businessuseFor: '',
+    whobusinessuseFor: '',//select
+    annualBusinessMileage: '',
+    annualPersonalMileage: '',
+  });
 
   return (
     <StoreContext.Provider
       value={{
         // global states
-        loading,setLoading,
-        navList,setnavList,
-        countSteps,setCountSteps,
-        vehicleDetails,setvehicleDetails,
-        notFound,setnotFound,
-        checkVehicle,setcheckVehicle,
+        loading, setLoading,
+        navList, setnavList,
+        countSteps, setCountSteps,
+        vehicleDetails, setvehicleDetails,
+        notFound, setnotFound,
+        checkVehicle, setcheckVehicle,
 
+        // all vehicle data
+        vehicleData, setVehicleData,
         // vehicle states
-        typeofAlarm,settypeofAlarm,
-        tranckingDevice,settranckingDevice,
-        imported,setImported,
-        driveHand, setdriveHand,
-        isModified, setisModified,
-        modifiedCaused, setmodifiedCaused,
-        leaseCarDate, setleaseCarDate,
         dontHvCar, setdontHvCar,
-        usedCarFor, setusedCarFor,
-        sdpcBusinessUse,setsdpcBusinessUse,
-        businessuseFor,setbusinessuseFor,
-        whobusinessuseFor,setwhobusinessuseFor,
-        annualBusinessMileage,setannualBusinessMileage,
-        annualPersonalMileage,setannualPersonalMileage
+        // usedCarFor, setusedCarFor,
+        sdpcBusinessUse, setsdpcBusinessUse,
+
       }}
     >
       {children}
