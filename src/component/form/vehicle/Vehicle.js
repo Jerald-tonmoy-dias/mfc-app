@@ -43,12 +43,13 @@ export default function Vehicle() {
     checkVehicle,
     setcheckVehicle,
 
-    // vehicle states
+    // vehicle single states
     dontHvCar,
     setdontHvCar,
     sdpcBusinessUse,
     setsdpcBusinessUse,
-
+    kepCarNightMoreOption,
+    setkepCarNightMoreOption,
 
     // all vehicle data
     vehicleData, setVehicleData
@@ -77,16 +78,12 @@ export default function Vehicle() {
     setVehicleData({ ...vehicleData, [e.target.name]: e.target.value });
   };
 
-
   // handle usedcar function
   const handleonChangeUsedCar = (e) => {
     setVehicleData({ ...vehicleData, [e.target.name]: e.target.value });
     setsdpcBusinessUse(false);
   }
-  const handleonChangeBusinesUsed = (e) => {
-    setVehicleData({ ...vehicleData, [e.target.name]: e.target.value });
-    setsdpcBusinessUse(true);
-  }
+
   // nextpageFunction function
   const nextpageFunction = () => {
     // after validation is done
@@ -492,7 +489,10 @@ export default function Vehicle() {
 
               <input
                 name="usedCarFor"
-                onChange={handleonChangeBusinesUsed}
+                onChange={(e) => {
+                  setVehicleData({ ...vehicleData, [e.target.name]: e.target.value });
+                  setsdpcBusinessUse(true);
+                }}
                 type="radio"
                 id="usedForCar3"
                 value="SDPC & Business Use"
@@ -628,7 +628,7 @@ export default function Vehicle() {
       <MainWrapper
         primaryColor={theme.primaryColor}
         whiteColor={theme.whiteColor}
-        id="vh_6"
+        id="vh_7"
       >
         <ContentWrapper
           liteBlackColor={theme.liteBlackColor}
@@ -639,7 +639,7 @@ export default function Vehicle() {
         >
           <button
             type="button"
-            onClick={(e) => toggleClassForHover("vh_6")}
+            onClick={(e) => toggleClassForHover("vh_7")}
             className="mobile_trigger"
           >
             <BsQuestionLg />
@@ -674,6 +674,272 @@ export default function Vehicle() {
           </p>
         </ToolTipWrapper>
       </MainWrapper>
+
+      {/* Where do you keep the car during the day? */}
+      <MainWrapper
+        id="vh_8"
+        primaryColor={theme.primaryColor}
+        whiteColor={theme.whiteColor}
+      >
+        <ContentWrapper
+          liteBlackColor={theme.liteBlackColor}
+          borderColor={theme.liteBlackColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+          secondaryColor={theme.secondaryColor}
+        >
+          <button
+            type="button"
+            onClick={(e) => toggleClassForHover("vh_8")}
+            className="mobile_trigger"
+          >
+            <BsQuestionLg />
+          </button>
+          <div className="content-left">Where do you keep the car during the day?</div>
+
+          <div className="content-right">
+            <RadioButtons
+              primaryColor={theme.primaryColor}
+              blackColor={theme.blackColor}
+              whiteColor={theme.whiteColor}
+            >
+              <input
+                onChange={handleOnchangeVehicleData}
+                type="radio"
+                id="keepCarAtDay1"
+                name="keepCarAtDay"
+                value="At home"
+              />
+              <label htmlFor="keepCarAtDay1">
+                At home
+              </label>
+              <input
+                onChange={handleOnchangeVehicleData}
+                type="radio"
+                id="keepCarAtDay2"
+                name="keepCarAtDay"
+                value="Office or factory car park"
+              />
+              <label htmlFor="keepCarAtDay2">
+                Office or factory car park
+              </label>
+
+              <input
+                onChange={handleOnchangeVehicleData}
+                type="radio"
+                id="keepCarAtDay3"
+                name="keepCarAtDay"
+                value="Open public car park"
+              />
+              <label htmlFor="keepCarAtDay3">
+                Open public car park
+              </label>
+
+              <input
+                onChange={handleOnchangeVehicleData}
+                type="radio"
+                id="keepCarAtDay4"
+                name="keepCarAtDay"
+                value="Secure public car park"
+              />
+              <label htmlFor="keepCarAtDay4">
+                Secure public car park
+              </label>
+
+              <input
+                onChange={handleOnchangeVehicleData}
+                type="radio"
+                id="keepCarAtDay5"
+                name="keepCarAtDay"
+                value="Street away from home"
+              />
+              <label htmlFor="keepCarAtDay5">
+                Street away from home
+              </label>
+            </RadioButtons>
+          </div>
+        </ContentWrapper>
+        <ToolTipWrapper
+          open={openToolTip}
+          primaryColor={theme.primaryColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+        >
+          <BsQuestionLg className="hint-icon" />
+          <p>
+            If you leave the car in different places on various days of the week,
+            please choose the one in which the car is most often kept.
+          </p>
+
+        </ToolTipWrapper>
+      </MainWrapper>
+
+      {/* Where do you keep the car at night? */}
+      <MainWrapper
+        id="vh_9"
+        primaryColor={theme.primaryColor}
+        whiteColor={theme.whiteColor}
+      >
+        <ContentWrapper
+          liteBlackColor={theme.liteBlackColor}
+          borderColor={theme.liteBlackColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+          secondaryColor={theme.secondaryColor}
+        >
+          <button
+            type="button"
+            onClick={(e) => toggleClassForHover("vh_9")}
+            className="mobile_trigger"
+          >
+            <BsQuestionLg />
+          </button>
+          <div className="content-left">Where do you keep the car at night?</div>
+
+          <div className="content-right">
+            <RadioButtons
+              primaryColor={theme.primaryColor}
+              blackColor={theme.blackColor}
+              whiteColor={theme.whiteColor}
+            >
+              <input
+                onChange={(e) => {
+                  setVehicleData({ ...vehicleData, [e.target.name]: e.target.value });
+                  setkepCarNightMoreOption(false);
+                }}
+                type="radio"
+                id="keepCarAtNight1"
+                name="keepCarAtNight"
+                value="Drive"
+              />
+              <label htmlFor="keepCarAtNight1">
+                Drive
+              </label>
+
+
+              <input
+                onChange={(e) => {
+                  setVehicleData({ ...vehicleData, [e.target.name]: e.target.value });
+                  setkepCarNightMoreOption(false);
+                }}
+                type="radio"
+                id="keepCarAtNight2"
+                name="keepCarAtNight"
+                value="Street outside home"
+              />
+              <label htmlFor="keepCarAtNight2">
+                Street outside home
+              </label>
+
+              <input
+                onChange={(e) => {
+                  setVehicleData({ ...vehicleData, [e.target.name]: e.target.value });
+                  setkepCarNightMoreOption(false);
+                }}
+                type="radio"
+                id="keepCarAtNight3"
+                name="keepCarAtNight"
+                value="Street outside home"
+              />
+              <label htmlFor="keepCarAtNight3">
+                Locked garage
+              </label>
+
+              <input
+                onChange={(e) => {
+                  setVehicleData({ ...vehicleData, [e.target.name]: e.target.value });
+                  setkepCarNightMoreOption(true);
+                }}
+                type="radio"
+                id="keepCarAtNight4"
+                name="keepCarAtNight"
+                value="More options"
+              />
+              <label htmlFor="keepCarAtNight4">
+                More options
+              </label>
+
+            </RadioButtons>
+          </div>
+        </ContentWrapper>
+        <ToolTipWrapper
+          open={openToolTip}
+          primaryColor={theme.primaryColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+        >
+          <BsQuestionLg className="hint-icon" />
+          <p>
+            If you leave the car in different places on various days of the week,
+            please choose the one in which the car is most often kept.
+          </p>
+
+        </ToolTipWrapper>
+      </MainWrapper>
+
+      {kepCarNightMoreOption == true ? [
+        (
+          <>
+            {/* Where do you keep the car at night? */}
+            <MainWrapper
+              id="vh_10"
+              primaryColor={theme.primaryColor}
+              whiteColor={theme.whiteColor}
+            >
+              <ContentWrapper
+                liteBlackColor={theme.liteBlackColor}
+                borderColor={theme.liteBlackColor}
+                whiteColor={theme.whiteColor}
+                blackColor={theme.blackColor}
+                secondaryColor={theme.secondaryColor}
+              >
+                <button
+                  type="button"
+                  onClick={(e) => toggleClassForHover("vh_10")}
+                  className="mobile_trigger"
+                >
+                  <BsQuestionLg />
+                </button>
+                <div className="content-left">
+                  Where do you keep the car at night?
+                </div>
+                <div className="content-right">
+                  <select name="keepCarAtNight" className="selectClass" onChange={handleOnchangeVehicleData}>
+                    <option value="" disabled>
+                      Please select...
+                    </option>
+                    <option value="Unlocked garage">
+                      Unlocked garage
+                    </option>
+                    <option value="Street away from home">
+                      Street away from home
+                    </option>
+                    <option value="Locked compound">
+                      Locked compound
+                    </option>
+                    <option value="Public car park">
+                      Public car park
+                    </option>
+                    <option value="Work car park">Work car park</option>
+                    <option value="Private property">Private property</option>
+                  </select>
+                </div>
+              </ContentWrapper>
+              <ToolTipWrapper
+                open={openToolTip}
+                primaryColor={theme.primaryColor}
+                whiteColor={theme.whiteColor}
+                blackColor={theme.blackColor}
+              >
+                <BsQuestionLg className="hint-icon" />
+                <p>
+                  If you leave the car in different places on various nights of the week, please choose the one in which the car is most often kept.
+                </p>
+              </ToolTipWrapper>
+            </MainWrapper>
+          </>
+        )
+      ] : null}
 
       {/* next prev buttons */}
       <MainWrapper>

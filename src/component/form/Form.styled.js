@@ -143,7 +143,7 @@ export const ToolTipWrapper = styled.div(props => (`
     background: ${props.whiteColor};
     box-shadow: rgba(33, 35, 38, 0.1) 0px 0px 10px 2px;
     border: 2px solid ${props.primaryColor};
-    border-radius: 2px;
+    border-radius: 5px;
     padding: 10px 20px;
     color: ${props.color};
     font-weight: 700;
@@ -174,13 +174,11 @@ export const ToolTipWrapper = styled.div(props => (`
 
     .hint-icon {
       color: ${props.primaryColor};
-      font-size: 28px;
+      font-size: 17px;
       margin-right: 10px;
       margin-top: 18px;
-      @media (max-width: 991px) {
-        font-size: 24px;
-        margin-top: 18px;
-      }
+      margin-bottom: -5px;
+
     }
 
     @media (max-width: 991px) {
@@ -342,7 +340,6 @@ export const ContentWrapper = styled.div(props => (`
   }
 }
 
-
 `));
 
 export const RadioButtons = styled.div(props => (`
@@ -351,6 +348,8 @@ export const RadioButtons = styled.div(props => (`
 }
 
 label {
+    width: calc(35% - 5px);
+    text-align: center;
     display:inline-block;
     background: ${props.whiteColor};
     color: ${props.blackColor};
@@ -362,9 +361,6 @@ label {
     cursor: pointer;
     box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
     margin: 0 10px 10px 0 ;
-    // &:nth-child(2) {
-    //   margin-right: 10px;
-    // }
 }
 
 input[type="radio"]:checked+label {

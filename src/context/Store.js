@@ -59,13 +59,6 @@ const StoreProvider = ({ children }) => {
    **********************************/
   // get all vehicle data
   const [vehicleDetails, setvehicleDetails] = useState(null);//coming from api data
-
-  // lease car date
-  const [dontHvCar, setdontHvCar] = useState(false);
-
-  // SDPC and Business Use
-  const [sdpcBusinessUse, setsdpcBusinessUse] = useState(false);
-
   // setVeicle data
   const [vehicleData, setVehicleData] = useState({
     typeOfAlarm: '',//select option
@@ -80,7 +73,17 @@ const StoreProvider = ({ children }) => {
     whobusinessuseFor: '',//select
     annualBusinessMileage: '',
     annualPersonalMileage: '',
+    keepCarAtDay: '',
+    keepCarAtNight: '',
   });
+  // lease car date
+  const [dontHvCar, setdontHvCar] = useState(false);
+  // SDPC and Business Use
+  const [sdpcBusinessUse, setsdpcBusinessUse] = useState(false);
+  // keep car at night more option 
+  const [kepCarNightMoreOption, setkepCarNightMoreOption] = useState(false);
+
+
 
   return (
     <StoreContext.Provider
@@ -95,10 +98,9 @@ const StoreProvider = ({ children }) => {
 
         // all vehicle data
         vehicleData, setVehicleData,
-        // vehicle states
         dontHvCar, setdontHvCar,
-        // usedCarFor, setusedCarFor,
         sdpcBusinessUse, setsdpcBusinessUse,
+        kepCarNightMoreOption, setkepCarNightMoreOption
 
       }}
     >
