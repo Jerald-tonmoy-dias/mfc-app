@@ -75,6 +75,8 @@ const StoreProvider = ({ children }) => {
     annualPersonalMileage: '',
     keepCarAtDay: '',
     keepCarAtNight: '',
+    carKeptAtHousehold: '',
+    useAnyOtherVehicles: '',
   });
   // lease car date
   const [dontHvCar, setdontHvCar] = useState(false);

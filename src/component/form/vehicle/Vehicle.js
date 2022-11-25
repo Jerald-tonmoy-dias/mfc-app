@@ -19,7 +19,7 @@ import {
   BsSearch,
   BsXOctagonFill,
 } from "react-icons/bs";
-import { GrFormClose } from "react-icons/gr";
+import { TiStarburst } from "react-icons/ti";
 import { HiUsers } from "react-icons/hi";
 import Navbar from "../../navbar/Navbar";
 
@@ -940,6 +940,114 @@ export default function Vehicle() {
           </>
         )
       ] : null}
+
+      {/* How many cars are kept at your household (including this one)? */}
+      <MainWrapper
+        id="vh_11"
+        primaryColor={theme.primaryColor}
+        whiteColor={theme.whiteColor}
+      >
+        <ContentWrapper
+          liteBlackColor={theme.liteBlackColor}
+          borderColor={theme.liteBlackColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+          secondaryColor={theme.secondaryColor}
+        >
+          <button
+            type="button"
+            onClick={(e) => toggleClassForHover("vh_11")}
+            className="mobile_trigger"
+          >
+            <BsQuestionLg />
+          </button>
+          <div className="content-left">
+            How many cars are kept at your household (including this one)?
+          </div>
+          <div className="content-right">
+            <select name="carKeptAtHousehold" className="selectClass" onChange={handleOnchangeVehicleData}>
+              <option value="" disabled>
+                Please select...
+              </option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+            </select>
+          </div>
+        </ContentWrapper>
+        <ToolTipWrapper
+          open={openToolTip}
+          primaryColor={theme.primaryColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+        >
+          <BsQuestionLg className="hint-icon" />
+          <p>
+            You should only include the number of cars at your home. Please do not count motorbikes, vans and commercial vehicles.
+          </p>
+
+          <h4> <TiStarburst className="hint-icon" /> Effect on your quote</h4>
+          <p>
+            Some insurers may offer a discount to customers with more than one car.
+          </p>
+        </ToolTipWrapper>
+      </MainWrapper>
+
+      {/* Do you use any other vehicles? (eg: company car, partner's car, etc) */}
+      <MainWrapper
+        id="vh_12"
+        primaryColor={theme.primaryColor}
+        whiteColor={theme.whiteColor}
+      >
+        <ContentWrapper
+          liteBlackColor={theme.liteBlackColor}
+          borderColor={theme.liteBlackColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+          secondaryColor={theme.secondaryColor}
+        >
+          <button
+            type="button"
+            onClick={(e) => toggleClassForHover("vh_12")}
+            className="mobile_trigger"
+          >
+            <BsQuestionLg />
+          </button>
+          <div className="content-left">
+            Do you use any other vehicles? (eg: company car, partner's car, etc)
+          </div>
+          <div className="content-right">
+            <select name="useAnyOtherVehicles" className="selectClass" onChange={handleOnchangeVehicleData}>
+              <option value="" disabled>
+                Please select...
+              </option>
+              <option value="No access to any other vehicles">No access to any other vehicles</option>
+              <option value="Own another car or van">Own another car or van</option>
+              <option value="Have use of another car">Have use of another car</option>
+              <option value="Company car (including personal use)">Company car (including personal use)</option>
+              <option value="Company car (excluding personal use)">Company car (excluding personal use)</option>
+            </select>
+          </div>
+        </ContentWrapper>
+        <ToolTipWrapper
+          open={openToolTip}
+          primaryColor={theme.primaryColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+        >
+
+          <h4> <TiStarburst className="hint-icon" /> Effect on your quote</h4>
+          <p>
+            Some insurers may offer a discount if you drive another vehicle.
+          </p>
+        </ToolTipWrapper>
+      </MainWrapper>
 
       {/* next prev buttons */}
       <MainWrapper>
