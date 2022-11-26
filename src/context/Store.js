@@ -106,6 +106,14 @@ const StoreProvider = ({ children }) => {
     employment_profession: '',
     livedInUk: '',
     typeOfLicence: '',
+    howLongLicenceHeld: '',
+    passedDrivingQualifications: '',
+    typesOfDrivingQualifications: '',
+    datesOfDrivingQualifications: '',
+
+    hvMedicalConditions: '',
+    DVLAknowMedicalConditions: '',
+    insuranceDeclined: '',
   });
   //employment_profession 
   const [is_professionActive, setis_professionActive] = useState(false)

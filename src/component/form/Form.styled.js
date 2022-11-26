@@ -348,7 +348,7 @@ export const RadioButtons = styled.div(props => (`
 }
 
 label {
-    width: calc(35% - 5px);
+    width: calc(30% - 5px);
     text-align: center;
     display:inline-block;
     background: ${props.whiteColor};

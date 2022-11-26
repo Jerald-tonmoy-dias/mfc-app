@@ -606,7 +606,10 @@ export default function Details() {
               whiteColor={theme.whiteColor}
             >
               <input
-                onChange={handleOnchangeYourData}
+                onChange={(e) => {
+                  setyourDetails({ ...yourDetails, [e.target.name]: e.target.value });
+                  setisLicenceMore(false);
+                }}
                 type="radio"
                 id="tdriveLicence1"
                 name="typeOfLicence"
@@ -615,7 +618,10 @@ export default function Details() {
               <label htmlFor="tdriveLicence1">UK Full</label>
 
               <input
-                onChange={handleOnchangeYourData}
+                onChange={(e) => {
+                  setyourDetails({ ...yourDetails, [e.target.name]: e.target.value });
+                  setisLicenceMore(false);
+                }}
                 type="radio"
                 id="tdriveLicence2"
                 name="typeOfLicence"
@@ -624,7 +630,10 @@ export default function Details() {
               <label htmlFor="tdriveLicence2">UK Provisional</label>
 
               <input
-                onChange={handleOnchangeYourData}
+                onChange={(e) => {
+                  setyourDetails({ ...yourDetails, [e.target.name]: e.target.value });
+                  setisLicenceMore(false);
+                }}
                 type="radio"
                 id="tdriveLicence3"
                 name="typeOfLicence"
@@ -645,8 +654,250 @@ export default function Details() {
               <label htmlFor="tdriveLicence4">More options</label>
             </RadioButtons>
           </div>
+          <p>If you haven’t passed your test by the time you take out this policy, please select the provisional option. Please note we can only provide quotes for UK provisional licence holders.</p>
         </ContentWrapper>
       </MainWrapper>
+
+      {/* Select your licence type */}
+      {isLicenceMore === true ? [(
+        <>
+          <MainWrapper
+            primaryColor={theme.primaryColor}
+            whiteColor={theme.whiteColor}
+          >
+            <ContentWrapper
+              liteBlackColor={theme.liteBlackColor}
+              borderColor={theme.liteBlackColor}
+              whiteColor={theme.whiteColor}
+              blackColor={theme.blackColor}
+              secondaryColor={theme.secondaryColor}
+            >
+              <div className="content-left">
+                Select your licence type
+              </div>
+              <div className="content-right">
+
+                <select name="typeOfLicence" className="selectClass" onChange={handleOnchangeYourData}>
+                  <option value="" disabled>
+                    Please select...
+                  </option>
+                  <option value="EU">
+                    EU
+                  </option>
+                  <option value="European non-EU">
+                    European non-EU
+                  </option>
+                  <option value="Internationa">
+                    Internationa
+                  </option>
+                </select>
+              </div>
+            </ContentWrapper>
+          </MainWrapper>
+        </>
+      )] : null}
+
+      {/* How long have you held this licence? */}
+      <MainWrapper
+        primaryColor={theme.primaryColor}
+        whiteColor={theme.whiteColor}
+        id="yd_5"
+      >
+        <ContentWrapper
+          liteBlackColor={theme.liteBlackColor}
+          borderColor={theme.liteBlackColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+          secondaryColor={theme.secondaryColor}
+        >
+          <button
+            type="button"
+            onClick={(e) => toggleClassForHover("yd_5")}
+            className="mobile_trigger"
+          >
+            <BsQuestionLg />
+          </button>
+          <div className="content-left">
+            How long have you held this licence?
+          </div>
+          <div className="content-right">
+            <select name="howLongLicenceHeld" className="selectClass" onChange={handleOnchangeYourData}>
+              <option value="" disabled="">Please select...</option>
+              <option value="0">Less than 1 Year</option>
+              <option value="1">Between 1 and 2 Years</option>
+              <option value="2">Between 2 and 3 Years</option>
+              <option value="3">Between 3 and 4 Years</option>
+              <option value="4">4 Years</option>
+              <option value="5">5 Years</option>
+              <option value="6">6 Years</option>
+              <option value="7">7 Years</option>
+              <option value="8">8 Years</option>
+              <option value="9">9 Years</option>
+              <option value="10">10 Years</option>
+              <option value="11">11 Years</option>
+              <option value="12">12 Years</option>
+              <option value="13">13 Years</option>
+              <option value="14">14 Years</option>
+              <option value="15">15 Years</option>
+              <option value="16">16 Years</option>
+              <option value="17">17 Years</option>
+              <option value="18">18 Years</option>
+              <option value="19">19 Years</option>
+              <option value="20">20 Years</option>
+              <option value="21">21 Years</option>
+              <option value="22">22 Years</option>
+              <option value="23">23 Years</option>
+              <option value="24">24 Years</option>
+              <option value="25">25 Years +</option>
+            </select>
+          </div>
+        </ContentWrapper>
+        <ToolTipWrapper
+          open={openToolTip}
+          primaryColor={theme.primaryColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+        >
+          <p>The amount of years selected needs to be the number of full years since you passed your practical driving test e.g. If you passed your test 2 years and 11 months ago, you must answer 2 years. You will need to enter the date you passed your test if it was less than 4 years ago. If you haven’t passed your test yet, this needs to be the number of years since you received your provisional licence.</p>
+
+          <p>
+            On a UK photo card licence, you can find the ‘valid from ’ date in section 10 on the back of your licence..</p>
+        </ToolTipWrapper>
+      </MainWrapper>
+
+      {/* Have you passed any additional driving qualifications? */}
+      <MainWrapper
+        primaryColor={theme.primaryColor}
+        whiteColor={theme.whiteColor}
+        id="yd_6"
+      >
+        <ContentWrapper
+          liteBlackColor={theme.liteBlackColor}
+          borderColor={theme.liteBlackColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+          secondaryColor={theme.secondaryColor}
+        >
+          <button
+            type="button"
+            onClick={(e) => toggleClassForHover("yd_6")}
+            className="mobile_trigger"
+          >
+            <BsQuestionLg />
+          </button>
+          <div className="content-left">
+            Have you passed any additional driving qualifications?
+          </div>
+          <div className="content-right">
+            <RadioButtons
+              primaryColor={theme.primaryColor}
+              blackColor={theme.blackColor}
+              whiteColor={theme.whiteColor}
+            >
+              <input
+                onChange={handleOnchangeYourData}
+                type="radio"
+                id="pasedQuaYd3"
+                name="passedDrivingQualifications"
+                value="Yes"
+              />
+              <label htmlFor="pasedQuaYd3">yes</label>
+
+              <input
+                onChange={(e) => {
+                  setyourDetails({
+                    ...yourDetails,
+                    passedDrivingQualifications: e.target.value,
+                    typesOfDrivingQualifications: '',
+                    datesOfDrivingQualifications: ''
+                  });
+
+
+                }}
+                type="radio"
+                id="pasedQuaYd4"
+                name="passedDrivingQualifications"
+                value="No"
+              />
+              <label htmlFor="pasedQuaYd4">no</label>
+            </RadioButtons>
+          </div>
+        </ContentWrapper>
+        <ToolTipWrapper
+          open={openToolTip}
+          primaryColor={theme.primaryColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+        >
+          <h4>Effect on your quote</h4>
+          <p>Some insurers may offer a discount on your insurance premium if you hold an additional driving qualification such as Pass Plus, AA Proficiency, or Institute of Advanced Motorists.</p>
+        </ToolTipWrapper>
+      </MainWrapper>
+
+      {yourDetails.passedDrivingQualifications === 'Yes' ? [(
+        <>
+          {/* Which type of driving qualification do you have? */}
+          <MainWrapper
+            primaryColor={theme.primaryColor}
+            whiteColor={theme.whiteColor}
+          >
+            <ContentWrapper
+              liteBlackColor={theme.liteBlackColor}
+              borderColor={theme.liteBlackColor}
+              whiteColor={theme.whiteColor}
+              blackColor={theme.blackColor}
+              secondaryColor={theme.secondaryColor}
+            >
+              <div className="content-left">
+                Which type of driving qualification do you have?
+              </div>
+              <div className="content-right">
+                <select name="typesOfDrivingQualifications" className="selectClass" onChange={handleOnchangeYourData}>
+                  <option value="" disabled>
+                    Please select...
+                  </option>
+                  <option value="AA Proficiency">
+                    AA Proficiency
+                  </option>
+                  <option value="Institute of Advanced Motorists">
+                    Institute of Advanced Motorists
+                  </option>
+                  <option value="Pass Plus">
+                    Pass Plus
+                  </option>
+                </select>
+              </div>
+            </ContentWrapper>
+          </MainWrapper>
+          {/* When did you get this qualification? */}
+          <MainWrapper
+            primaryColor={theme.primaryColor}
+            whiteColor={theme.whiteColor}
+          >
+            <ContentWrapper
+              liteBlackColor={theme.liteBlackColor}
+              borderColor={theme.liteBlackColor}
+              whiteColor={theme.whiteColor}
+              blackColor={theme.blackColor}
+              secondaryColor={theme.secondaryColor}
+            >
+              <div className="content-left">
+                When did you get this qualification?
+              </div>
+              <div className="content-right">
+                <input
+                  className="text_input"
+                  type="date"
+                  name="datesOfDrivingQualifications"
+                  onChange={handleOnchangeYourData}
+                />
+              </div>
+            </ContentWrapper>
+          </MainWrapper>
+        </>
+      )] : null}
+
+
 
       {/* next previous text */}
       <NextPrevWrapper
