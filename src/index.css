@@ -29,3 +29,17 @@ code {
     monospace;
 }
 
+.ReactModal__Overlay.ReactModal__Overlay--after-open {
+z-index: 9999;
+}
+
+
+.ReactModal__Content {
+height: calc(100% - 130px);
+}
+.ReactModal__Content::-webkit-scrollbar {
+  width: 2px;
+}
+.ReactModal__Content::-webkit-scrollbar-thumb  {
+  background: #FF6600;
+}

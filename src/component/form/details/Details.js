@@ -1,7 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { ThemeContext } from "styled-components";
-import Button from "../../button/Button";
-import axios from "axios";
+import Modal from 'react-modal';
+import uuid from 'react-uuid';
+
 
 import {
   RegisterCarWrapper,
@@ -12,6 +13,7 @@ import {
   ContentWrapper,
   RadioButtons,
   NextPrevWrapper,
+  ModalHeader,
 } from "../Form.styled";
 import { BASE_URL } from "../../../BaseUrl";
 import { StoreContext } from "../../../context/Store";
@@ -38,7 +40,8 @@ export default function Details() {
     setnavList,
     yourDetails, setyourDetails,
     isLivedSinceBirth, setisLivedSinceBirth,
-    isLicenceMore, setisLicenceMore
+    isLicenceMore, setisLicenceMore,
+    allClaimedInsurance, setallClaimedInsurance
   } = useContext(StoreContext);
 
   /******************************************
@@ -50,7 +53,26 @@ export default function Details() {
  ******************************************/
   let { VehicleRegistration } = vehicleDetails;
   const [openToolTip, setopenToolTip] = useState(false);
+  // modal var and states
+  const [modalIsOpen, setIsOpen] = useState(false);
 
+  const customStyles = {
+    content: {
+      backgroundColor: theme.grayColor,
+      width: '50%',
+      overflow: 'scroll',
+      height: 'calc(100 % - 130px)',
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      display: 'block',
+      zIndex: '99999',
+
+    },
+  };
 
   /******************************************
    * 
@@ -68,8 +90,308 @@ export default function Details() {
     setyourDetails({ ...yourDetails, [e.target.name]: e.target.value });
   };
 
+  // modal
+  function openModal() {
+    setIsOpen(true);
+  }
+
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
   return (
     <div>
+
+      {/* modal */}
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        {/* modal header */}
+        <ModalHeader
+          liteBlackColor={theme.liteBlackColor}
+          borderColor={theme.liteBlackColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+          primaryColor={theme.primaryColor}>
+          <div className="header">
+            <h2>Motor accident or claim</h2>
+            <button className="closeButton" onClick={closeModal}>close</button>
+          </div>
+          <p className="header_title">Only tell us about accidents or claims from the past five years.</p>
+        </ModalHeader>
+
+        {/* Description of incident */}
+        <MainWrapper
+          primaryColor={theme.primaryColor}
+          whiteColor={theme.whiteColor}
+        >
+          <ContentWrapper
+            liteBlackColor={theme.liteBlackColor}
+            borderColor={theme.liteBlackColor}
+            whiteColor={theme.whiteColor}
+            blackColor={theme.blackColor}
+            secondaryColor={theme.secondaryColor}
+          >
+            <div className="content-left">
+              Description of incident
+            </div>
+            <div className="content-right">
+              <RadioButtons
+                primaryColor={theme.primaryColor}
+                blackColor={theme.blackColor}
+                whiteColor={theme.whiteColor}
+              >
+                <input
+                  onChange={handleOnchangeYourData}
+                  type="radio"
+                  id="accident1"
+                  name="anyClaims"
+                  value="accident"
+                />
+                <label htmlFor="accident1">accident</label>
+
+                <input
+                  onChange={handleOnchangeYourData}
+                  type="radio"
+                  id="radiotheft2"
+                  name="anyClaims"
+                  value="theft"
+                />
+                <label htmlFor="radiotheft2">theft</label>
+
+                <input
+                  onChange={handleOnchangeYourData}
+                  type="radio"
+                  id="radioother2"
+                  name="anyClaims"
+                  value="other"
+                />
+                <label htmlFor="radioother2">other</label>
+              </RadioButtons>
+            </div>
+          </ContentWrapper>
+        </MainWrapper>
+
+        {/* On which date did the incident occur? (Only incidents that have occurred within the last five years.) */}
+        <MainWrapper
+          primaryColor={theme.primaryColor}
+          whiteColor={theme.whiteColor}
+        >
+          <ContentWrapper
+            liteBlackColor={theme.liteBlackColor}
+            borderColor={theme.liteBlackColor}
+            whiteColor={theme.whiteColor}
+            blackColor={theme.blackColor}
+            secondaryColor={theme.secondaryColor}
+          >
+            <div className="content-left">
+              On which date did the incident occur? (Only incidents that have occurred within the last five years.)
+            </div>
+            <div className="content-right">
+              <input
+                className="text_input"
+                type="date"
+                name="incidentOccur"
+                onChange={handleOnchangeYourData}
+              />
+            </div>
+          </ContentWrapper>
+        </MainWrapper>
+
+        {/* What type of damage was suffered? */}
+        <MainWrapper
+          primaryColor={theme.primaryColor}
+          whiteColor={theme.whiteColor}
+        >
+          <ContentWrapper
+            liteBlackColor={theme.liteBlackColor}
+            borderColor={theme.liteBlackColor}
+            whiteColor={theme.whiteColor}
+            blackColor={theme.blackColor}
+            secondaryColor={theme.secondaryColor}
+          >
+            <div className="content-left">
+              What type of damage was suffered?
+            </div>
+            <div className="content-right">
+              <select name="damageSuffered" className="selectClass" onChange={handleOnchangeYourData}>
+                <option value="" disabled>
+                  Please select...
+                </option>
+                <option value="Damaged-Amount-Known">
+                  Damaged - Amount Known
+                </option>
+                <option value="No Damage">
+                  No Damage
+                </option>
+                <option value="Unknown">
+                  Unknown
+                </option>
+                <option value="Write-Off">
+                  Write-Off
+                </option>
+              </select>
+            </div>
+          </ContentWrapper>
+        </MainWrapper>
+
+        {/* Do you know the cost of the claim? (mandatory if you select "Type of damage - amount known") */}
+        {
+          yourDetails.damageSuffered == 'Damaged-Amount-Known' ? [(
+            <>
+              {/* Do you know the cost of the claim? (mandatory if you select "Type of damage - amount known") */}
+              <MainWrapper
+                primaryColor={theme.primaryColor}
+                whiteColor={theme.whiteColor}
+              >
+                <ContentWrapper
+                  liteBlackColor={theme.liteBlackColor}
+                  borderColor={theme.liteBlackColor}
+                  whiteColor={theme.whiteColor}
+                  blackColor={theme.blackColor}
+                  secondaryColor={theme.secondaryColor}
+                >
+                  <div className="content-left">
+                    Do you know the cost of the claim? (mandatory if you select "Type of damage - amount known")
+                  </div>
+                  <div className="content-right">
+                    <input
+                      type="text"
+                      className="text_input"
+                      name="damagedAmount"
+                      onChange={handleOnchangeYourData}
+                    />
+                  </div>
+                </ContentWrapper>
+              </MainWrapper>
+            </>
+          )] : null
+        }
+
+        {/* Was this claim made against your insurance policy? */}
+        <MainWrapper
+          primaryColor={theme.primaryColor}
+          whiteColor={theme.whiteColor}
+        >
+          <ContentWrapper
+            liteBlackColor={theme.liteBlackColor}
+            borderColor={theme.liteBlackColor}
+            whiteColor={theme.whiteColor}
+            blackColor={theme.blackColor}
+            secondaryColor={theme.secondaryColor}
+          >
+            <div className="content-left">
+              Was this claim made against your insurance policy?
+            </div>
+            <div className="content-right">
+              <RadioButtons
+                primaryColor={theme.primaryColor}
+                blackColor={theme.blackColor}
+                whiteColor={theme.whiteColor}
+              >
+                <input
+                  onChange={handleOnchangeYourData}
+                  type="radio"
+                  id="acwasClaim1"
+                  name="claimedAgainstInsurance"
+                  value="Yes"
+                />
+                <label htmlFor="acwasClaim1">yes</label>
+
+                <input
+                  onChange={handleOnchangeYourData}
+                  type="radio"
+                  id="radiwasClaim2"
+                  name="claimedAgainstInsurance"
+                  value="No"
+                />
+                <label htmlFor="radiwasClaim2">no</label>
+              </RadioButtons>
+            </div>
+          </ContentWrapper>
+        </MainWrapper>
+
+        {/* Was the no claims discount affected? */}
+        <MainWrapper
+          primaryColor={theme.primaryColor}
+          whiteColor={theme.whiteColor}
+        >
+          <ContentWrapper
+            liteBlackColor={theme.liteBlackColor}
+            borderColor={theme.liteBlackColor}
+            whiteColor={theme.whiteColor}
+            blackColor={theme.blackColor}
+            secondaryColor={theme.secondaryColor}
+          >
+            <div className="content-left">
+              Was the no claims discount affected?
+            </div>
+            <div className="content-right">
+              <RadioButtons
+                primaryColor={theme.primaryColor}
+                blackColor={theme.blackColor}
+                whiteColor={theme.whiteColor}
+              >
+                <input
+                  onChange={handleOnchangeYourData}
+                  type="radio"
+                  id="acwasClaimDiscount1"
+                  name="claimedDiscountAffected"
+                  value="Yes"
+                />
+                <label htmlFor="acwasClaimDiscount1">yes</label>
+
+                <input
+                  onChange={handleOnchangeYourData}
+                  type="radio"
+                  id="radiwasClaimDiscount2"
+                  name="claimedDiscountAffected"
+                  value="No"
+                />
+                <label htmlFor="radiwasClaimDiscount2">no</label>
+              </RadioButtons>
+            </div>
+          </ContentWrapper>
+        </MainWrapper>
+
+        {/* add */}
+        <NextPrevWrapper
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+        >
+          <button type="button" onClick={() => { }} className="btn next">
+            cancel
+          </button>
+          <button type="button" onClick={() => {
+            let oldClaimedInsurance = [];
+            oldClaimedInsurance.push(oldClaimedInsurance);
+
+            let accidentClaimedDetails = {
+              id: uuid(),
+              incident: yourDetails.anyClaims,
+              incidentOccur: yourDetails.incidentOccur,
+              damagedAmount: yourDetails.damagedAmount,
+              claimedAgainstInsurance: yourDetails.claimedAgainstInsurance,
+              claimedDiscountAffected: yourDetails.claimedDiscountAffected,
+            };
+            console.log(typeof oldClaimedInsurance);
+
+            let newDetails = oldClaimedInsurance.push(accidentClaimedDetails);
+
+            setallClaimedInsurance(newDetails);
+            console.log(newDetails);
+
+          }} className="btn next">
+            add
+          </button>
+        </NextPrevWrapper>
+
+      </Modal>
+
       <Navbar navItem={2} navpassed={false} />
       <Title color={theme.blackColor}>Personal details</Title>
 
@@ -1132,6 +1454,68 @@ export default function Details() {
 
         </ToolTipWrapper>
       </MainWrapper>
+
+      {/* Claims Have you had any motor accidents, claims or losses in the past 5 years, no matter who was at fault or if a claim was made? */}
+      <MainWrapper
+        primaryColor={theme.primaryColor}
+        whiteColor={theme.whiteColor}
+        id="yd_11"
+      >
+        <ContentWrapper
+          liteBlackColor={theme.liteBlackColor}
+          borderColor={theme.liteBlackColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+          secondaryColor={theme.secondaryColor}
+        >
+          <button
+            type="button"
+            onClick={(e) => toggleClassForHover("yd_11")}
+            className="mobile_trigger"
+          >
+            <BsQuestionLg />
+          </button>
+          <div className="content-left">
+            Have you had any motor accidents, claims or losses in the past 5 years, no matter who was at fault or if a claim was made?
+          </div>
+          <div className="content-right">
+            <RadioButtons
+              primaryColor={theme.primaryColor}
+              blackColor={theme.blackColor}
+              whiteColor={theme.whiteColor}
+            >
+              <input
+                // onChange={handleOnchangeYourData}
+                onClick={openModal}
+                type="radio"
+                id="clasunsAccLossesFiveYears1"
+                name="anyClaims"
+                value="Yes"
+              />
+              <label htmlFor="clasunsAccLossesFiveYears1">yes</label>
+
+              <input
+                onChange={handleOnchangeYourData}
+                type="radio"
+                id="clasunsAccLossesFiveYears2"
+                name="anyClaims"
+                value="No"
+              />
+              <label htmlFor="clasunsAccLossesFiveYears2">no</label>
+            </RadioButtons>
+          </div>
+        </ContentWrapper>
+        <ToolTipWrapper
+          open={openToolTip}
+          primaryColor={theme.primaryColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+        >
+          <p>It is really important to tell us about any claims (including unsettled claims), accidents or losses that are motor vehicle related.</p>
+
+        </ToolTipWrapper>
+      </MainWrapper>
+
 
       {/* next previous text */}
       <NextPrevWrapper

@@ -18,6 +18,7 @@ align-items: flex-start;
 margin-top: 30px;
 width: 100%;
 
+
 .mobile_trigger {
     font-size: 21px;
     background: white;
@@ -60,6 +61,28 @@ width: 100%;
      display: block;
     }
   }
+`));
+
+export const ModalHeader = styled.div(props => (`
+ .header {
+  width: 80%;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+ }
+ .closeButton {
+    background: ${props.primaryColor};
+    color: ${props.whiteColor};
+    padding: 6px 16px;
+    font-size: 15px !important;
+    line-height: 20px !important;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    text-transform: capitalize;
+    cursor: pointer;
+
+ }
 `));
 
 export const RegisterCarWrapper = styled.div(props => (`
@@ -359,7 +382,7 @@ label {
     padding: 15px 40px;
     border-radius: 5px;
     cursor: pointer;
-    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+   box-shadow: rgb(33 35 38 / 10%) 0px 1px 20px 0px;
     margin: 0 10px 10px 0 ;
 }
 

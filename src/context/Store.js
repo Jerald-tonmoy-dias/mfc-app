@@ -114,7 +114,24 @@ const StoreProvider = ({ children }) => {
     DVLAknowMedicalConditions: '',
     insuranceDeclined: '',
     criminalConvictions: '',
+
+    anyClaims: '',
+    // incidentDes: '',//accedient theft other
+    // incidentDes: '',
+    // accidentFault: '',//accident prop
+    // accidentwhoDriving: '',//accedent prop
+    // anyInjuries: '',//accedent prop
+    // typeOfTheft: '',//theft prop
+    // otherClaimFor: '',//other prop
+    incidentOccur: '',
+    damageSuffered: '',//if yes
+    damagedAmount: '',// if damage was suffered selected
+    claimedAgainstInsurance: '',
+    claimedDiscountAffected: '',
+
   });
+
+  const [allClaimedInsurance, setallClaimedInsurance] = useState([]);
   //employment_profession 
   const [is_professionActive, setis_professionActive] = useState(false)
   const [isLicenceMore, setisLicenceMore] = useState(false);
@@ -140,7 +157,8 @@ const StoreProvider = ({ children }) => {
         // your details
         yourDetails, setyourDetails,
         isLivedSinceBirth, setisLivedSinceBirth,
-        isLicenceMore, setisLicenceMore
+        isLicenceMore, setisLicenceMore,
+        allClaimedInsurance, setallClaimedInsurance
 
       }}
     >
