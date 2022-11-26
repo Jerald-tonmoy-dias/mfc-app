@@ -137,6 +137,22 @@ const StoreProvider = ({ children }) => {
   const [isLicenceMore, setisLicenceMore] = useState(false);
   const [isLivedSinceBirth, setisLivedSinceBirth] = useState(false);
 
+  /**********************************
+ *
+ * YOUR POLICY
+ *
+ **********************************/
+  const [yourPolicy, setyourPolicy] = useState({
+    mainDrive: '',
+    AreYouregLegalOwner: '',
+    whoRegKeeper: '',
+    whoLegalOwner: '',
+    typeOfCover: '',
+    payForCarInsurance: '',
+    NCDHaveYear: '',
+    howEarnNCD: '',
+
+  });
   return (
     <StoreContext.Provider
       value={{
@@ -158,7 +174,10 @@ const StoreProvider = ({ children }) => {
         yourDetails, setyourDetails,
         isLivedSinceBirth, setisLivedSinceBirth,
         isLicenceMore, setisLicenceMore,
-        allClaimedInsurance, setallClaimedInsurance
+        allClaimedInsurance, setallClaimedInsurance,
+
+        // your policy
+        yourPolicy, setyourPolicy
 
       }}
     >

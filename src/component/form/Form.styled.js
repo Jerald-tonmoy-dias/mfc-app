@@ -384,6 +384,15 @@ label {
     cursor: pointer;
    box-shadow: rgb(33 35 38 / 10%) 0px 1px 20px 0px;
     margin: 0 10px 10px 0 ;
+
+    &.lg-label {
+    text-align: justify;
+    font-weight: 400;
+      h4 {
+        margin: 0;
+         font-weight: 700;
+      }
+    }
 }
 
 input[type="radio"]:checked+label {

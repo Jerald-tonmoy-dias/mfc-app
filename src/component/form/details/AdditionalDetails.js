@@ -94,7 +94,8 @@ export default function AdditionalDetails() {
 
   return (
     <div>
-
+      <Navbar navItem={2} navpassed={false} />
+      <Title color={theme.blackColor}>Personal details</Title>
       <MainWrapper>
         <ContentWrapper
           borderColor={theme.liteBlackColor}

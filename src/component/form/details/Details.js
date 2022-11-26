@@ -366,7 +366,7 @@ export default function Details() {
           primaryColor={theme.primaryColor}
         >
           <button type="button" onClick={closeModal} className="btn next active">
-            cancel
+            close
           </button>
           {/* <button type="button" onClick={() => {
 
