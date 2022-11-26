@@ -41,8 +41,6 @@ function App() {
 
   return (
     <Wrapper>
-      {/* <Navbar /> */}
-      {/* <Vehicle /> */}
       {checkVehicle == false ? <CheckVehicle /> : [
         displayComponent()
       ]}

@@ -86,6 +86,31 @@ const StoreProvider = ({ children }) => {
   const [kepCarNightMoreOption, setkepCarNightMoreOption] = useState(false);
 
 
+  /**********************************
+   *
+   * YOUR DETAILS
+   *
+   **********************************/
+  const [yourDetails, setyourDetails] = useState({
+    yourTitle: '',
+    firstName: '',
+    lastName: '',
+    yourDateOfBirth: '',
+    relationshipStatus: '',
+    ownYourHome: '',
+    childrenUnderAgeLiveWith: '',
+    address: '',
+    town_city: '',
+    postcode: '',
+    employment_status: '',
+    employment_profession: '',
+    livedInUk: '',
+    typeOfLicence: '',
+  });
+  //employment_profession 
+  const [is_professionActive, setis_professionActive] = useState(false)
+  const [isLicenceMore, setisLicenceMore] = useState(false);
+  const [isLivedSinceBirth, setisLivedSinceBirth] = useState(false);
 
   return (
     <StoreContext.Provider
@@ -102,7 +127,12 @@ const StoreProvider = ({ children }) => {
         vehicleData, setVehicleData,
         dontHvCar, setdontHvCar,
         sdpcBusinessUse, setsdpcBusinessUse,
-        kepCarNightMoreOption, setkepCarNightMoreOption
+        kepCarNightMoreOption, setkepCarNightMoreOption,
+
+        // your details
+        yourDetails, setyourDetails,
+        isLivedSinceBirth, setisLivedSinceBirth,
+        isLicenceMore, setisLicenceMore
 
       }}
     >

@@ -26,7 +26,9 @@ import Navbar from "../../navbar/Navbar";
 
 export default function Vehicle() {
   /******************************************
+   * 
    * GETTING CONTEXT VALUE
+   * 
    ******************************************/
   const theme = useContext(ThemeContext);
   let {
@@ -92,26 +94,27 @@ export default function Vehicle() {
   // nextpageFunction function
   const nextpageFunction = (e) => {
     e.preventDefault();
-
+    // remove it after done
+    setCountSteps(2);
     // check nested validation
 
-    if (
-      vehicleData.typeOfAlarm == '' ||
-      vehicleData.tranckingDevice == '' ||
-      vehicleData.imported == '' ||
-      vehicleData.usedCarFor == '' ||
-      // vehicleData.businessuseFor == '' ||
-      vehicleData.whobusinessuseFor == '' ||
-      vehicleData.annualPersonalMileage
-    ) {
-      // fill up the info to go forward
-      setvaludationError(true);
-    } else {
-      // go to next step
-      setvaludationError(false);
-      setCountSteps(2);
+    // if (
+    //   vehicleData.typeOfAlarm == '' ||
+    //   vehicleData.tranckingDevice == '' ||
+    //   vehicleData.imported == '' ||
+    //   vehicleData.usedCarFor == '' ||
+    //   // vehicleData.businessuseFor == '' ||
+    //   vehicleData.whobusinessuseFor == '' ||
+    //   vehicleData.annualPersonalMileage == ''
+    // ) {
+    //   // fill up the info to go forward
+    //   setvaludationError(true);
+    // } else {
+    //   // go to next step
+    //   setvaludationError(false);
+    //   setCountSteps(2);
 
-    }
+    // }
 
   };
 
