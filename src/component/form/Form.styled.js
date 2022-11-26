@@ -398,3 +398,34 @@ export const NextPrevWrapper = styled.div(props => (`
     // float: right;
   }
 `));
+
+export const ValidationAlert = styled.div(props => (`
+    width: 80%;
+    background: ${props.whiteColor};
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 0px 10px 2px;
+    border: 2px solid ${props.primaryColor};
+    border-radius: 5px;
+    padding: 10px 20px;
+    color: ${props.blackColor};
+    font-weight: 700;
+    border-radius: 5px;
+    text-align: justify;
+    text-justify: inter-word;
+
+    h4 {
+      margin:0;
+      font-weight: 700;
+      color: ${props.primaryColor};
+    }
+    h5 {
+         .text-light {
+        font-weight: 400;
+        margin-left: 10px;
+      }
+    }
+    p {
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    }`));

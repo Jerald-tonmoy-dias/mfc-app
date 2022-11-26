@@ -9,6 +9,7 @@ import {
   ContentWrapper,
   RadioButtons,
   NextPrevWrapper,
+  ValidationAlert,
 } from "../Form.styled";
 import { toggleClassForHover } from "../../../helper/helper";
 import { StoreContext } from "../../../context/Store";
@@ -66,6 +67,10 @@ export default function Vehicle() {
   let { VehicleRegistration } = vehicleDetails;
   const [openToolTip, setopenToolTip] = useState(false);
 
+  // valiation text
+  const [validationText, setvalidationText] = useState('Please answer this question in order to proceed.');
+  const [valudationError, setvaludationError] = useState(false);
+
   /******************************************
    * 
    * 
@@ -85,15 +90,108 @@ export default function Vehicle() {
   }
 
   // nextpageFunction function
-  const nextpageFunction = () => {
-    // after validation is done
-    setCountSteps(2);
+  const nextpageFunction = (e) => {
+    e.preventDefault();
+
+    // check nested validation
+
+    if (
+      vehicleData.typeOfAlarm == '' ||
+      vehicleData.tranckingDevice == '' ||
+      vehicleData.imported == '' ||
+      vehicleData.usedCarFor == '' ||
+      // vehicleData.businessuseFor == '' ||
+      vehicleData.whobusinessuseFor == '' ||
+      vehicleData.annualPersonalMileage
+    ) {
+      // fill up the info to go forward
+      setvaludationError(true);
+    } else {
+      // go to next step
+      setvaludationError(false);
+      setCountSteps(2);
+
+    }
+
   };
 
+  /******************************************
+   * 
+   * 
+   * useEffect
+   * 
+   * 
+   ******************************************/
+  useEffect(() => {
+    setvaludationError(false);
+  }, [])
+
   return (
-    <form>
+    <form onSubmit={nextpageFunction}>
       <Navbar navItem={1} navpassed={false} />
       <Title color={theme.blackColor}>vehicle details</Title>
+
+      {/* show validation error*/}
+      {
+        valudationError === true ? [(
+          <MainWrapper>
+            <ValidationAlert
+              primaryColor={theme.primaryColor}
+              whiteColor={theme.whiteColor}
+              blackColor={theme.blackColor}>
+              <h4>Oops! We have a problem</h4>
+
+              {vehicleData.typeOfAlarm == '' ?
+                <h5> What type of alarm and/or immobiliser does the car have?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+                : null}
+
+              {vehicleData.tranckingDevice == '' ?
+                <h5> Is the car fitted with a tracking device?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+                : null}
+
+              {vehicleData.imported == '' ?
+                <h5> Is the car an import?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+                : null}
+
+
+
+              {vehicleData.usedCarFor == '' ?
+                <h5> What do you use the car for?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+                : null}
+
+              {/* {vehicleData.businessuseFor == '' ?
+                <h5> Who uses the car for business use?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+                : null} */}
+
+              {vehicleData.annualPersonalMileage == '' ?
+                <h5> What is the total annual personal mileage for this car?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+                : null}
+
+              {/* {vehicleData.whobusinessuseFor == '' ?
+                <h5> Who uses the car for business use?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+                : null} */}
+
+
+
+            </ValidationAlert>
+          </MainWrapper>
+        )] : null
+      }
+
 
       {/* We’ve found your vehicle */}
       <MainWrapper>
@@ -140,6 +238,7 @@ export default function Vehicle() {
           <div className="tooltip"></div>
         </ContentWrapper>
       </MainWrapper>
+
 
       {/* What type of alarm and/or immobiliser does the car have? */}
       <MainWrapper
@@ -1055,7 +1154,7 @@ export default function Vehicle() {
           whiteColor={theme.whiteColor}
           blackColor={theme.blackColor}
         >
-          <button type="button" onClick={nextpageFunction} className="btn next">
+          <button type="submit" className="btn next">
             next
           </button>
         </NextPrevWrapper>
