@@ -897,7 +897,181 @@ export default function Details() {
         </>
       )] : null}
 
+      {/* Do you have any medical conditions or disabilities that are DVLA reportable? */}
+      <MainWrapper
+        primaryColor={theme.primaryColor}
+        whiteColor={theme.whiteColor}
+        id="yd_7"
+      >
+        <ContentWrapper
+          liteBlackColor={theme.liteBlackColor}
+          borderColor={theme.liteBlackColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+          secondaryColor={theme.secondaryColor}
+        >
+          <button
+            type="button"
+            onClick={(e) => toggleClassForHover("yd_7")}
+            className="mobile_trigger"
+          >
+            <BsQuestionLg />
+          </button>
+          <div className="content-left">
+            Do you have any medical conditions or disabilities that are DVLA reportable?
+          </div>
+          <div className="content-right">
+            <RadioButtons
+              primaryColor={theme.primaryColor}
+              blackColor={theme.blackColor}
+              whiteColor={theme.whiteColor}
+            >
+              <input
+                onChange={handleOnchangeYourData}
+                type="radio"
+                id="medCond@"
+                name="hvMedicalConditions"
+                value="Yes"
+              />
+              <label htmlFor="medCond@">yes</label>
 
+              <input
+                onChange={(e) => {
+                  setyourDetails({
+                    ...yourDetails,
+                    hvMedicalConditions: e.target.value,
+                    DVLAknowMedicalConditions: '',
+                  });
+                }}
+                type="radio"
+                id="Medconditions4"
+                name="hvMedicalConditions"
+                value="No"
+              />
+              <label htmlFor="Medconditions4">no</label>
+            </RadioButtons>
+          </div>
+        </ContentWrapper>
+        <ToolTipWrapper
+          open={openToolTip}
+          primaryColor={theme.primaryColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+        >
+          <p>The DVLA and insurers need to know about any medical conditions or disabilities that may affect your ability to drive, or notifiable driving licence conditions. Some insurers require information about the condition before providing a quote. The DVLA has a list of conditions that they need to be told about: https://www.gov.uk/health-conditions-and-driving</p>
+        </ToolTipWrapper>
+      </MainWrapper>
+
+      {/* Does the DVLA know about the medical condition or disability? */}
+      {
+        yourDetails.hvMedicalConditions == 'Yes' ? [(
+          <>
+            <MainWrapper
+              primaryColor={theme.primaryColor}
+              whiteColor={theme.whiteColor}
+              id="yd_8"
+            >
+              <ContentWrapper
+                liteBlackColor={theme.liteBlackColor}
+                borderColor={theme.liteBlackColor}
+                whiteColor={theme.whiteColor}
+                blackColor={theme.blackColor}
+                secondaryColor={theme.secondaryColor}
+              >
+                <button
+                  type="button"
+                  onClick={(e) => toggleClassForHover("yd_8")}
+                  className="mobile_trigger"
+                >
+                  <BsQuestionLg />
+                </button>
+                <div className="content-left">
+                  Does the DVLA know about the medical condition or disability?
+                </div>
+                <div className="content-right">
+                  <select onChange={handleOnchangeYourData} name="DVLAknowMedicalConditions" className="selectClass">
+                    <option value="" disabled="">Please select...</option>
+                    <option value="DVR">DVLA aware - No restrictions</option>
+                    <option value="DV1">DVLA aware - 1 year restricted Licence</option>
+                    <option value="DV2">DVLA aware - 2 year restricted Licence</option>
+                    <option value="DV3">DVLA aware - 3 year restricted Licence</option>
+                    <option value="DVU">DVLA unaware</option>
+                  </select>
+                </div>
+              </ContentWrapper>
+              <ToolTipWrapper
+                open={openToolTip}
+                primaryColor={theme.primaryColor}
+                whiteColor={theme.whiteColor}
+                blackColor={theme.blackColor}
+              >
+                <p>The DVLA and insurers need to know about any medical conditions or disabilities that may affect your ability to drive, or notifiable driving licence conditions. Some insurers require information about the condition before providing a quote. The DVLA has a list of conditions that they need to be told about: https://www.gov.uk/health-conditions-and-driving</p>
+              </ToolTipWrapper>
+            </MainWrapper>
+          </>
+        )] : null
+      }
+      {/* Have you ever had an insurance policy declined, cancelled, voided or had special terms imposed? */}
+      <MainWrapper
+        primaryColor={theme.primaryColor}
+        whiteColor={theme.whiteColor}
+        id="yd_9"
+      >
+        <ContentWrapper
+          liteBlackColor={theme.liteBlackColor}
+          borderColor={theme.liteBlackColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+          secondaryColor={theme.secondaryColor}
+        >
+          <button
+            type="button"
+            onClick={(e) => toggleClassForHover("yd_9")}
+            className="mobile_trigger"
+          >
+            <BsQuestionLg />
+          </button>
+          <div className="content-left">
+            Have you ever had an insurance policy declined, cancelled, voided or had special terms imposed?
+          </div>
+          <div className="content-right">
+            <RadioButtons
+              primaryColor={theme.primaryColor}
+              blackColor={theme.blackColor}
+              whiteColor={theme.whiteColor}
+            >
+              <input
+                onChange={handleOnchangeYourData}
+                type="radio"
+                id="insDec1"
+                name="insuranceDeclined"
+                value="Yes"
+              />
+              <label htmlFor="insDec1">yes</label>
+
+              <input
+                onChange={handleOnchangeYourData}
+                type="radio"
+                id="insDec2"
+                name="insuranceDeclined"
+                value="No"
+              />
+              <label htmlFor="insDec2">no</label>
+            </RadioButtons>
+          </div>
+        </ContentWrapper>
+        <ToolTipWrapper
+          open={openToolTip}
+          primaryColor={theme.primaryColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+        >
+          <p>Insurance providers may cancel, decline or void a policy if anyone named on the policy misrepresented or failed to disclose important facts that are required to fulfil the policy terms and conditions.</p>
+
+          <p>
+            All insurance policies have standard terms and conditions. If you’ve ever had special terms imposed, you would have been advised by the insurance provider before the policy was taken out or renewed.</p>
+        </ToolTipWrapper>
+      </MainWrapper>
 
       {/* next previous text */}
       <NextPrevWrapper
