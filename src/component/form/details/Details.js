@@ -1073,6 +1073,66 @@ export default function Details() {
         </ToolTipWrapper>
       </MainWrapper>
 
+      {/* Have you got any unspent non-motoring-related criminal convictions? */}
+      <MainWrapper
+        primaryColor={theme.primaryColor}
+        whiteColor={theme.whiteColor}
+        id="yd_10"
+      >
+        <ContentWrapper
+          liteBlackColor={theme.liteBlackColor}
+          borderColor={theme.liteBlackColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+          secondaryColor={theme.secondaryColor}
+        >
+          <button
+            type="button"
+            onClick={(e) => toggleClassForHover("yd_10")}
+            className="mobile_trigger"
+          >
+            <BsQuestionLg />
+          </button>
+          <div className="content-left">
+            Have you got any unspent non-motoring-related criminal convictions?
+          </div>
+          <div className="content-right">
+            <RadioButtons
+              primaryColor={theme.primaryColor}
+              blackColor={theme.blackColor}
+              whiteColor={theme.whiteColor}
+            >
+              <input
+                onChange={handleOnchangeYourData}
+                type="radio"
+                id="criminalConvictions1"
+                name="criminalConvictions"
+                value="Yes"
+              />
+              <label htmlFor="criminalConvictions1">yes</label>
+
+              <input
+                onChange={handleOnchangeYourData}
+                type="radio"
+                id="criminalConvictions2"
+                name="criminalConvictions"
+                value="No"
+              />
+              <label htmlFor="criminalConvictions2">no</label>
+            </RadioButtons>
+          </div>
+        </ContentWrapper>
+        <ToolTipWrapper
+          open={openToolTip}
+          primaryColor={theme.primaryColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+        >
+          <p>After a specified period of time some criminal convictions are considered 'spent' and no longer need to be disclosed to your insurer. If you have a criminal conviction, you can use UNLOCK's online tool to calculate if it is spent (www.disclosurecalculator.org.uk). Disclosure requirements can vary depending on where you live in the UK.</p>
+
+        </ToolTipWrapper>
+      </MainWrapper>
+
       {/* next previous text */}
       <NextPrevWrapper
         whiteColor={theme.whiteColor}

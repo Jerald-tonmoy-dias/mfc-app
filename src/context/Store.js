@@ -110,10 +110,10 @@ const StoreProvider = ({ children }) => {
     passedDrivingQualifications: '',
     typesOfDrivingQualifications: '',
     datesOfDrivingQualifications: '',
-
     hvMedicalConditions: '',
     DVLAknowMedicalConditions: '',
     insuranceDeclined: '',
+    criminalConvictions: '',
   });
   //employment_profession 
   const [is_professionActive, setis_professionActive] = useState(false)
