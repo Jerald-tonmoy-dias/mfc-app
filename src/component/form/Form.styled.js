@@ -221,7 +221,7 @@ export const ContentWrapper = styled.div(props => (`
     flex-wrap: wrap;
     justify-content: space-between;
     font-weight: 700;
-    border-bottom: 1px solid ${props.borderColor};
+    border-bottom: 1px solid ${props.lastItem == true ? 'transparent' : props.borderColor};
     padding: 40px 20px;
     width: 80%;
     &:hover {
@@ -371,7 +371,7 @@ export const RadioButtons = styled.div(props => (`
 }
 
 label {
-    width: calc(30% - 5px);
+    // width: calc(30% - 5px);
     text-align: center;
     display:inline-block;
     background: ${props.whiteColor};
@@ -410,11 +410,16 @@ export const NextPrevWrapper = styled.div(props => (`
     text-transform: capitalize;
     font-weight: 700;
     padding: 15px 40px;
-    border-radius: 2px;
+    border-radius: 5px;
     cursor: pointer;
     box-shadow: rgba(33,35,38,0.1) 0px 10px 10px -10px;
     margin: 0 10px 10px 0;
     border: none;
+
+    &.active {
+         background: ${props.primaryColor};
+    color:${props.whiteColor};
+    }
     &.next {
       margin-left: 20px;
     }

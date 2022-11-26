@@ -108,7 +108,6 @@ export default function Details() {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={customStyles}
-        contentLabel="Example Modal"
       >
         {/* modal header */}
         <ModalHeader
@@ -119,7 +118,7 @@ export default function Details() {
           primaryColor={theme.primaryColor}>
           <div className="header">
             <h2>Motor accident or claim</h2>
-            <button className="closeButton" onClick={closeModal}>close</button>
+            {/* <button className="closeButton" onClick={closeModal}>close</button> */}
           </div>
           <p className="header_title">Only tell us about accidents or claims from the past five years.</p>
         </ModalHeader>
@@ -206,6 +205,7 @@ export default function Details() {
         <MainWrapper
           primaryColor={theme.primaryColor}
           whiteColor={theme.whiteColor}
+
         >
           <ContentWrapper
             liteBlackColor={theme.liteBlackColor}
@@ -222,11 +222,11 @@ export default function Details() {
                 <option value="" disabled>
                   Please select...
                 </option>
-                <option value="Damaged-Amount-Known">
-                  Damaged - Amount Known
-                </option>
                 <option value="No Damage">
                   No Damage
+                </option>
+                <option value="Damaged-Amount-Known">
+                  Damaged - Amount Known
                 </option>
                 <option value="Unknown">
                   Unknown
@@ -326,6 +326,7 @@ export default function Details() {
             whiteColor={theme.whiteColor}
             blackColor={theme.blackColor}
             secondaryColor={theme.secondaryColor}
+            lastItem={true}
           >
             <div className="content-left">
               Was the no claims discount affected?
@@ -362,13 +363,13 @@ export default function Details() {
         <NextPrevWrapper
           whiteColor={theme.whiteColor}
           blackColor={theme.blackColor}
+          primaryColor={theme.primaryColor}
         >
-          <button type="button" onClick={() => { }} className="btn next">
+          <button type="button" onClick={closeModal} className="btn next active">
             cancel
           </button>
-          <button type="button" onClick={() => {
-            let oldClaimedInsurance = [];
-            oldClaimedInsurance.push(oldClaimedInsurance);
+          {/* <button type="button" onClick={() => {
+
 
             let accidentClaimedDetails = {
               id: uuid(),
@@ -378,16 +379,14 @@ export default function Details() {
               claimedAgainstInsurance: yourDetails.claimedAgainstInsurance,
               claimedDiscountAffected: yourDetails.claimedDiscountAffected,
             };
-            console.log(typeof oldClaimedInsurance);
 
-            let newDetails = oldClaimedInsurance.push(accidentClaimedDetails);
 
-            setallClaimedInsurance(newDetails);
-            console.log(newDetails);
+            setallClaimedInsurance([{ ...allClaimedInsurance }, accidentClaimedDetails]);
+            console.log(accidentClaimedDetails);
 
           }} className="btn next">
             add
-          </button>
+          </button> */}
         </NextPrevWrapper>
 
       </Modal>
