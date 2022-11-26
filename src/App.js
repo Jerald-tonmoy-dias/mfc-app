@@ -10,6 +10,7 @@ import Policy from './component/form/policy/Policy';
 import Summary from './component/form/summary/Summary';
 import Quotes from './component/form/quotes/Quotes';
 import { Wrapper } from './styles/Global.styled';
+import AdditionalDetails from './component/form/details/AdditionalDetails';
 
 function App() {
   // get context value
@@ -29,10 +30,12 @@ function App() {
       case 2:
         return <Details />;
       case 3:
-        return <Policy />;
+        return <AdditionalDetails />;
       case 4:
-        return <Summary />;
+        return <Policy />;
       case 5:
+        return <Summary />;
+      case 6:
         return <Quotes />;
       default:
         return <Vehicle />;
