@@ -58,33 +58,32 @@ const StoreProvider = ({ children }) => {
    *
    **********************************/
   // get all vehicle data
-  const [vehicleDetails, setvehicleDetails] = useState(null);//coming from api data
+  const [vehicleDetails, setvehicleDetails] = useState(null); //coming from api data
   // setVeicle data
   const [vehicleData, setVehicleData] = useState({
-    typeOfAlarm: '',//select option
-    tranckingDevice: '',//radio option
-    imported: '',//radio option
-    driveHand: '',
-    isModified: false,//not assign yet
-    modifiedCaused: '',//not assign yet
+    typeOfAlarm: "", //select option
+    tranckingDevice: "", //radio option
+    imported: "", //radio option
+    driveHand: "",
+    isModified: false, //not assign yet
+    modifiedCaused: "", //not assign yet
     leaseCarDate: new Date(),
-    usedCarFor: '',
-    businessuseFor: '',
-    whobusinessuseFor: '',//select
-    annualBusinessMileage: '',
-    annualPersonalMileage: '',
-    keepCarAtDay: '',
-    keepCarAtNight: '',
-    carKeptAtHousehold: '',
-    useAnyOtherVehicles: '',
+    usedCarFor: "",
+    businessuseFor: "",
+    whobusinessuseFor: "", //select
+    annualBusinessMileage: "",
+    annualPersonalMileage: "",
+    keepCarAtDay: "",
+    keepCarAtNight: "",
+    carKeptAtHousehold: "",
+    useAnyOtherVehicles: "",
   });
   // lease car date
   const [dontHvCar, setdontHvCar] = useState(false);
   // SDPC and Business Use
   const [sdpcBusinessUse, setsdpcBusinessUse] = useState(false);
-  // keep car at night more option 
+  // keep car at night more option
   const [kepCarNightMoreOption, setkepCarNightMoreOption] = useState(false);
-
 
   /**********************************
    *
@@ -92,30 +91,30 @@ const StoreProvider = ({ children }) => {
    *
    **********************************/
   const [yourDetails, setyourDetails] = useState({
-    yourTitle: '',
-    firstName: '',
-    lastName: '',
-    yourDateOfBirth: '',
-    relationshipStatus: '',
-    ownYourHome: '',
-    childrenUnderAgeLiveWith: '',
-    address: '',
-    town_city: '',
-    postcode: '',
-    employment_status: '',
-    employment_profession: '',
-    livedInUk: '',
-    typeOfLicence: '',
-    howLongLicenceHeld: '',
-    passedDrivingQualifications: '',
-    typesOfDrivingQualifications: '',
-    datesOfDrivingQualifications: '',
-    hvMedicalConditions: '',
-    DVLAknowMedicalConditions: '',
-    insuranceDeclined: '',
-    criminalConvictions: '',
+    yourTitle: "",
+    firstName: "",
+    lastName: "",
+    yourDateOfBirth: "",
+    relationshipStatus: "",
+    ownYourHome: "",
+    childrenUnderAgeLiveWith: "",
+    address: "",
+    town_city: "",
+    postcode: "",
+    employment_status: "",
+    employment_profession: "",
+    livedInUk: "",
+    typeOfLicence: "",
+    howLongLicenceHeld: "",
+    passedDrivingQualifications: "",
+    typesOfDrivingQualifications: "",
+    datesOfDrivingQualifications: "",
+    hvMedicalConditions: "",
+    DVLAknowMedicalConditions: "",
+    insuranceDeclined: "",
+    criminalConvictions: "",
 
-    anyClaims: '',
+    anyClaims: "",
     // incidentDes: '',//accedient theft other
     // incidentDes: '',
     // accidentFault: '',//accident prop
@@ -123,62 +122,89 @@ const StoreProvider = ({ children }) => {
     // anyInjuries: '',//accedent prop
     // typeOfTheft: '',//theft prop
     // otherClaimFor: '',//other prop
-    incidentOccur: '',
-    damageSuffered: '',//if yes
-    damagedAmount: '',// if damage was suffered selected
-    claimedAgainstInsurance: '',
-    claimedDiscountAffected: '',
-
+    incidentOccur: "",
+    damageSuffered: "", //if yes
+    damagedAmount: "", // if damage was suffered selected
+    claimedAgainstInsurance: "",
+    claimedDiscountAffected: "",
+    maxVoluntaryExcess: "",
   });
 
   const [allClaimedInsurance, setallClaimedInsurance] = useState([]);
-  //employment_profession 
-  const [is_professionActive, setis_professionActive] = useState(false)
+  //employment_profession
+  const [is_professionActive, setis_professionActive] = useState(false);
   const [isLicenceMore, setisLicenceMore] = useState(false);
   const [isLivedSinceBirth, setisLivedSinceBirth] = useState(false);
 
   /**********************************
- *
- * YOUR POLICY
- *
- **********************************/
+   *
+   * YOUR POLICY
+   *
+   **********************************/
   const [yourPolicy, setyourPolicy] = useState({
-    mainDrive: '',
-    AreYouregLegalOwner: '',
-    whoRegKeeper: '',
-    whoLegalOwner: '',
-    typeOfCover: '',
-    payForCarInsurance: '',
-    NCDHaveYear: '',
-    howEarnNCD: '',
-
+    mainDrive: "",
+    AreYouregLegalOwner: "",
+    whoRegKeeper: "",
+    whoLegalOwner: "",
+    typeOfCover: "",
+    payForCarInsurance: "",
+    NCDHaveYear: "",
+    howEarnNCD: "",
+    personalAccidentCover: "",
+    courtesyCar: "",
+    breakdownCover: "",
+    motorLegalProtection: "",
+    yourEmail: "",
+    yourTelephoneNumber: "",
+    insuranceProvidersAnswerQueries: "",
+    contactEmail: false,
+    contactPhone: false,
+    contactText: false,
+    contactPost: false,
+    doNotContact: false,
+    TermsConditions: false
   });
+
   return (
     <StoreContext.Provider
       value={{
         // global states
-        loading, setLoading,
-        navList, setnavList,
-        countSteps, setCountSteps,
-        vehicleDetails, setvehicleDetails,
-        notFound, setnotFound,
-        checkVehicle, setcheckVehicle,
+        loading,
+        setLoading,
+        navList,
+        setnavList,
+        countSteps,
+        setCountSteps,
+        vehicleDetails,
+        setvehicleDetails,
+        notFound,
+        setnotFound,
+        checkVehicle,
+        setcheckVehicle,
 
         // all vehicle data
-        vehicleData, setVehicleData,
-        dontHvCar, setdontHvCar,
-        sdpcBusinessUse, setsdpcBusinessUse,
-        kepCarNightMoreOption, setkepCarNightMoreOption,
+        vehicleData,
+        setVehicleData,
+        dontHvCar,
+        setdontHvCar,
+        sdpcBusinessUse,
+        setsdpcBusinessUse,
+        kepCarNightMoreOption,
+        setkepCarNightMoreOption,
 
         // your details
-        yourDetails, setyourDetails,
-        isLivedSinceBirth, setisLivedSinceBirth,
-        isLicenceMore, setisLicenceMore,
-        allClaimedInsurance, setallClaimedInsurance,
+        yourDetails,
+        setyourDetails,
+        isLivedSinceBirth,
+        setisLivedSinceBirth,
+        isLicenceMore,
+        setisLicenceMore,
+        allClaimedInsurance,
+        setallClaimedInsurance,
 
         // your policy
-        yourPolicy, setyourPolicy
-
+        yourPolicy,
+        setyourPolicy,
       }}
     >
       {children}

@@ -81,7 +81,7 @@ export default function Policy() {
    * 
    ******************************************/
   const nextpageFunction = () => {
-    setCountSteps(4);
+    setCountSteps(5);
   };
 
   // handle onchange function
@@ -407,6 +407,31 @@ export default function Policy() {
           </div>
           <p>
             You build NCD for each year you hold a policy in your name, without making a claim. It can only be used on one vehicle at a time and not all providers will accept NCD earned on a van or bike.
+          </p>
+        </ContentWrapper>
+      </MainWrapper>
+
+ {/* What’s the maximum voluntary excess you’d like on this policy? */}
+      <MainWrapper
+        primaryColor={theme.primaryColor}
+        whiteColor={theme.whiteColor}
+      >
+        <ContentWrapper
+          liteBlackColor={theme.liteBlackColor}
+          borderColor={theme.liteBlackColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+          secondaryColor={theme.secondaryColor}
+        >
+          <div className="content-left">
+            How many years of no claims discount (NCD) do you have?
+          </div>
+          <div className="content-right">
+            <select name="maxVoluntaryExcess" className="selectClass" onChange={handleOnchangeYourData}>
+              <option value="" disabled="">Please select...</option><option value="0">None</option><option value="50">£50</option><option value="100">£100</option><option value="150">£150</option><option value="200">£200</option><option value="250">£250</option><option value="300">£300</option><option value="350">£350</option><option value="400">£400</option><option value="450">£450</option><option value="500">£500</option><option value="600">£600</option><option value="700">£700</option><option value="800">£800</option><option value="900">£900</option><option value="1000">£1000</option></select>
+          </div>
+          <p>
+          You may find that some insurance providers quote with a lower voluntary excess than you've chosen. This will not affect the price of your policy but may save you money in the event of a claim.
           </p>
         </ContentWrapper>
       </MainWrapper>

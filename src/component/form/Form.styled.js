@@ -1,6 +1,7 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const Title = styled.h1(props => (`
+export const Title = styled.h1(
+  (props) => `
 color: ${props.color};
 // margin-top: 30px;
 font-size: 30px;
@@ -9,16 +10,57 @@ line-height: normal;
 font-weight: 700;
 
 text-transform: capitalize;
-`));
+`
+);
 
-export const MainWrapper = styled.div(props => (`
+export const MainWrapper = styled.div(
+  (props) => `
 position: relative;
 display:flex;
 align-items: flex-start;
 margin-top: 30px;
 width: 100%;
 
+.border_with_section {
+  width: 84%;
+  border-radius: 6px;
+  border: 1px solid ${props.primaryColor};
 
+  ${ContentWrapper} {
+    width: initial;
+  }
+  .make_life_simple {
+    padding: 20px;
+  }
+
+  .header-title {
+    background: ${props.primaryColor};
+    padding: 1px 12px;
+    font-weight: bold;
+    border-radius: 6px 6px 0 0;
+    color: ${props.whiteColor}
+  }
+}
+.add_product_section {
+  padding: 20px;
+  border-radius: 5px;
+  width: 80%;
+  background: ${props.liteBlackColor};
+  .para_with_icons {
+    position: relative;
+    padding-left: 40px;
+    line-height: 19px;
+    margin: 13px 0;
+    .icon {
+      position: absolute;
+      left: 0;
+      width: 24px;
+      fill: currentColor;
+      font-size: 24px;
+    }
+  }
+  }
+}
 .mobile_trigger {
     font-size: 21px;
     background: white;
@@ -61,9 +103,11 @@ width: 100%;
      display: block;
     }
   }
-`));
+`
+);
 
-export const ModalHeader = styled.div(props => (`
+export const ModalHeader = styled.div(
+  (props) => `
  .header {
   width: 80%;
   display:flex;
@@ -83,9 +127,11 @@ export const ModalHeader = styled.div(props => (`
     cursor: pointer;
 
  }
-`));
+`
+);
 
-export const RegisterCarWrapper = styled.div(props => (`
+export const RegisterCarWrapper = styled.div(
+  (props) => `
     padding: 30px;
     border-radius: 2px;
     width: 80%;
@@ -145,15 +191,19 @@ export const RegisterCarWrapper = styled.div(props => (`
         }
     }
   }
-`));
+`
+);
 
-export const SVGElement = styled.div(props => (`
+export const SVGElement = styled.div(
+  (props) => `
     font-size: 20px;
     color: ${props.primaryColor};
    
-`));
+`
+);
 
-export const ToolTipWrapper = styled.div(props => (`
+export const ToolTipWrapper = styled.div(
+  (props) => `
     position: absolute;
     top: 0;
     right: -91px;
@@ -214,16 +264,27 @@ export const ToolTipWrapper = styled.div(props => (`
   }
 
 
-`));
+`
+);
 
-export const ContentWrapper = styled.div(props => (`
+export const ContentWrapper = styled.div(
+  (props) => `
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     font-weight: 700;
-    border-bottom: 1px solid ${props.lastItem == true ? 'transparent' : props.borderColor};
+    border-bottom: 1px solid ${
+      props.lastItem == true ? "transparent" : props.borderColor
+    };
     padding: 40px 20px;
     width: 80%;
+
+    .has_bg {
+      background: ${props.whiteColor};
+      box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+      padding: 10px 20px;
+       border-radius: 8px;
+      }
     &:hover {
       // background: ${props.secondaryColor};
       background: #00000026;
@@ -244,12 +305,6 @@ export const ContentWrapper = styled.div(props => (`
      @media (max-width: 991px) {
       width: 100%;
       margin-top: 30px;
-    }
-    .has_bg {
-    background: ${props.whiteColor};
-    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
-    padding: 10px 20px;
-     border-radius: 8px;
     }
 
     .car_checkbox_wrapper {
@@ -363,9 +418,11 @@ export const ContentWrapper = styled.div(props => (`
   }
 }
 
-`));
+`
+);
 
-export const RadioButtons = styled.div(props => (`
+export const RadioButtons = styled.div(
+  (props) => `
  input[type="radio"] {
   display: none;
 }
@@ -382,7 +439,7 @@ label {
     padding: 15px 40px;
     border-radius: 5px;
     cursor: pointer;
-   box-shadow: rgb(33 35 38 / 10%) 0px 1px 20px 0px;
+    box-shadow: rgb(33 35 38 / 10%) 0px 1px 20px 0px;
     margin: 0 10px 10px 0 ;
 
     &.lg-label {
@@ -400,9 +457,11 @@ input[type="radio"]:checked+label {
  color: ${props.whiteColor}
 }
 
-`));
+`
+);
 
-export const NextPrevWrapper = styled.div(props => (`
+export const NextPrevWrapper = styled.div(
+  (props) => `
   width: 80%;
   display: flex;
   justify-self: end;
@@ -434,9 +493,11 @@ export const NextPrevWrapper = styled.div(props => (`
     }
     // float: right;
   }
-`));
+`
+);
 
-export const ValidationAlert = styled.div(props => (`
+export const ValidationAlert = styled.div(
+  (props) => `
     width: 80%;
     background: ${props.whiteColor};
     box-shadow: rgba(33, 35, 38, 0.1) 0px 0px 10px 2px;
@@ -465,4 +526,56 @@ export const ValidationAlert = styled.div(props => (`
       font-weight: 400;
     }
 
-    }`));
+    }`
+);
+
+export const CheckBoxElement = styled.div(
+  (props) => `
+  input[type="checkbox"] {
+    display: none;
+  }
+  
+  label {
+      height: 100px;
+      width: 70px;
+      text-align: center;
+      display:inline-block;
+      background: ${props.whiteColor};
+      color: ${props.blackColor};
+      text-transform: capitalize;
+      max-width:    380px;
+      font-weight: 700;
+      padding: 15px 40px;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: rgb(33 35 38 / 10%) 0px 1px 20px 0px;
+      margin: 0 10px 10px 0 ;
+      position: relative;
+  
+      &.lg-label {
+      text-align: justify;
+      font-weight: 400;
+        h4 {
+          margin: 0;
+           font-weight: 700;
+        }
+      }
+
+      .content_wrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+
+        .icon {
+          font-size: 55px
+        }
+      }
+  }
+  
+  input[type="checkbox"]:checked+label {
+   background: ${props.primaryColor};
+   color: ${props.whiteColor}
+  }
+    `
+);
