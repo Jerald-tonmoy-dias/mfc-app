@@ -21,10 +21,87 @@ align-items: flex-start;
 margin-top: 30px;
 width: 100%;
 
+.AssumptionsMade {
+  width: 84%;
+  position: relative;
+  li{
+    line-height: 2;
+  }
+}
+
+.terms_conditions_section {
+  padding-right: 100px;
+  position: relative;
+}
+
+p {
+  font-weight: 400;
+}
+
+.termsCondInputWrapper {
+position: absolute;
+right: 66px;
+top: 50%;
+transform: translateY(-50%);
+width: 30px;
+border-left: 2px solid #FF6600;
+
+.form-group {
+  display: block;
+  margin-bottom: 15px;
+  margin-left: 50px;
+}
+
+.form-group input {
+  padding: 0;
+  height: initial;
+  width: initial;
+  margin-bottom: 0;
+  display: none;
+  cursor: pointer;
+}
+
+.form-group label {
+  position: relative;
+  cursor: pointer;
+}
+
+.form-group label:before {
+  content:'';
+  -webkit-appearance: none;
+  border: 2px solid #FF6600;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+  padding: 15px;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+.form-group input:checked + label:before {
+  background: #FF6600;
+}
+.form-group input:checked + label:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 3px;
+  left: 14px;
+  width: 6px;
+  height: 14px;
+  border: solid #FFF;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  
+}
+
+}
 .border_with_section {
   width: 84%;
   border-radius: 6px;
   border: 1px solid ${props.primaryColor};
+  margin-bottom:30px;
 
   ${ContentWrapper} {
     width: initial;
@@ -285,9 +362,9 @@ export const ContentWrapper = styled.div(
       padding: 10px 20px;
        border-radius: 8px;
       }
+
     &:hover {
-      // background: ${props.secondaryColor};
-      background: #00000026;
+      background: ${props.hoveNone ==true ? 'transparent' : '#00000026'} ;
       border-radius: 5px;
     }
     .content-left {
@@ -462,7 +539,7 @@ input[type="radio"]:checked+label {
 
 export const NextPrevWrapper = styled.div(
   (props) => `
-  width: 80%;
+  width: 84%;
   display: flex;
   justify-self: end;
   justify-content: flex-end;
