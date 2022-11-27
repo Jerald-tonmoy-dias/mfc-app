@@ -6,8 +6,7 @@ import axios from "axios";
 import {
   RegisterCarWrapper,
   Title,
-  SVGElement,
-  ToolTipWrapper,
+  ValidationAlert,
   MainWrapper,
   ContentWrapper,
   RadioButtons,
@@ -27,23 +26,8 @@ export default function AdditionalProductAndFea() {
    ******************************************/
   const theme = useContext(ThemeContext);
   let {
-    loading,
-    setLoading,
     vehicleDetails,
-    countSteps,
     setCountSteps,
-    setvehicleDetails,
-    setcheckVehicle,
-    navList,
-    setnavList,
-    yourDetails,
-    setyourDetails,
-    isLivedSinceBirth,
-    setisLivedSinceBirth,
-    isLicenceMore,
-    setisLicenceMore,
-    allClaimedInsurance,
-    setallClaimedInsurance,
     yourPolicy,
     setyourPolicy,
   } = useContext(StoreContext);
@@ -56,26 +40,12 @@ export default function AdditionalProductAndFea() {
    *
    ******************************************/
   let { VehicleRegistration } = vehicleDetails;
-  const [openToolTip, setopenToolTip] = useState(false);
-  // modal var and states
-  const [modalIsOpen, setIsOpen] = useState(false);
+  // valiation text
+  const [validationText, setvalidationText] = useState(
+    "Please answer this question in order to proceed."
+  );
+  const [valudationError, setvaludationError] = useState(false);
 
-  const customStyles = {
-    content: {
-      backgroundColor: theme.grayColor,
-      width: "50%",
-      overflow: "scroll",
-      height: "calc(100 % - 130px)",
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-      display: "block",
-      zIndex: "99999",
-    },
-  };
 
   /******************************************
    *
@@ -84,8 +54,22 @@ export default function AdditionalProductAndFea() {
    *
    *
    ******************************************/
+
   const nextpageFunction = () => {
-    setCountSteps(6);
+    if (
+      yourPolicy.courtesyCar == "" ||
+      yourPolicy.breakdownCover == "" ||
+      yourPolicy.motorLegalProtection == "" ||
+      yourPolicy.personalAccidentCover == ""
+
+    ) {
+      // fill up the info to go forward
+      setvaludationError(true);
+    } else {
+      // go to next step
+      setvaludationError(false);
+      setCountSteps(6);
+    }
   };
 
   // handle onchange function
@@ -93,21 +77,60 @@ export default function AdditionalProductAndFea() {
     setyourPolicy({ ...yourPolicy, [e.target.name]: e.target.value });
   };
 
-  // modal
-  function openModal() {
-    setIsOpen(true);
-  }
 
-  function closeModal() {
-    setIsOpen(false);
-  }
 
   return (
     <div>
       <Navbar navItem={3} navpassed={false} />
       <Title color={theme.blackColor}>Additional products and features</Title>
 
-{/*  */}
+      {/* show validation error*/}
+      {valudationError === true
+        ? [
+          <MainWrapper>
+            <ValidationAlert
+              primaryColor={theme.primaryColor}
+              whiteColor={theme.whiteColor}
+              blackColor={theme.blackColor}
+            >
+              <h4>Oops! We have a problem</h4>
+
+              {yourPolicy.personalAccidentCover == "" ? (
+                <h5>
+                  {" "}
+                  Personal accident cover:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+
+              {yourPolicy.courtesyCar == "" ? (
+                <h5>
+                  {" "}
+                  Courtesy car:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+              {yourPolicy.breakdownCover == "" ? (
+                <h5>
+                  {" "}
+                  Breakdown cover:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+              {yourPolicy.motorLegalProtection == "" ? (
+                <h5>
+                  {" "}
+                  Motor legal protection:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+
+            </ValidationAlert>
+          </MainWrapper>,
+        ]
+        : null}
+
+      {/*  */}
       <MainWrapper liteBlackColor={theme.liteBlackColor}>
         <div className="add_product_section">
           <p>
@@ -326,11 +349,11 @@ export default function AdditionalProductAndFea() {
             </RadioButtons>
           </div>
           <p>
-          Provides cover to claim compensation for uninsured losses in a non-fault accident. This may include personal injury, excess recovery and loss of earnings
+            Provides cover to claim compensation for uninsured losses in a non-fault accident. This may include personal injury, excess recovery and loss of earnings
           </p>
 
           <p>
-          If you have an accident that wasn’t your fault, an insurer can act on your behalf to try and claim compensation for any uninsured losses that you may have suffered. These may include personal injury, excess recovery and loss of earnings. MLP should cover the cost of your legal expenses in pursuit of compensation if there is a reasonable prospect of success against the third party. MLP is available at an additional cost and cover can vary between providers. As a minimum £50,000 cover is provided for uninsured losses.
+            If you have an accident that wasn’t your fault, an insurer can act on your behalf to try and claim compensation for any uninsured losses that you may have suffered. These may include personal injury, excess recovery and loss of earnings. MLP should cover the cost of your legal expenses in pursuit of compensation if there is a reasonable prospect of success against the third party. MLP is available at an additional cost and cover can vary between providers. As a minimum £50,000 cover is provided for uninsured losses.
           </p>
         </ContentWrapper>
       </MainWrapper>

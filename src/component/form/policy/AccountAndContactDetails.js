@@ -476,13 +476,13 @@ export default function AccountAndContactDetails() {
             <div className="termsCondInputWrapper">
               <div class="form-group">
                 <input
-                    onChange={(e) => {
-                      setyourPolicy({
-                        ...yourPolicy,
-                        [e.target.name]: !yourPolicy.TermsConditions,
-                   
-                      });
-                    }}
+                  onChange={(e) => {
+                    setyourPolicy({
+                      ...yourPolicy,
+                      [e.target.name]: !yourPolicy.TermsConditions,
+
+                    });
+                  }}
                   id="fortermsCondInput"
                   type="checkbox"
                   name="TermsConditions"

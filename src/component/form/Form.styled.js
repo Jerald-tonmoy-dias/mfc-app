@@ -21,6 +21,9 @@ align-items: flex-start;
 margin-top: 20px;
 width: 100%;
 
+.pdf_summary_wrapper {
+  background: #FFF;
+}
 .summary_wrapper {
   display: flex;
   flex-direction: row;
@@ -377,8 +380,7 @@ export const ContentWrapper = styled.div(
     flex-wrap: wrap;
     justify-content: space-between;
     font-weight: 700;
-    border-bottom: 1px solid ${
-      props.lastItem == true ? "transparent" : props.borderColor
+    border-bottom: 1px solid ${props.lastItem == true ? "transparent" : props.borderColor
     };
     padding: 20px;
     width: 80%;
@@ -395,7 +397,7 @@ export const ContentWrapper = styled.div(
       }
 
     &:hover {
-      background: ${props.hoveNone ==true ? 'transparent' : '#00000026'} ;
+      background: ${props.hoveNone == true ? 'transparent' : '#00000026'} ;
       border-radius: 5px;
     }
     .content-left {

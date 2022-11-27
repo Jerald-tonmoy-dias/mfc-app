@@ -51,7 +51,7 @@ export const List = styled.li(props => (
 ));
 
 export const Anchor = styled.a(props => (`
-    padding: 15px 28px 13px 12px;
+     padding: 25px 20px 25px 20px;
     font-size: 17.5px;
     line-height: 1.1;
     font-weight: bold;

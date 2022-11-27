@@ -67,7 +67,7 @@ export default function Summary() {
       <Title color={theme.blackColor}>Summary of key details</Title>
 
       <MainWrapper ref={ref} liteBlackColor={theme.liteBlackColor}>
-        <div className="add_product_section">
+        <div className="add_product_section pdf_summary_wrapper">
           <p>
             Before we get your quotes, we've summarised the key details that you
             have told us, please check these are correct to ensure they meet
@@ -75,8 +75,8 @@ export default function Summary() {
           </p>
 
           <hr />
-      
-          <div  className="summary_wrapper">
+
+          <div className="summary_wrapper">
             <div className="left-side">
               <div className="single_summary">
                 <h3>Vehicle details and usage</h3>
@@ -84,15 +84,14 @@ export default function Summary() {
                   Vehicle:{" "}
                   <strong>
                     {`${VehicleRegistration.YearMonthFirstRegistered} ${VehicleRegistration.MakeModel} ${VehicleRegistration.Vrm} ${VehicleRegistration.EngineCapacity} ${VehicleRegistration.FuelType},`}
-                    {} VOLKSWAGEN SHARAN SEL BLUEMOTION TECH TDI (170), 1968cc
+                    { } VOLKSWAGEN SHARAN SEL BLUEMOTION TECH TDI (170), 1968cc
                     Diesel, 5DR, Automatic (KM12AKK)
                   </strong>
                 </p>
                 <p>
                   Exported:{" "}
-                  <strong>{`${
-                    VehicleRegistration.Exported == true ? "Yes" : "No"
-                  }`}</strong>
+                  <strong>{`${VehicleRegistration.Exported == true ? "Yes" : "No"
+                    }`}</strong>
                 </p>
                 <p>
                   Imported: <strong>{vehicleData.imported}</strong>
@@ -155,12 +154,12 @@ export default function Summary() {
                   <strong>{yourDetails.typeOfLicence}</strong>
                 </p>
                 <p>
-                Claims: <strong>{yourDetails.anyClaims}</strong>
+                  Claims: <strong>{yourDetails.anyClaims}</strong>
                 </p>
               </div>
             </div>
           </div>
-     
+
         </div>
       </MainWrapper>
 
@@ -172,8 +171,8 @@ export default function Summary() {
           get quote
         </button> */}
         <Pdf targetRef={ref} filename="code-example.pdf">
-        {({ toPdf }) => <button className="btn next" onClick={toPdf}> get quote</button>}
-      </Pdf>
+          {({ toPdf }) => <button className="btn next" onClick={toPdf}> get quote</button>}
+        </Pdf>
       </NextPrevWrapper>
     </div>
   );

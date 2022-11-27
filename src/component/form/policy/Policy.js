@@ -26,7 +26,7 @@ export default function Policy() {
   const theme = useContext(ThemeContext);
   let {
     yourDetails, setyourDetails,
-    vehicleDetails,setCountSteps,
+    vehicleDetails, setCountSteps,
     yourPolicy, setyourPolicy
   } = useContext(StoreContext);
 
@@ -38,8 +38,8 @@ export default function Policy() {
  * 
  ******************************************/
   let { VehicleRegistration } = vehicleDetails;
-   // valiation text
-   const [validationText, setvalidationText] = useState(
+  // valiation text
+  const [validationText, setvalidationText] = useState(
     "Please answer this question in order to proceed."
   );
   const [valudationError, setvaludationError] = useState(false);
@@ -57,7 +57,7 @@ export default function Policy() {
       yourPolicy.AreYouregLegalOwner == "" ||
       yourPolicy.typeOfCover == "" ||
       yourPolicy.payForCarInsurance == "" ||
-      yourPolicy.NCDHaveYear == "" 
+      yourPolicy.NCDHaveYear == ""
     ) {
       // fill up the info to go forward
       setvaludationError(true);
@@ -77,55 +77,55 @@ export default function Policy() {
       <Navbar navItem={3} navpassed={false} />
       <Title color={theme.blackColor}>Policy Details</Title>
 
-         {/* show validation error*/}
-     {valudationError === true
+      {/* show validation error*/}
+      {valudationError === true
         ? [
-            <MainWrapper>
-              <ValidationAlert
-                primaryColor={theme.primaryColor}
-                whiteColor={theme.whiteColor}
-                blackColor={theme.blackColor}
-              >
-                <h4>Oops! We have a problem</h4>
+          <MainWrapper>
+            <ValidationAlert
+              primaryColor={theme.primaryColor}
+              whiteColor={theme.whiteColor}
+              blackColor={theme.blackColor}
+            >
+              <h4>Oops! We have a problem</h4>
 
-                { yourPolicy.mainDrive == ""? (
-                  <h5>
-                    {" "}
-                    Who is the main driver of this vehicle?:
-                    <span className="text-light">{validationText}</span>
-                  </h5>
-                ) : null}
-                { yourPolicy.AreYouregLegalOwner == ""? (
-                  <h5>
-                    {" "}
-                    Are you (or will you be) the registered keeper and legal owner?:
-                    <span className="text-light">{validationText}</span>
-                  </h5>
-                ) : null}
-                { yourPolicy.typeOfCover == ""? (
-                  <h5>
-                    {" "}
-                    What type of cover are you looking for?:
-                    <span className="text-light">{validationText}</span>
-                  </h5>
-                ) : null}
-                { yourPolicy.payForCarInsurance == ""? (
-                  <h5>
-                    {" "}
-                    How do you want to pay for your car insurance?:
-                    <span className="text-light">{validationText}</span>
-                  </h5>
-                ) : null}
-                { yourPolicy.NCDHaveYear == ""? (
-                  <h5>
-                    {" "}
-                    How many years of no claims discount (NCD) do you have?:
-                    <span className="text-light">{validationText}</span>
-                  </h5>
-                ) : null}
-              </ValidationAlert>
-            </MainWrapper>,
-          ]
+              {yourPolicy.mainDrive == "" ? (
+                <h5>
+                  {" "}
+                  Who is the main driver of this vehicle?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+              {yourPolicy.AreYouregLegalOwner == "" ? (
+                <h5>
+                  {" "}
+                  Are you (or will you be) the registered keeper and legal owner?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+              {yourPolicy.typeOfCover == "" ? (
+                <h5>
+                  {" "}
+                  What type of cover are you looking for?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+              {yourPolicy.payForCarInsurance == "" ? (
+                <h5>
+                  {" "}
+                  How do you want to pay for your car insurance?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+              {yourPolicy.NCDHaveYear == "" ? (
+                <h5>
+                  {" "}
+                  How many years of no claims discount (NCD) do you have?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+            </ValidationAlert>
+          </MainWrapper>,
+        ]
         : null}
 
       {/* Who is the main driver of this vehicle? */}
@@ -435,7 +435,7 @@ export default function Policy() {
         </ContentWrapper>
       </MainWrapper>
 
- {/* What’s the maximum voluntary excess you’d like on this policy? */}
+      {/* What’s the maximum voluntary excess you’d like on this policy? */}
       <MainWrapper
         primaryColor={theme.primaryColor}
         whiteColor={theme.whiteColor}
@@ -455,7 +455,7 @@ export default function Policy() {
               <option value="" disabled="">Please select...</option><option value="0">None</option><option value="50">£50</option><option value="100">£100</option><option value="150">£150</option><option value="200">£200</option><option value="250">£250</option><option value="300">£300</option><option value="350">£350</option><option value="400">£400</option><option value="450">£450</option><option value="500">£500</option><option value="600">£600</option><option value="700">£700</option><option value="800">£800</option><option value="900">£900</option><option value="1000">£1000</option></select>
           </div>
           <p>
-          You may find that some insurance providers quote with a lower voluntary excess than you've chosen. This will not affect the price of your policy but may save you money in the event of a claim.
+            You may find that some insurance providers quote with a lower voluntary excess than you've chosen. This will not affect the price of your policy but may save you money in the event of a claim.
           </p>
         </ContentWrapper>
       </MainWrapper>

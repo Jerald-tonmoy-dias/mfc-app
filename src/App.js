@@ -37,9 +37,9 @@ function App() {
       case 4:
         return <Policy />;
       case 5:
-        return <AdditionalProductAndFea/>;
+        return <AdditionalProductAndFea />;
       case 6:
-        return <AccountAndContactDetails/>;
+        return <AccountAndContactDetails />;
       case 7:
         return <Summary />;
       case 8:
@@ -51,7 +51,7 @@ function App() {
 
   return (
     <Wrapper>
-      <Header/>
+      <Header />
       {checkVehicle == false ? <CheckVehicle /> : [
         displayComponent()
       ]}

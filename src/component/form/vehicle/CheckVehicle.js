@@ -13,7 +13,7 @@ import { BASE_URL } from "../../../BaseUrl";
 import { StoreContext } from "../../../context/Store";
 import NotFoundVehicle from "./NotFoundVehicle";
 import { BsFillPencilFill, BsQuestionLg } from "react-icons/bs";
-import { IoMdClose} from "react-icons/io";
+import { IoMdClose } from "react-icons/io";
 import Navbar from "../../navbar/Navbar";
 import Honesty from "../../static/Honesty";
 
@@ -64,12 +64,12 @@ export default function CheckVehicle() {
 
   return (
     <div>
-        <Navbar navItem={1} navpassed={false}/>
-        <Title color={theme.blackColor}>vehicle details</Title>
-          {notFound === false ? (
+      <Navbar navItem={1} navpassed={false} />
+      <Title color={theme.blackColor}>vehicle details</Title>
+      {notFound === false ? (
         [
           <form onSubmit={(e) => getVehicleInfoFunction(e, modelNo)}>
-            <MainWrapper className={openToolTip== true ? 'active' : ''}>
+            <MainWrapper className={openToolTip == true ? 'active' : ''}>
               <RegisterCarWrapper
                 whiteColor={theme.whiteColor}
                 primaryColor={theme.primaryColor}
@@ -77,11 +77,11 @@ export default function CheckVehicle() {
                 liteBlackColor={theme.liteBlackColor}
               >
                 <button
-                type="button"
-                  onClick={(e) => setopenToolTip(prevOpen=>!prevOpen)}
+                  type="button"
+                  onClick={(e) => setopenToolTip(prevOpen => !prevOpen)}
                   className="mobile_trigger"
                 >
-                   <span className="trigger-icon"> {openToolTip == true ? <IoMdClose/> :   <BsQuestionLg />}</span>
+                  <span className="trigger-icon"> {openToolTip == true ? <IoMdClose /> : <BsQuestionLg />}</span>
                 </button>
 
                 <label htmlFor="">What's your car's registration?</label>
@@ -137,7 +137,7 @@ export default function CheckVehicle() {
       ) : (
         <NotFoundVehicle />
       )}
-      <Honesty/>
+      <Honesty />
     </div>
   );
 }

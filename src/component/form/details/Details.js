@@ -85,14 +85,14 @@ export default function Details() {
       yourDetails.town_city == "" ||
       yourDetails.postcode == "" ||
       yourDetails.employment_status == "" ||
-      yourDetails.livedInUk ==""||
-      yourDetails.typeOfLicence ==""||
-      yourDetails.howLongLicenceHeld ==""||
-      yourDetails.passedDrivingQualifications ==""||
-      yourDetails.hvMedicalConditions ==""||
-      yourDetails.insuranceDeclined ==""||
-      yourDetails.criminalConvictions ==""||
-      yourDetails.anyClaims ==""
+      yourDetails.livedInUk == "" ||
+      yourDetails.typeOfLicence == "" ||
+      yourDetails.howLongLicenceHeld == "" ||
+      yourDetails.passedDrivingQualifications == "" ||
+      yourDetails.hvMedicalConditions == "" ||
+      yourDetails.insuranceDeclined == "" ||
+      yourDetails.criminalConvictions == "" ||
+      yourDetails.anyClaims == ""
     ) {
       // fill up the info to go forward
       setvaludationError(true);
@@ -412,160 +412,160 @@ export default function Details() {
       <Navbar navItem={2} navpassed={false} />
       <Title color={theme.blackColor}>Personal details</Title>
 
-     {/* show validation error*/}
-     {valudationError === true
+      {/* show validation error*/}
+      {valudationError === true
         ? [
-            <MainWrapper>
-              <ValidationAlert
-                primaryColor={theme.primaryColor}
-                whiteColor={theme.whiteColor}
-                blackColor={theme.blackColor}
-              >
-                <h4>Oops! We have a problem</h4>
+          <MainWrapper>
+            <ValidationAlert
+              primaryColor={theme.primaryColor}
+              whiteColor={theme.whiteColor}
+              blackColor={theme.blackColor}
+            >
+              <h4>Oops! We have a problem</h4>
 
-                {  yourDetails.yourTitle == "" ? (
-                  <h5>
-                    {" "}
-                    What is your title?:
-                    <span className="text-light">{validationText}</span>
-                  </h5>
-                ) : null}
-                {  yourDetails.firstName == "" ? (
-                  <h5>
-                    {" "}
-                    First name?:
-                    <span className="text-light">{validationText}</span>
-                  </h5>
-                ) : null}
-                {  yourDetails.lastName == "" ? (
-                  <h5>
-                    {" "}
-                    Last name?:
-                    <span className="text-light">{validationText}</span>
-                  </h5>
-                ) : null}
-                {  yourDetails.lastName == "" ? (
-                  <h5>
-                    {" "}
-                    Last name?:
-                    <span className="text-light">{validationText}</span>
-                  </h5>
-                ) : null}
-                {  yourDetails.yourDateOfBirth == "" ? (
-                  <h5>
-                    {" "}
-                    What is your date of birth?:
-                    <span className="text-light">{validationText}</span>
-                  </h5>
-                ) : null}
-                {  yourDetails.relationshipStatus == "" ? (
-                  <h5>
-                    {" "}
-                    Your relationship status?:
-                    <span className="text-light">{validationText}</span>
-                  </h5>
-                ) : null}
-                {  yourDetails.ownYourHome == "" ? (
-                  <h5>
-                    {" "}
-                    Do you own your home?:
-                    <span className="text-light">{validationText}</span>
-                  </h5>
-                ) : null}
-                {  yourDetails.childrenUnderAgeLiveWith == "" ? (
-                  <h5>
-                    {" "}
-                    Do any children under the age of 16 live with you?:
-                    <span className="text-light">{validationText}</span>
-                  </h5>
-                ) : null}
-                {  yourDetails.address == "" ? (
-                  <h5>
-                    {" "}
-                    Address Line?:
-                    <span className="text-light">{validationText}</span>
-                  </h5>
-                ) : null}
-                {  yourDetails.town_city == "" ? (
-                  <h5>
-                    {" "}
-                    Town / City:
-                    <span className="text-light">{validationText}</span>
-                  </h5>
-                ) : null}
-                {  yourDetails.postcode == "" ? (
-                  <h5>
-                    {" "}
-                    What is the postcode?:
-                    <span className="text-light">{validationText}</span>
-                  </h5>
-                ) : null}
-                {  yourDetails.employment_status == "" ? (
-                  <h5>
-                    {" "}
-                    What is your employment status?:
-                    <span className="text-light">{validationText}</span>
-                  </h5>
-                ) : null}
-                {  yourDetails.livedInUk == "" ? (
-                  <h5>
-                    {" "}
-                    How long have you continuously lived in the UK?:
-                    <span className="text-light">{validationText}</span>
-                  </h5>
-                ) : null}
-                {  yourDetails.typeOfLicence == "" ? (
-                  <h5>
-                    {" "}
-                    What type of driving licence do you have?:
-                    <span className="text-light">{validationText}</span>
-                  </h5>
-                ) : null}
-                {  yourDetails.howLongLicenceHeld == "" ? (
-                  <h5>
-                    {" "}
-                    How long have you held this licence?:
-                    <span className="text-light">{validationText}</span>
-                  </h5>
-                ) : null}
-                {  yourDetails.passedDrivingQualifications == "" ? (
-                  <h5>
-                    {" "}
-                    Have you passed any additional driving qualifications?:
-                    <span className="text-light">{validationText}</span>
-                  </h5>
-                ) : null}
-                {  yourDetails.hvMedicalConditions == "" ? (
-                  <h5>
-                    {" "}
-                    Do you have any medical conditions or disabilities that are DVLA reportable?:
-                    <span className="text-light">{validationText}</span>
-                  </h5>
-                ) : null}
-                {  yourDetails.insuranceDeclined == "" ? (
-                  <h5>
-                    {" "}
-                    Have you ever had an insurance policy declined, cancelled, voided or had special terms imposed?:
-                    <span className="text-light">{validationText}</span>
-                  </h5>
-                ) : null}
-                {  yourDetails.criminalConvictions == "" ? (
-                  <h5>
-                    {" "}
-                    Have you got any unspent non-motoring-related criminal convictions?:
-                    <span className="text-light">{validationText}</span>
-                  </h5>
-                ) : null}
-                {  yourDetails.anyClaims == "" ? (
-                  <h5>
-                    {" "}
-                    Have you had any motor accidents, claims or losses in the past 5 years, no matter who was at fault or if a claim was made?:
-                    <span className="text-light">{validationText}</span>
-                  </h5>
-                ) : null}
-              </ValidationAlert>
-            </MainWrapper>,
-          ]
+              {yourDetails.yourTitle == "" ? (
+                <h5>
+                  {" "}
+                  What is your title?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+              {yourDetails.firstName == "" ? (
+                <h5>
+                  {" "}
+                  First name?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+              {yourDetails.lastName == "" ? (
+                <h5>
+                  {" "}
+                  Last name?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+              {yourDetails.lastName == "" ? (
+                <h5>
+                  {" "}
+                  Last name?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+              {yourDetails.yourDateOfBirth == "" ? (
+                <h5>
+                  {" "}
+                  What is your date of birth?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+              {yourDetails.relationshipStatus == "" ? (
+                <h5>
+                  {" "}
+                  Your relationship status?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+              {yourDetails.ownYourHome == "" ? (
+                <h5>
+                  {" "}
+                  Do you own your home?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+              {yourDetails.childrenUnderAgeLiveWith == "" ? (
+                <h5>
+                  {" "}
+                  Do any children under the age of 16 live with you?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+              {yourDetails.address == "" ? (
+                <h5>
+                  {" "}
+                  Address Line?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+              {yourDetails.town_city == "" ? (
+                <h5>
+                  {" "}
+                  Town / City:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+              {yourDetails.postcode == "" ? (
+                <h5>
+                  {" "}
+                  What is the postcode?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+              {yourDetails.employment_status == "" ? (
+                <h5>
+                  {" "}
+                  What is your employment status?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+              {yourDetails.livedInUk == "" ? (
+                <h5>
+                  {" "}
+                  How long have you continuously lived in the UK?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+              {yourDetails.typeOfLicence == "" ? (
+                <h5>
+                  {" "}
+                  What type of driving licence do you have?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+              {yourDetails.howLongLicenceHeld == "" ? (
+                <h5>
+                  {" "}
+                  How long have you held this licence?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+              {yourDetails.passedDrivingQualifications == "" ? (
+                <h5>
+                  {" "}
+                  Have you passed any additional driving qualifications?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+              {yourDetails.hvMedicalConditions == "" ? (
+                <h5>
+                  {" "}
+                  Do you have any medical conditions or disabilities that are DVLA reportable?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+              {yourDetails.insuranceDeclined == "" ? (
+                <h5>
+                  {" "}
+                  Have you ever had an insurance policy declined, cancelled, voided or had special terms imposed?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+              {yourDetails.criminalConvictions == "" ? (
+                <h5>
+                  {" "}
+                  Have you got any unspent non-motoring-related criminal convictions?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+              {yourDetails.anyClaims == "" ? (
+                <h5>
+                  {" "}
+                  Have you had any motor accidents, claims or losses in the past 5 years, no matter who was at fault or if a claim was made?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+            </ValidationAlert>
+          </MainWrapper>,
+        ]
         : null}
       {/* What is your title? */}
       <MainWrapper
