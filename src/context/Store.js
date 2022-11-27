@@ -115,13 +115,6 @@ const StoreProvider = ({ children }) => {
     criminalConvictions: "",
 
     anyClaims: "",
-    // incidentDes: '',//accedient theft other
-    // incidentDes: '',
-    // accidentFault: '',//accident prop
-    // accidentwhoDriving: '',//accedent prop
-    // anyInjuries: '',//accedent prop
-    // typeOfTheft: '',//theft prop
-    // otherClaimFor: '',//other prop
     incidentOccur: "",
     damageSuffered: "", //if yes
     damagedAmount: "", // if damage was suffered selected

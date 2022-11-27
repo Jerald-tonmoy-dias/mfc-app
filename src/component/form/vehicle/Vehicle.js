@@ -84,7 +84,7 @@ export default function Vehicle() {
       vehicleData.driveHand == "" ||
       vehicleData.leaseCarDate == "" ||
       vehicleData.usedCarFor == "" ||
-      vehicleData.whobusinessuseFor == "" ||
+      // vehicleData.whobusinessuseFor == "" ||
       vehicleData.annualPersonalMileage == "" ||
       vehicleData.keepCarAtDay == "" ||
       vehicleData.keepCarAtNight == "" ||

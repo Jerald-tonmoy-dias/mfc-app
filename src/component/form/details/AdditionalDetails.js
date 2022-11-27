@@ -1,25 +1,14 @@
 import React, { useContext, useState, useEffect } from "react";
 import { ThemeContext } from "styled-components";
-import Modal from 'react-modal';
-import uuid from 'react-uuid';
-
 
 import {
-  RegisterCarWrapper,
   Title,
-  SVGElement,
-  ToolTipWrapper,
-  MainWrapper,
   ContentWrapper,
-  RadioButtons,
   NextPrevWrapper,
-  ModalHeader,
+  MainWrapper,
 } from "../Form.styled";
-import { BASE_URL } from "../../../BaseUrl";
 import { StoreContext } from "../../../context/Store";
-import { BsPencil, BsQuestionLg, BsSearch } from "react-icons/bs";
 import Navbar from "../../navbar/Navbar";
-import { toggleClassForHover } from "../../../helper/helper";
 
 export default function AdditionalDetails() {
   /******************************************
@@ -29,19 +18,9 @@ export default function AdditionalDetails() {
    ******************************************/
   const theme = useContext(ThemeContext);
   let {
-    loading,
-    setLoading,
     vehicleDetails,
-    countSteps,
-    setCountSteps,
-    setvehicleDetails,
-    setcheckVehicle,
-    navList,
-    setnavList,
     yourDetails, setyourDetails,
-    isLivedSinceBirth, setisLivedSinceBirth,
-    isLicenceMore, setisLicenceMore,
-    allClaimedInsurance, setallClaimedInsurance
+    setCountSteps
   } = useContext(StoreContext);
 
   /******************************************
@@ -52,27 +31,7 @@ export default function AdditionalDetails() {
  * 
  ******************************************/
   let { VehicleRegistration } = vehicleDetails;
-  const [openToolTip, setopenToolTip] = useState(false);
-  // modal var and states
-  const [modalIsOpen, setIsOpen] = useState(false);
 
-  const customStyles = {
-    content: {
-      backgroundColor: theme.grayColor,
-      width: '50%',
-      overflow: 'scroll',
-      height: 'calc(100 % - 130px)',
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-      display: 'block',
-      zIndex: '99999',
-
-    },
-  };
 
   /******************************************
    * 
@@ -84,12 +43,6 @@ export default function AdditionalDetails() {
   const nextpageFunction = () => {
     setCountSteps(4);
   };
-
-  // handle onchange function
-  const handleOnchangeYourData = (e) => {
-    setyourDetails({ ...yourDetails, [e.target.name]: e.target.value });
-  };
-
 
 
   return (
@@ -115,7 +68,7 @@ export default function AdditionalDetails() {
                   {yourDetails.firstName}{" "} {yourDetails.lastName}
                 </span>
                 <span className="lg-text">
-                  {yourDetails.employment_status} {yourDetails.employment_profession}
+                {" "} {yourDetails.employment_status} {" "}{yourDetails.employment_profession}
                 </span>
 
                 <br />

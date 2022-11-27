@@ -4,10 +4,8 @@ import Button from "../../button/Button";
 import axios from "axios";
 
 import {
-  RegisterCarWrapper,
   Title,
-  SVGElement,
-  ToolTipWrapper,
+  ValidationAlert,
   MainWrapper,
   ContentWrapper,
   RadioButtons,
@@ -27,19 +25,8 @@ export default function Policy() {
    ******************************************/
   const theme = useContext(ThemeContext);
   let {
-    loading,
-    setLoading,
-    vehicleDetails,
-    countSteps,
-    setCountSteps,
-    setvehicleDetails,
-    setcheckVehicle,
-    navList,
-    setnavList,
     yourDetails, setyourDetails,
-    isLivedSinceBirth, setisLivedSinceBirth,
-    isLicenceMore, setisLicenceMore,
-    allClaimedInsurance, setallClaimedInsurance,
+    vehicleDetails,setCountSteps,
     yourPolicy, setyourPolicy
   } = useContext(StoreContext);
 
@@ -51,27 +38,11 @@ export default function Policy() {
  * 
  ******************************************/
   let { VehicleRegistration } = vehicleDetails;
-  const [openToolTip, setopenToolTip] = useState(false);
-  // modal var and states
-  const [modalIsOpen, setIsOpen] = useState(false);
-
-  const customStyles = {
-    content: {
-      backgroundColor: theme.grayColor,
-      width: '50%',
-      overflow: 'scroll',
-      height: 'calc(100 % - 130px)',
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-      display: 'block',
-      zIndex: '99999',
-
-    },
-  };
+   // valiation text
+   const [validationText, setvalidationText] = useState(
+    "Please answer this question in order to proceed."
+  );
+  const [valudationError, setvaludationError] = useState(false);
 
   /******************************************
    * 
@@ -81,28 +52,81 @@ export default function Policy() {
    * 
    ******************************************/
   const nextpageFunction = () => {
-    setCountSteps(5);
+    if (
+      yourPolicy.mainDrive == "" ||
+      yourPolicy.AreYouregLegalOwner == "" ||
+      yourPolicy.typeOfCover == "" ||
+      yourPolicy.payForCarInsurance == "" ||
+      yourPolicy.NCDHaveYear == "" 
+    ) {
+      // fill up the info to go forward
+      setvaludationError(true);
+    } else {
+      // go to next step
+      setvaludationError(false);
+      setCountSteps(5);
+    }
   };
-
   // handle onchange function
   const handleOnchangeYourData = (e) => {
     setyourPolicy({ ...yourPolicy, [e.target.name]: e.target.value });
   };
 
-  // modal
-  function openModal() {
-    setIsOpen(true);
-  }
-
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
   return (
     <div>
       <Navbar navItem={3} navpassed={false} />
       <Title color={theme.blackColor}>Policy Details</Title>
+
+         {/* show validation error*/}
+     {valudationError === true
+        ? [
+            <MainWrapper>
+              <ValidationAlert
+                primaryColor={theme.primaryColor}
+                whiteColor={theme.whiteColor}
+                blackColor={theme.blackColor}
+              >
+                <h4>Oops! We have a problem</h4>
+
+                { yourPolicy.mainDrive == ""? (
+                  <h5>
+                    {" "}
+                    Who is the main driver of this vehicle?:
+                    <span className="text-light">{validationText}</span>
+                  </h5>
+                ) : null}
+                { yourPolicy.AreYouregLegalOwner == ""? (
+                  <h5>
+                    {" "}
+                    Are you (or will you be) the registered keeper and legal owner?:
+                    <span className="text-light">{validationText}</span>
+                  </h5>
+                ) : null}
+                { yourPolicy.typeOfCover == ""? (
+                  <h5>
+                    {" "}
+                    What type of cover are you looking for?:
+                    <span className="text-light">{validationText}</span>
+                  </h5>
+                ) : null}
+                { yourPolicy.payForCarInsurance == ""? (
+                  <h5>
+                    {" "}
+                    How do you want to pay for your car insurance?:
+                    <span className="text-light">{validationText}</span>
+                  </h5>
+                ) : null}
+                { yourPolicy.NCDHaveYear == ""? (
+                  <h5>
+                    {" "}
+                    How many years of no claims discount (NCD) do you have?:
+                    <span className="text-light">{validationText}</span>
+                  </h5>
+                ) : null}
+              </ValidationAlert>
+            </MainWrapper>,
+          ]
+        : null}
 
       {/* Who is the main driver of this vehicle? */}
       <MainWrapper
