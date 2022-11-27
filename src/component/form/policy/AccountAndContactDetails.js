@@ -399,6 +399,7 @@ export default function AccountAndContactDetails() {
         </div>
       </MainWrapper>
 
+      {/* What you need to know about how your data will be used: */}
       <MainWrapper>
         <div>
           <p>
@@ -462,25 +463,39 @@ export default function AccountAndContactDetails() {
         </div>
       </MainWrapper>
 
+      {/* terms and conditions */}
       <MainWrapper>
-      <ContentWrapper lastItem={true} hoveNone={true}>
-        <div className="terms_conditions_section">
-          <p>
-            Please tick this box to confirm you have read and understood our
-            website Terms and Conditions, About Us, and Rewards Terms and
-            Conditions. If you do not understand any items within these
-            documents please contact us.
-          </p>
-          <div className="termsCondInputWrapper">
-            <div class="form-group">
-              <input id="fortermsCondInput" type="checkbox" />
-              <label for="fortermsCondInput"></label>
+        <ContentWrapper lastItem={true} hoveNone={true}>
+          <div className="terms_conditions_section">
+            <p>
+              Please tick this box to confirm you have read and understood our
+              website Terms and Conditions, About Us, and Rewards Terms and
+              Conditions. If you do not understand any items within these
+              documents please contact us.
+            </p>
+            <div className="termsCondInputWrapper">
+              <div class="form-group">
+                <input
+                    onChange={(e) => {
+                      setyourPolicy({
+                        ...yourPolicy,
+                        [e.target.name]: !yourPolicy.TermsConditions,
+                   
+                      });
+                    }}
+                  id="fortermsCondInput"
+                  type="checkbox"
+                  name="TermsConditions"
+                />
+                <label for="fortermsCondInput"></label>
+              </div>
             </div>
           </div>
-        </div>
         </ContentWrapper>
       </MainWrapper>
-      <hr/>
+
+      <hr />
+
       <NextPrevWrapper
         whiteColor={theme.whiteColor}
         blackColor={theme.blackColor}
