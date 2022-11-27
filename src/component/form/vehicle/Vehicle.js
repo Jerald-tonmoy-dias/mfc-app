@@ -21,6 +21,7 @@ import {
 import { TiStarburst } from "react-icons/ti";
 import { HiUsers } from "react-icons/hi";
 import Navbar from "../../navbar/Navbar";
+import Honesty from "../../static/Honesty";
 
 export default function Vehicle() {
   /******************************************
@@ -83,27 +84,27 @@ export default function Vehicle() {
   // nextpageFunction function
   const nextpageFunction = (e) => {
     e.preventDefault();
-    // remove it after done
-    setCountSteps(2);
-    // check nested validation
-
-    // if (
-    //   vehicleData.typeOfAlarm == '' ||
-    //   vehicleData.tranckingDevice == '' ||
-    //   vehicleData.imported == '' ||
-    //   vehicleData.usedCarFor == '' ||
-    //   // vehicleData.businessuseFor == '' ||
-    //   vehicleData.whobusinessuseFor == '' ||
-    //   vehicleData.annualPersonalMileage == ''
-    // ) {
-    //   // fill up the info to go forward
-    //   setvaludationError(true);
-    // } else {
-    //   // go to next step
-    //   setvaludationError(false);
-    //   setCountSteps(2);
-
-    // }
+    if (
+      vehicleData.typeOfAlarm == '' ||
+      vehicleData.tranckingDevice == '' ||
+      vehicleData.imported == '' ||
+      vehicleData.driveHand == '' ||
+      vehicleData.leaseCarDate == '' ||
+      vehicleData.usedCarFor == '' ||
+      vehicleData.whobusinessuseFor == '' ||
+      vehicleData.annualPersonalMileage == ''||
+      vehicleData.keepCarAtDay == ''||
+      vehicleData.keepCarAtNight == ''||
+      vehicleData.carKeptAtHousehold == ''||
+      vehicleData.useAnyOtherVehicles 
+    ) {
+      // fill up the info to go forward
+      setvaludationError(true);
+    } else {
+      // go to next step
+      setvaludationError(false);
+      setCountSteps(2);
+    }
 
   };
 
@@ -183,7 +184,6 @@ export default function Vehicle() {
           </MainWrapper>
         )] : null
       }
-
 
       {/* We’ve found your vehicle */}
       <MainWrapper>
@@ -504,8 +504,12 @@ export default function Vehicle() {
               <input
                 id="have_car"
                 type="checkbox"
-                name="dontHvCar"
-                onChange={() => setdontHvCar(!dontHvCar)}
+                name="leaseCarDate"
+                value="don't have car"
+                onChange={(e) => {
+                  setVehicleData({ ...vehicleData, [e.target.name]: e.target.value });
+                  setdontHvCar(!dontHvCar)
+                }}
               />
               <label htmlFor="have_car">I don't have car</label>
             </div>
@@ -1150,7 +1154,16 @@ export default function Vehicle() {
             next
           </button>
         </NextPrevWrapper>
+    
+        <NextPrevWrapper
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+        >
+        <Honesty/>
+        </NextPrevWrapper>
+
       </MainWrapper>
+    
     </form>
   );
 }

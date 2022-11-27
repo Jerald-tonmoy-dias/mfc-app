@@ -67,7 +67,7 @@ const StoreProvider = ({ children }) => {
     driveHand: "",
     isModified: false, //not assign yet
     modifiedCaused: "", //not assign yet
-    leaseCarDate: new Date(),
+    leaseCarDate: '',
     usedCarFor: "",
     businessuseFor: "",
     whobusinessuseFor: "", //select

@@ -15,6 +15,7 @@ import NotFoundVehicle from "./NotFoundVehicle";
 import { BsFillPencilFill, BsQuestionLg } from "react-icons/bs";
 import { IoMdClose} from "react-icons/io";
 import Navbar from "../../navbar/Navbar";
+import Honesty from "../../static/Honesty";
 
 export default function CheckVehicle() {
   /******************************************
@@ -136,6 +137,7 @@ export default function CheckVehicle() {
       ) : (
         <NotFoundVehicle />
       )}
+      <Honesty/>
     </div>
   );
 }

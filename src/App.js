@@ -55,7 +55,7 @@ function App() {
       {checkVehicle == false ? <CheckVehicle /> : [
         displayComponent()
       ]}
-      <Honesty />
+      {/* <Honesty /> */}
     </Wrapper>
   );
 }
