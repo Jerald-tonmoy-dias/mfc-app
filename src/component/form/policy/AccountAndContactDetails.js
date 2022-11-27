@@ -93,7 +93,7 @@ export default function AccountAndContactDetails() {
    *
    ******************************************/
   const nextpageFunction = () => {
-    setCountSteps(4);
+    setCountSteps(7);
   };
 
   // handle onchange function

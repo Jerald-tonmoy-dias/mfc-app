@@ -21,6 +21,20 @@ align-items: flex-start;
 margin-top: 30px;
 width: 100%;
 
+.summary_wrapper {
+  display: flex;
+  flex-direction: row;
+  padding: 16px 0;
+  @media (min-width: 700px) {
+    flex-direction: column;
+  }
+  .single_summary {
+    padding: .75em 0;
+  }
+
+}
+
+
 .AssumptionsMade {
   width: 84%;
   position: relative;
@@ -459,7 +473,6 @@ export const ContentWrapper = styled.div(
 .text_input {
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
     max-width: 380px;
-    text-transform: capitalize;
     font-weight: 700;
     padding: 15px 40px;
     border-radius: 5px;
