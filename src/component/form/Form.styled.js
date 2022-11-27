@@ -568,7 +568,11 @@ export const CheckBoxElement = styled.div(
         transform: translate(-50%,-50%);
 
         .icon {
-          font-size: 55px
+          display:block;
+          font-size: 45px
+        }
+        .title {
+          font-size:14px; 
         }
       }
   }

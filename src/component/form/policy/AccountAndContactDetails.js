@@ -16,8 +16,10 @@ import {
 } from "../Form.styled";
 import { BASE_URL } from "../../../BaseUrl";
 import { StoreContext } from "../../../context/Store";
-import { AiFillCar, AiTwotoneLock, AiFillMail } from "react-icons/ai";
+import { AiFillCar, AiTwotoneLock, AiFillMail, AiOutlineFileDone } from "react-icons/ai";
 import Navbar from "../../navbar/Navbar";
+import { BsFillTelephoneFill } from "react-icons/bs";
+import { BiMessageRoundedDots } from "react-icons/bi";
 
 export default function AccountAndContactDetails() {
   // gettting context value
@@ -149,7 +151,7 @@ export default function AccountAndContactDetails() {
           <div className="content-left">Email</div>
           <div className="content-right">
             <input
-              type="text"
+              type="email"
               className="text_input"
               name="YourEmail"
               placeholder="Email"
@@ -268,15 +270,13 @@ export default function AccountAndContactDetails() {
               whiteColor={theme.whiteColor}
             >
               <input
-                // onChange={(e)=> {
-                //   setyourPolicy(...yourPolicy,
-                //     [e.target.name]: yourDetails.yourDateOfBirth 
-                //     );
-                // }}
                 onChange={(e) => {
-                  setyourPolicy({ ...yourPolicy, [e.target.name]: !yourPolicy.contactEmail });
+                  setyourPolicy({ ...yourPolicy,
+                     [e.target.name]: !yourPolicy.contactEmail ,
+                     ['doNotContact']:false,});
                 }}
                 class="check_input"
+                checked={yourPolicy.contactEmail}
                 id="emailForAcc1"
                 type="checkbox"
                 name="contactEmail"
@@ -288,6 +288,94 @@ export default function AccountAndContactDetails() {
                     <AiFillMail />
                   </span>
                   <span class="title">Email</span>
+                </span>
+              </label>
+
+              <input
+                onChange={(e) => {
+                  setyourPolicy({ ...yourPolicy, [e.target.name]: !yourPolicy.contactPhone,
+                    ['doNotContact']:false, });
+                }}
+                class="check_input"
+                checked={yourPolicy.contactPhone}
+                id="phoneForAcc1"
+                type="checkbox"
+                name="contactPhone"
+                value="Yes"
+              />
+              <label htmlFor="phoneForAcc1">
+                <span class="content_wrapper">
+                  <span class="icon">
+                    <BsFillTelephoneFill />
+                  </span>
+                  <span class="title">Phone</span>
+                </span>
+              </label>
+
+              <input
+                onChange={(e) => {
+                  setyourPolicy({ ...yourPolicy, [e.target.name]: !yourPolicy.contactText ,
+                    ['doNotContact']:false,});
+                }}
+                class="check_input"
+                checked={yourPolicy.contactText}
+                id="textForAcc1"
+                type="checkbox"
+                name="contactText"
+                value="Yes"
+              />
+              <label htmlFor="textForAcc1">
+                <span class="content_wrapper">
+                  <span class="icon">
+                    <BiMessageRoundedDots />
+                  </span>
+                  <span class="title">Text</span>
+                </span>
+              </label>
+
+              <input
+                onChange={(e) => {
+                  setyourPolicy({ ...yourPolicy, [e.target.name]: !yourPolicy.contactPost,
+                    ['doNotContact']:false, });
+                }}
+                class="check_input"
+                checked={yourPolicy.contactPost}
+                id="PostForAcc1"
+                type="checkbox"
+                name="contactPost"
+                value="Yes"
+              />
+              <label htmlFor="PostForAcc1">
+                <span class="content_wrapper">
+                  <span class="icon">
+                    <AiOutlineFileDone />
+                  </span>
+                  <span class="title">Post</span>
+                </span>
+              </label>
+
+              <input
+                onChange={(e) => {
+                  setyourPolicy({ ...yourPolicy,
+                    [e.target.name]: !yourPolicy.doNotContact,
+                    ['contactEmail']:false,
+                    ['contactPhone']:false,
+                    ['contactText']:false,
+                    ['contactPost']:false,
+                  
+                    }
+                     );
+                }}
+                checked={yourPolicy.doNotContact}
+                class="check_input"
+                id="doNotContactForAcc1"
+                type="checkbox"
+                name="doNotContact"
+                value="Yes"
+              />
+              <label htmlFor="doNotContactForAcc1">
+                <span class="content_wrapper">
+                  <span class="title">do not contact</span>
                 </span>
               </label>
             </CheckBoxElement>
