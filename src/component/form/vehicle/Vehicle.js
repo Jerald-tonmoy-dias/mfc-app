@@ -1,9 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { ThemeContext } from "styled-components";
 import {
-  RegisterCarWrapper,
   Title,
-  SVGElement,
   ToolTipWrapper,
   MainWrapper,
   ContentWrapper,
@@ -13,11 +11,7 @@ import {
 } from "../Form.styled";
 import { toggleClassForHover } from "../../../helper/helper";
 import { StoreContext } from "../../../context/Store";
-import {
-  BsPencil,
-  BsQuestionLg,
-  BsSearch,
-} from "react-icons/bs";
+import { BsPencil, BsQuestionLg, BsSearch } from "react-icons/bs";
 import { TiStarburst } from "react-icons/ti";
 import { HiUsers } from "react-icons/hi";
 import Navbar from "../../navbar/Navbar";
@@ -25,9 +19,9 @@ import Honesty from "../../static/Honesty";
 
 export default function Vehicle() {
   /******************************************
-   * 
+   *
    * GETTING CONTEXT VALUE
-   * 
+   *
    ******************************************/
   const theme = useContext(ThemeContext);
   let {
@@ -45,30 +39,29 @@ export default function Vehicle() {
     setkepCarNightMoreOption,
 
     // all vehicle data
-    vehicleData, setVehicleData
+    vehicleData,
+    setVehicleData,
   } = useContext(StoreContext);
 
   /******************************************
-   * 
-   * 
+   *
    * VARIABLES AND STATES
-   * 
-   * 
+   *
    ******************************************/
 
   let { VehicleRegistration } = vehicleDetails;
   const [openToolTip, setopenToolTip] = useState(false);
 
   // valiation text
-  const [validationText, setvalidationText] = useState('Please answer this question in order to proceed.');
+  const [validationText, setvalidationText] = useState(
+    "Please answer this question in order to proceed."
+  );
   const [valudationError, setvaludationError] = useState(false);
 
   /******************************************
-   * 
-   * 
+   *
    * FUNCTIONS
-   * 
-   * 
+   *
    ******************************************/
   // handle onchange function
   const handleOnchangeVehicleData = (e) => {
@@ -79,24 +72,24 @@ export default function Vehicle() {
   const handleonChangeUsedCar = (e) => {
     setVehicleData({ ...vehicleData, [e.target.name]: e.target.value });
     setsdpcBusinessUse(false);
-  }
+  };
 
   // nextpageFunction function
   const nextpageFunction = (e) => {
     e.preventDefault();
     if (
-      vehicleData.typeOfAlarm == '' ||
-      vehicleData.tranckingDevice == '' ||
-      vehicleData.imported == '' ||
-      vehicleData.driveHand == '' ||
-      vehicleData.leaseCarDate == '' ||
-      vehicleData.usedCarFor == '' ||
-      vehicleData.whobusinessuseFor == '' ||
-      vehicleData.annualPersonalMileage == ''||
-      vehicleData.keepCarAtDay == ''||
-      vehicleData.keepCarAtNight == ''||
-      vehicleData.carKeptAtHousehold == ''||
-      vehicleData.useAnyOtherVehicles 
+      vehicleData.typeOfAlarm == "" ||
+      vehicleData.tranckingDevice == "" ||
+      vehicleData.imported == "" ||
+      vehicleData.driveHand == "" ||
+      vehicleData.leaseCarDate == "" ||
+      vehicleData.usedCarFor == "" ||
+      vehicleData.whobusinessuseFor == "" ||
+      vehicleData.annualPersonalMileage == "" ||
+      vehicleData.keepCarAtDay == "" ||
+      vehicleData.keepCarAtNight == "" ||
+      vehicleData.carKeptAtHousehold == "" ||
+      vehicleData.useAnyOtherVehicles ==""
     ) {
       // fill up the info to go forward
       setvaludationError(true);
@@ -105,19 +98,18 @@ export default function Vehicle() {
       setvaludationError(false);
       setCountSteps(2);
     }
-
   };
 
   /******************************************
-   * 
-   * 
+   *
+   *
    * useEffect
-   * 
-   * 
+   *
+   *
    ******************************************/
   useEffect(() => {
     setvaludationError(false);
-  }, [])
+  }, []);
 
   return (
     <form onSubmit={nextpageFunction}>
@@ -125,65 +117,108 @@ export default function Vehicle() {
       <Title color={theme.blackColor}>vehicle details</Title>
 
       {/* show validation error*/}
-      {
-        valudationError === true ? [(
-          <MainWrapper>
-            <ValidationAlert
-              primaryColor={theme.primaryColor}
-              whiteColor={theme.whiteColor}
-              blackColor={theme.blackColor}>
-              <h4>Oops! We have a problem</h4>
+      {valudationError === true
+        ? [
+            <MainWrapper>
+              <ValidationAlert
+                primaryColor={theme.primaryColor}
+                whiteColor={theme.whiteColor}
+                blackColor={theme.blackColor}
+              >
+                <h4>Oops! We have a problem</h4>
 
-              {vehicleData.typeOfAlarm == '' ?
-                <h5> What type of alarm and/or immobiliser does the car have?:
-                  <span className="text-light">{validationText}</span>
-                </h5>
-                : null}
+                {vehicleData.typeOfAlarm == "" ? (
+                  <h5>
+                    {" "}
+                    What type of alarm and/or immobiliser does the car have?:
+                    <span className="text-light">{validationText}</span>
+                  </h5>
+                ) : null}
 
-              {vehicleData.tranckingDevice == '' ?
-                <h5> Is the car fitted with a tracking device?:
-                  <span className="text-light">{validationText}</span>
-                </h5>
-                : null}
+                {vehicleData.tranckingDevice == "" ? (
+                  <h5>
+                    {" "}
+                    Is the car fitted with a tracking device?:
+                    <span className="text-light">{validationText}</span>
+                  </h5>
+                ) : null}
 
-              {vehicleData.imported == '' ?
-                <h5> Is the car an import?:
-                  <span className="text-light">{validationText}</span>
-                </h5>
-                : null}
+                {vehicleData.imported == "" ? (
+                  <h5>
+                    {" "}
+                    Is the car an import?:
+                    <span className="text-light">{validationText}</span>
+                  </h5>
+                ) : null}
 
+                {vehicleData.driveHand == "" ? (
+                  <h5>
+                    {" "}
+                    Is the car left or right hand drive?:
+                    <span className="text-light">{validationText}</span>
+                  </h5>
+                ) : null}
 
+                {vehicleData.leaseCarDate == "" ? (
+                  <h5>
+                    {" "}
+                    When did you buy or start to lease this car?:
+                    <span className="text-light">{validationText}</span>
+                  </h5>
+                ) : null}
 
-              {vehicleData.usedCarFor == '' ?
-                <h5> What do you use the car for?:
-                  <span className="text-light">{validationText}</span>
-                </h5>
-                : null}
+                {vehicleData.usedCarFor == "" ? (
+                  <h5>
+                    {" "}
+                    What do you use the car for?:
+                    <span className="text-light">{validationText}</span>
+                  </h5>
+                ) : null}
 
-              {/* {vehicleData.businessuseFor == '' ?
+                
+                {vehicleData.whobusinessuseFor == '' ?
                 <h5> Who uses the car for business use?:
                   <span className="text-light">{validationText}</span>
                 </h5>
-                : null} */}
+                : null}
 
-              {vehicleData.annualPersonalMileage == '' ?
-                <h5> What is the total annual personal mileage for this car?:
+                {vehicleData.annualPersonalMileage == "" ? (
+                <h5>
+                  {" "}
+                  What is the total annual personal mileage for this car?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+                ) : null}
+
+                {vehicleData.keepCarAtDay == '' ?
+                <h5> Where do you keep the car during the day?:
                   <span className="text-light">{validationText}</span>
                 </h5>
                 : null}
 
-              {/* {vehicleData.whobusinessuseFor == '' ?
-                <h5> Who uses the car for business use?:
+                {vehicleData.keepCarAtNight == '' ?
+                <h5> Where do you keep the car at night?:
                   <span className="text-light">{validationText}</span>
                 </h5>
-                : null} */}
+                : null}
+                
+                {vehicleData.carKeptAtHousehold == '' ?
+                <h5> How many cars are kept at your household (including this one)?:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+                : null}
+                
+                {vehicleData.useAnyOtherVehicles == '' ?
+                <h5> Do you use any other vehicles? (eg: company car, partner's car, etc):
+                  <span className="text-light">{validationText}</span>
+                </h5>
+                : null}
 
 
-
-            </ValidationAlert>
-          </MainWrapper>
-        )] : null
-      }
+              </ValidationAlert>
+            </MainWrapper>,
+          ]
+        : null}
 
       {/* We’ve found your vehicle */}
       <MainWrapper>
@@ -231,7 +266,6 @@ export default function Vehicle() {
         </ContentWrapper>
       </MainWrapper>
 
-
       {/* What type of alarm and/or immobiliser does the car have? */}
       <MainWrapper
         id="vh_1"
@@ -256,7 +290,11 @@ export default function Vehicle() {
             What type of alarm and/or immobiliser does the car have?
           </div>
           <div className="content-right">
-            <select name="typeOfAlarm" className="selectClass" onChange={handleOnchangeVehicleData}>
+            <select
+              name="typeOfAlarm"
+              className="selectClass"
+              onChange={handleOnchangeVehicleData}
+            >
               <option value="" disabled>
                 Please select...
               </option>
@@ -507,8 +545,11 @@ export default function Vehicle() {
                 name="leaseCarDate"
                 value="don't have car"
                 onChange={(e) => {
-                  setVehicleData({ ...vehicleData, [e.target.name]: e.target.value });
-                  setdontHvCar(!dontHvCar)
+                  setVehicleData({
+                    ...vehicleData,
+                    [e.target.name]: e.target.value,
+                  });
+                  setdontHvCar(!dontHvCar);
                 }}
               />
               <label htmlFor="have_car">I don't have car</label>
@@ -585,7 +626,10 @@ export default function Vehicle() {
               <input
                 name="usedCarFor"
                 onChange={(e) => {
-                  setVehicleData({ ...vehicleData, [e.target.name]: e.target.value });
+                  setVehicleData({
+                    ...vehicleData,
+                    [e.target.name]: e.target.value,
+                  });
                   setsdpcBusinessUse(true);
                 }}
                 type="radio"
@@ -624,99 +668,110 @@ export default function Vehicle() {
 
       {sdpcBusinessUse == true
         ? [
-          <>
-            {/* Who uses the car for business use? */}
-            <MainWrapper
-              primaryColor={theme.primaryColor}
-              whiteColor={theme.whiteColor}
-            >
-              <ContentWrapper
-                liteBlackColor={theme.liteBlackColor}
-                borderColor={theme.liteBlackColor}
-                whiteColor={theme.whiteColor}
-                blackColor={theme.blackColor}
-                secondaryColor={theme.secondaryColor}
-              >
-                <div className="content-left">
-                  Who uses the car for business use?
-                </div>
-
-                <div className="content-right">
-                  <select name="whobusinessuseFor" className="selectClass" onChange={handleOnchangeVehicleData}>
-                    <option value="" disabled="">
-                      Please select...
-                    </option>
-                    <option value="only you">only you</option>
-                    <option value="any named drive">Any named drive</option>
-                  </select>
-
-                  {vehicleData.whobusinessuseFor == "any named drive"
-                    ? [
-                      <div className="hint-text-wrapper">
-                        <HiUsers className="icon" />
-                        <span className="hint-text">
-                          Don’t forget to add your named driver(s) in the
-                          additional drivers section.
-                        </span>
-                      </div>,
-                    ]
-                    : null}
-                </div>
-              </ContentWrapper>
-            </MainWrapper>
-
-            {/* What is the total annual business mileage for this car?*/}
-            <MainWrapper
-              primaryColor={theme.primaryColor}
-              whiteColor={theme.whiteColor}
-              id="vh_6"
-            >
-              <ContentWrapper
-                liteBlackColor={theme.liteBlackColor}
-                borderColor={theme.liteBlackColor}
-                whiteColor={theme.whiteColor}
-                blackColor={theme.blackColor}
-                secondaryColor={theme.secondaryColor}
-              >
-                <button
-                  type="button"
-                  onClick={(e) => toggleClassForHover("vh_6")}
-                  className="mobile_trigger"
-                >
-                  <BsQuestionLg />
-                </button>
-                <div className="content-left">
-                  What is the total annual business mileage for this car?
-                </div>
-
-                <div className="content-right">
-                  <div className="text_input_box">
-                    <input
-                      type="text"
-                      name="annualBusinessMileage"
-                      onChange={handleOnchangeVehicleData}
-                    />
-                    <label>miles per year</label>
-                  </div>
-                </div>
-              </ContentWrapper>
-              <ToolTipWrapper
-                open={openToolTip}
+            <>
+              {/* Who uses the car for business use? */}
+              <MainWrapper
                 primaryColor={theme.primaryColor}
                 whiteColor={theme.whiteColor}
-                blackColor={theme.blackColor}
               >
-                <BsQuestionLg className="hint-icon" />
-                <p>
-                  This is the total number of personal miles you expect this car to be driven over the next year by all drivers named on the policy.</p>
+                <ContentWrapper
+                  liteBlackColor={theme.liteBlackColor}
+                  borderColor={theme.liteBlackColor}
+                  whiteColor={theme.whiteColor}
+                  blackColor={theme.blackColor}
+                  secondaryColor={theme.secondaryColor}
+                >
+                  <div className="content-left">
+                    Who uses the car for business use?
+                  </div>
 
-                <p>
-                  This includes travelling for social and domestic use as well as commuting to and from a single place of work. It’s important this is as accurate as possible, underestimating the mileage could impact your cover or lead to increased charges.
-                </p>
-              </ToolTipWrapper>
-            </MainWrapper>
-          </>,
-        ]
+                  <div className="content-right">
+                    <select
+                      name="whobusinessuseFor"
+                      className="selectClass"
+                      onChange={handleOnchangeVehicleData}
+                    >
+                      <option value="" disabled="">
+                        Please select...
+                      </option>
+                      <option value="only you">only you</option>
+                      <option value="any named drive">Any named drive</option>
+                    </select>
+
+                    {vehicleData.whobusinessuseFor == "any named drive"
+                      ? [
+                          <div className="hint-text-wrapper">
+                            <HiUsers className="icon" />
+                            <span className="hint-text">
+                              Don’t forget to add your named driver(s) in the
+                              additional drivers section.
+                            </span>
+                          </div>,
+                        ]
+                      : null}
+                  </div>
+                </ContentWrapper>
+              </MainWrapper>
+
+              {/* What is the total annual business mileage for this car?*/}
+              <MainWrapper
+                primaryColor={theme.primaryColor}
+                whiteColor={theme.whiteColor}
+                id="vh_6"
+              >
+                <ContentWrapper
+                  liteBlackColor={theme.liteBlackColor}
+                  borderColor={theme.liteBlackColor}
+                  whiteColor={theme.whiteColor}
+                  blackColor={theme.blackColor}
+                  secondaryColor={theme.secondaryColor}
+                >
+                  <button
+                    type="button"
+                    onClick={(e) => toggleClassForHover("vh_6")}
+                    className="mobile_trigger"
+                  >
+                    <BsQuestionLg />
+                  </button>
+                  <div className="content-left">
+                    What is the total annual business mileage for this car?
+                  </div>
+
+                  <div className="content-right">
+                    <div className="text_input_box">
+                      <input
+                        type="text"
+                        name="annualBusinessMileage"
+                        onChange={handleOnchangeVehicleData}
+                      />
+                      <label>miles per year</label>
+                    </div>
+                  </div>
+                </ContentWrapper>
+                <ToolTipWrapper
+                  open={openToolTip}
+                  primaryColor={theme.primaryColor}
+                  whiteColor={theme.whiteColor}
+                  blackColor={theme.blackColor}
+                >
+                  <BsQuestionLg className="hint-icon" />
+                  <p>
+                    This is the total number of personal miles you expect this
+                    car to be driven over the next year by all drivers named on
+                    the policy.
+                  </p>
+
+                  <p>
+                    This includes travelling for social and domestic use as well
+                    as commuting to and from a single place of work. It’s
+                    important this is as accurate as possible, underestimating
+                    the mileage could impact your cover or lead to increased
+                    charges.
+                  </p>
+                </ToolTipWrapper>
+              </MainWrapper>
+            </>,
+          ]
         : null}
 
       {/* What is the total annual personal mileage for this car? */}
@@ -762,10 +817,15 @@ export default function Vehicle() {
         >
           <BsQuestionLg className="hint-icon" />
           <p>
-            This is the total number of business miles you expect this car to be driven over the next year by all drivers named on the policy.</p>
+            This is the total number of business miles you expect this car to be
+            driven over the next year by all drivers named on the policy.
+          </p>
 
           <p>
-            This includes travelling to different sites or meetings away from a single place of work. It’s important this is as accurate as possible, underestimating the mileage could impact your cover or lead to increased charges.
+            This includes travelling to different sites or meetings away from a
+            single place of work. It’s important this is as accurate as
+            possible, underestimating the mileage could impact your cover or
+            lead to increased charges.
           </p>
         </ToolTipWrapper>
       </MainWrapper>
@@ -790,7 +850,9 @@ export default function Vehicle() {
           >
             <BsQuestionLg />
           </button>
-          <div className="content-left">Where do you keep the car during the day?</div>
+          <div className="content-left">
+            Where do you keep the car during the day?
+          </div>
 
           <div className="content-right">
             <RadioButtons
@@ -805,9 +867,7 @@ export default function Vehicle() {
                 name="keepCarAtDay"
                 value="At home"
               />
-              <label htmlFor="keepCarAtDay1">
-                At home
-              </label>
+              <label htmlFor="keepCarAtDay1">At home</label>
               <input
                 onChange={handleOnchangeVehicleData}
                 type="radio"
@@ -815,9 +875,7 @@ export default function Vehicle() {
                 name="keepCarAtDay"
                 value="Office or factory car park"
               />
-              <label htmlFor="keepCarAtDay2">
-                Office or factory car park
-              </label>
+              <label htmlFor="keepCarAtDay2">Office or factory car park</label>
 
               <input
                 onChange={handleOnchangeVehicleData}
@@ -826,9 +884,7 @@ export default function Vehicle() {
                 name="keepCarAtDay"
                 value="Open public car park"
               />
-              <label htmlFor="keepCarAtDay3">
-                Open public car park
-              </label>
+              <label htmlFor="keepCarAtDay3">Open public car park</label>
 
               <input
                 onChange={handleOnchangeVehicleData}
@@ -837,9 +893,7 @@ export default function Vehicle() {
                 name="keepCarAtDay"
                 value="Secure public car park"
               />
-              <label htmlFor="keepCarAtDay4">
-                Secure public car park
-              </label>
+              <label htmlFor="keepCarAtDay4">Secure public car park</label>
 
               <input
                 onChange={handleOnchangeVehicleData}
@@ -848,9 +902,7 @@ export default function Vehicle() {
                 name="keepCarAtDay"
                 value="Street away from home"
               />
-              <label htmlFor="keepCarAtDay5">
-                Street away from home
-              </label>
+              <label htmlFor="keepCarAtDay5">Street away from home</label>
             </RadioButtons>
           </div>
         </ContentWrapper>
@@ -862,10 +914,9 @@ export default function Vehicle() {
         >
           <BsQuestionLg className="hint-icon" />
           <p>
-            If you leave the car in different places on various days of the week,
-            please choose the one in which the car is most often kept.
+            If you leave the car in different places on various days of the
+            week, please choose the one in which the car is most often kept.
           </p>
-
         </ToolTipWrapper>
       </MainWrapper>
 
@@ -889,7 +940,9 @@ export default function Vehicle() {
           >
             <BsQuestionLg />
           </button>
-          <div className="content-left">Where do you keep the car at night?</div>
+          <div className="content-left">
+            Where do you keep the car at night?
+          </div>
 
           <div className="content-right">
             <RadioButtons
@@ -899,7 +952,10 @@ export default function Vehicle() {
             >
               <input
                 onChange={(e) => {
-                  setVehicleData({ ...vehicleData, [e.target.name]: e.target.value });
+                  setVehicleData({
+                    ...vehicleData,
+                    [e.target.name]: e.target.value,
+                  });
                   setkepCarNightMoreOption(false);
                 }}
                 type="radio"
@@ -907,14 +963,14 @@ export default function Vehicle() {
                 name="keepCarAtNight"
                 value="Drive"
               />
-              <label htmlFor="keepCarAtNight1">
-                Drive
-              </label>
-
+              <label htmlFor="keepCarAtNight1">Drive</label>
 
               <input
                 onChange={(e) => {
-                  setVehicleData({ ...vehicleData, [e.target.name]: e.target.value });
+                  setVehicleData({
+                    ...vehicleData,
+                    [e.target.name]: e.target.value,
+                  });
                   setkepCarNightMoreOption(false);
                 }}
                 type="radio"
@@ -922,13 +978,14 @@ export default function Vehicle() {
                 name="keepCarAtNight"
                 value="Street outside home"
               />
-              <label htmlFor="keepCarAtNight2">
-                Street outside home
-              </label>
+              <label htmlFor="keepCarAtNight2">Street outside home</label>
 
               <input
                 onChange={(e) => {
-                  setVehicleData({ ...vehicleData, [e.target.name]: e.target.value });
+                  setVehicleData({
+                    ...vehicleData,
+                    [e.target.name]: e.target.value,
+                  });
                   setkepCarNightMoreOption(false);
                 }}
                 type="radio"
@@ -936,13 +993,14 @@ export default function Vehicle() {
                 name="keepCarAtNight"
                 value="Street outside home"
               />
-              <label htmlFor="keepCarAtNight3">
-                Locked garage
-              </label>
+              <label htmlFor="keepCarAtNight3">Locked garage</label>
 
               <input
                 onChange={(e) => {
-                  setVehicleData({ ...vehicleData, [e.target.name]: e.target.value });
+                  setVehicleData({
+                    ...vehicleData,
+                    [e.target.name]: e.target.value,
+                  });
                   setkepCarNightMoreOption(true);
                 }}
                 type="radio"
@@ -950,10 +1008,7 @@ export default function Vehicle() {
                 name="keepCarAtNight"
                 value="More options"
               />
-              <label htmlFor="keepCarAtNight4">
-                More options
-              </label>
-
+              <label htmlFor="keepCarAtNight4">More options</label>
             </RadioButtons>
           </div>
         </ContentWrapper>
@@ -965,76 +1020,75 @@ export default function Vehicle() {
         >
           <BsQuestionLg className="hint-icon" />
           <p>
-            If you leave the car in different places on various days of the week,
-            please choose the one in which the car is most often kept.
+            If you leave the car in different places on various days of the
+            week, please choose the one in which the car is most often kept.
           </p>
-
         </ToolTipWrapper>
       </MainWrapper>
 
-      {kepCarNightMoreOption == true ? [
-        (
-          <>
-            {/* Where do you keep the car at night? */}
-            <MainWrapper
-              id="vh_10"
-              primaryColor={theme.primaryColor}
-              whiteColor={theme.whiteColor}
-            >
-              <ContentWrapper
-                liteBlackColor={theme.liteBlackColor}
-                borderColor={theme.liteBlackColor}
-                whiteColor={theme.whiteColor}
-                blackColor={theme.blackColor}
-                secondaryColor={theme.secondaryColor}
-              >
-                <button
-                  type="button"
-                  onClick={(e) => toggleClassForHover("vh_10")}
-                  className="mobile_trigger"
-                >
-                  <BsQuestionLg />
-                </button>
-                <div className="content-left">
-                  Where do you keep the car at night?
-                </div>
-                <div className="content-right">
-                  <select name="keepCarAtNight" className="selectClass" onChange={handleOnchangeVehicleData}>
-                    <option value="" disabled>
-                      Please select...
-                    </option>
-                    <option value="Unlocked garage">
-                      Unlocked garage
-                    </option>
-                    <option value="Street away from home">
-                      Street away from home
-                    </option>
-                    <option value="Locked compound">
-                      Locked compound
-                    </option>
-                    <option value="Public car park">
-                      Public car park
-                    </option>
-                    <option value="Work car park">Work car park</option>
-                    <option value="Private property">Private property</option>
-                  </select>
-                </div>
-              </ContentWrapper>
-              <ToolTipWrapper
-                open={openToolTip}
+      {kepCarNightMoreOption == true
+        ? [
+            <>
+              {/* Where do you keep the car at night? */}
+              <MainWrapper
+                id="vh_10"
                 primaryColor={theme.primaryColor}
                 whiteColor={theme.whiteColor}
-                blackColor={theme.blackColor}
               >
-                <BsQuestionLg className="hint-icon" />
-                <p>
-                  If you leave the car in different places on various nights of the week, please choose the one in which the car is most often kept.
-                </p>
-              </ToolTipWrapper>
-            </MainWrapper>
-          </>
-        )
-      ] : null}
+                <ContentWrapper
+                  liteBlackColor={theme.liteBlackColor}
+                  borderColor={theme.liteBlackColor}
+                  whiteColor={theme.whiteColor}
+                  blackColor={theme.blackColor}
+                  secondaryColor={theme.secondaryColor}
+                >
+                  <button
+                    type="button"
+                    onClick={(e) => toggleClassForHover("vh_10")}
+                    className="mobile_trigger"
+                  >
+                    <BsQuestionLg />
+                  </button>
+                  <div className="content-left">
+                    Where do you keep the car at night?
+                  </div>
+                  <div className="content-right">
+                    <select
+                      name="keepCarAtNight"
+                      className="selectClass"
+                      onChange={handleOnchangeVehicleData}
+                    >
+                      <option value="" disabled>
+                        Please select...
+                      </option>
+                      <option value="Unlocked garage">Unlocked garage</option>
+                      <option value="Street away from home">
+                        Street away from home
+                      </option>
+                      <option value="Locked compound">Locked compound</option>
+                      <option value="Public car park">Public car park</option>
+                      <option value="Work car park">Work car park</option>
+                      <option value="Private property">Private property</option>
+                    </select>
+                  </div>
+                </ContentWrapper>
+                <ToolTipWrapper
+                  open={openToolTip}
+                  primaryColor={theme.primaryColor}
+                  whiteColor={theme.whiteColor}
+                  blackColor={theme.blackColor}
+                >
+                  <BsQuestionLg className="hint-icon" />
+                  <p>
+                    If you leave the car in different places on various nights
+                    of the week, please choose the one in which the car is most
+                    often kept.
+                  </p>
+                </ToolTipWrapper>
+              </MainWrapper>
+            </>,
+          ]
+        : null}
 
       {/* How many cars are kept at your household (including this one)? */}
       <MainWrapper
@@ -1060,7 +1114,11 @@ export default function Vehicle() {
             How many cars are kept at your household (including this one)?
           </div>
           <div className="content-right">
-            <select name="carKeptAtHousehold" className="selectClass" onChange={handleOnchangeVehicleData}>
+            <select
+              name="carKeptAtHousehold"
+              className="selectClass"
+              onChange={handleOnchangeVehicleData}
+            >
               <option value="" disabled>
                 Please select...
               </option>
@@ -1084,12 +1142,17 @@ export default function Vehicle() {
         >
           <BsQuestionLg className="hint-icon" />
           <p>
-            You should only include the number of cars at your home. Please do not count motorbikes, vans and commercial vehicles.
+            You should only include the number of cars at your home. Please do
+            not count motorbikes, vans and commercial vehicles.
           </p>
 
-          <h4> <TiStarburst className="hint-icon" /> Effect on your quote</h4>
+          <h4>
+            {" "}
+            <TiStarburst className="hint-icon" /> Effect on your quote
+          </h4>
           <p>
-            Some insurers may offer a discount to customers with more than one car.
+            Some insurers may offer a discount to customers with more than one
+            car.
           </p>
         </ToolTipWrapper>
       </MainWrapper>
@@ -1118,15 +1181,29 @@ export default function Vehicle() {
             Do you use any other vehicles? (eg: company car, partner's car, etc)
           </div>
           <div className="content-right">
-            <select name="useAnyOtherVehicles" className="selectClass" onChange={handleOnchangeVehicleData}>
+            <select
+              name="useAnyOtherVehicles"
+              className="selectClass"
+              onChange={handleOnchangeVehicleData}
+            >
               <option value="" disabled>
                 Please select...
               </option>
-              <option value="No access to any other vehicles">No access to any other vehicles</option>
-              <option value="Own another car or van">Own another car or van</option>
-              <option value="Have use of another car">Have use of another car</option>
-              <option value="Company car (including personal use)">Company car (including personal use)</option>
-              <option value="Company car (excluding personal use)">Company car (excluding personal use)</option>
+              <option value="No access to any other vehicles">
+                No access to any other vehicles
+              </option>
+              <option value="Own another car or van">
+                Own another car or van
+              </option>
+              <option value="Have use of another car">
+                Have use of another car
+              </option>
+              <option value="Company car (including personal use)">
+                Company car (including personal use)
+              </option>
+              <option value="Company car (excluding personal use)">
+                Company car (excluding personal use)
+              </option>
             </select>
           </div>
         </ContentWrapper>
@@ -1136,8 +1213,10 @@ export default function Vehicle() {
           whiteColor={theme.whiteColor}
           blackColor={theme.blackColor}
         >
-
-          <h4> <TiStarburst className="hint-icon" /> Effect on your quote</h4>
+          <h4>
+            {" "}
+            <TiStarburst className="hint-icon" /> Effect on your quote
+          </h4>
           <p>
             Some insurers may offer a discount if you drive another vehicle.
           </p>
@@ -1154,16 +1233,14 @@ export default function Vehicle() {
             next
           </button>
         </NextPrevWrapper>
-    
+
         <NextPrevWrapper
           whiteColor={theme.whiteColor}
           blackColor={theme.blackColor}
         >
-        <Honesty/>
+          <Honesty />
         </NextPrevWrapper>
-
       </MainWrapper>
-    
     </form>
   );
 }
