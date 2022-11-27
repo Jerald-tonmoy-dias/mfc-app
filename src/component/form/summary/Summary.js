@@ -1,5 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { ThemeContext } from "styled-components";
+import Pdf from "react-to-pdf";
+
+
 
 import {
   RegisterCarWrapper,
@@ -44,6 +47,9 @@ export default function Summary() {
    ******************************************/
   let { VehicleRegistration } = vehicleDetails;
 
+  // create ref
+  const ref = React.createRef();
+
   /******************************************
    *
    *
@@ -60,7 +66,7 @@ export default function Summary() {
       <Navbar navItem={4} navpassed={false} />
       <Title color={theme.blackColor}>Summary of key details</Title>
 
-      <MainWrapper liteBlackColor={theme.liteBlackColor}>
+      <MainWrapper ref={ref} liteBlackColor={theme.liteBlackColor}>
         <div className="add_product_section">
           <p>
             Before we get your quotes, we've summarised the key details that you
@@ -69,7 +75,8 @@ export default function Summary() {
           </p>
 
           <hr />
-          <div className="summary_wrapper">
+      
+          <div  className="summary_wrapper">
             <div className="left-side">
               <div className="single_summary">
                 <h3>Vehicle details and usage</h3>
@@ -153,6 +160,7 @@ export default function Summary() {
               </div>
             </div>
           </div>
+     
         </div>
       </MainWrapper>
 
@@ -160,9 +168,12 @@ export default function Summary() {
         whiteColor={theme.whiteColor}
         blackColor={theme.blackColor}
       >
-        <button type="button" onClick={nextpageFunction} className="btn next ">
+        {/* <button type="button" onClick={nextpageFunction} className="btn next ">
           get quote
-        </button>
+        </button> */}
+        <Pdf targetRef={ref} filename="code-example.pdf">
+        {({ toPdf }) => <button className="btn next" onClick={toPdf}> get quote</button>}
+      </Pdf>
       </NextPrevWrapper>
     </div>
   );
