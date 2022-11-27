@@ -1,7 +1,13 @@
-import React from 'react'
+import React,{useContext} from 'react'
+import {HeaderOne} from '../layout/Layout.styled';
+import { ThemeContext } from "styled-components";
 
 export default function Header() {
+  const theme = useContext(ThemeContext);
   return (
-    <div>Header</div>
+    <HeaderOne color={theme.primaryColor}>
+        quotemeeasy
+    </HeaderOne>
+ 
   )
 }

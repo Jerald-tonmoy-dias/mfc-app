@@ -18,7 +18,7 @@ export const OrderList = styled.ol`
 export const List = styled.li(props => (
     `
     display: inline-flex;
-    flex-basis: 20%;
+    flex-basis: 25%;
     position: relative;
     text-transform: uppercase;
     &.active {
@@ -97,12 +97,18 @@ export const SpanOne = styled.span(props => (
     `
     color: ${props.color};
     opacity: 1;
+    @media (max-width: 1023px) {
+       display: none;
+      }
     `
 ));
 export const SpanTwo = styled.span(props => (
     `
     color: ${props.color};
     opacity: 0;
+    @media (max-width: 1023px) {
+        opacity: 1;
+       }
 
     `
 ));

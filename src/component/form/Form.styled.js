@@ -5,7 +5,7 @@ export const Title = styled.h1(
 color: ${props.color};
 // margin-top: 30px;
 font-size: 30px;
-padding: 40px 20px;
+padding: 10px 20px;
 line-height: normal;
 font-weight: 700;
 
@@ -18,7 +18,7 @@ export const MainWrapper = styled.div(
 position: relative;
 display:flex;
 align-items: flex-start;
-margin-top: 30px;
+margin-top: 20px;
 width: 100%;
 
 .summary_wrapper {
@@ -161,8 +161,12 @@ border-left: 2px solid #FF6600;
     width: 40px;
     border-radius: 50%;
     margin-right: 10px;
+    margin-bottom: 20px;
     cursor: pointer;
     display: none;
+    position: absolute;
+    right: 10px;
+    top: 20px;
     transition: .3s;
 
     .trigger-icon {
@@ -228,6 +232,9 @@ export const RegisterCarWrapper = styled.div(
     width: 80%;
     font-weight: 700;
     color: ${props.blackColor};
+    @media (max-width: 768px) {
+      padding: 10px;
+    }
     &:hover {
         background: ${props.liteBlackColor};
     }
@@ -240,12 +247,18 @@ export const RegisterCarWrapper = styled.div(
 
     .div_wrapper {
       display: flex;
+      margin-top: 20px;
+      margin-bottom: 20px;
     }
 
     .Mark_icon {
       font-size: 35px;
       margin-left: 30px;
       color:${props.primaryColor};
+      @media (max-width: 768px) {
+       display: none;
+      }
+    
     }
     .inputWrapper {
       max-width: 380px;
@@ -367,8 +380,12 @@ export const ContentWrapper = styled.div(
     border-bottom: 1px solid ${
       props.lastItem == true ? "transparent" : props.borderColor
     };
-    padding: 40px 20px;
+    padding: 20px;
     width: 80%;
+    @media (max-width: 768px) {
+      width: 100%;
+      // margin-top: 30px;
+    }
 
     .has_bg {
       background: ${props.whiteColor};
@@ -386,7 +403,7 @@ export const ContentWrapper = styled.div(
       width: 34%;
       @media (max-width: 991px) {
         width: 100%;
-        margin-top: 30px;
+        // margin-top: 30px;
       }
     }
 

@@ -93,7 +93,7 @@ export default function Navbar({ navItem, navpassed }) {
             <SpanTwo color={theme.whiteColor}>4</SpanTwo>
           </Anchor>
         </List>
-        <List
+        {/* <List
           key="list_5"
           active={theme.primaryColor}
           disable={theme.secondaryColor}
@@ -109,7 +109,7 @@ export default function Navbar({ navItem, navpassed }) {
             <SpanOne color={theme.whiteColor}>Your quotes</SpanOne>
             <SpanTwo color={theme.whiteColor}>5</SpanTwo>
           </Anchor>
-        </List>
+        </List> */}
       </OrderList>
     </Nav>
   );

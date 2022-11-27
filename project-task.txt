@@ -15,7 +15,7 @@ font-weight:
 700,
 
 ---------------------
-    api data missing 
+api data missing 
 ---------------------
 https://travel-journey.comparethemarket.com/
 https://quotemeeasy.co.uk/

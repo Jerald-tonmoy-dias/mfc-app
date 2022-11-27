@@ -13,6 +13,7 @@ import { Wrapper } from './styles/Global.styled';
 import AdditionalDetails from './component/form/details/AdditionalDetails';
 import AdditionalProductAndFea from './component/form/policy/AdditionalProductAndFea';
 import AccountAndContactDetails from './component/form/policy/AccountAndContactDetails';
+import Header from './component/layout/Header';
 
 function App() {
   // get context value
@@ -50,6 +51,7 @@ function App() {
 
   return (
     <Wrapper>
+      <Header/>
       {checkVehicle == false ? <CheckVehicle /> : [
         displayComponent()
       ]}

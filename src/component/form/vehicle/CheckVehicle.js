@@ -64,8 +64,8 @@ export default function CheckVehicle() {
   return (
     <div>
         <Navbar navItem={1} navpassed={false}/>
-      <Title color={theme.blackColor}>vehicle details</Title>
-      {notFound === false ? (
+        <Title color={theme.blackColor}>vehicle details</Title>
+          {notFound === false ? (
         [
           <form onSubmit={(e) => getVehicleInfoFunction(e, modelNo)}>
             <MainWrapper className={openToolTip== true ? 'active' : ''}>

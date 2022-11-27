@@ -14,11 +14,9 @@ import {
 import { toggleClassForHover } from "../../../helper/helper";
 import { StoreContext } from "../../../context/Store";
 import {
-  BsFillPencilFill,
   BsPencil,
   BsQuestionLg,
   BsSearch,
-  BsXOctagonFill,
 } from "react-icons/bs";
 import { TiStarburst } from "react-icons/ti";
 import { HiUsers } from "react-icons/hi";
@@ -33,17 +31,8 @@ export default function Vehicle() {
   const theme = useContext(ThemeContext);
   let {
     // global states
-    loading,
-    setLoading,
-    navList,
-    setnavList,
-    countSteps,
     setCountSteps,
     vehicleDetails,
-    setvehicleDetails,
-    notFound,
-    setnotFound,
-    checkVehicle,
     setcheckVehicle,
 
     // vehicle single states
