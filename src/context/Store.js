@@ -150,6 +150,7 @@ const StoreProvider = ({ children }) => {
     yourEmail: "",
     yourTelephoneNumber: "",
     insuranceProvidersAnswerQueries: "",
+    refText: "",
     contactEmail: false,
     contactPhone: false,
     contactText: false,

@@ -6,8 +6,7 @@ import axios from "axios";
 import {
   RegisterCarWrapper,
   Title,
-  SVGElement,
-  ToolTipWrapper,
+  ValidationAlert,
   MainWrapper,
   ContentWrapper,
   RadioButtons,
@@ -64,26 +63,12 @@ export default function AccountAndContactDetails() {
    *
    ******************************************/
   let { VehicleRegistration } = vehicleDetails;
-  const [openToolTip, setopenToolTip] = useState(false);
-  // modal var and states
-  const [modalIsOpen, setIsOpen] = useState(false);
+  // valiation text
+  const [validationText, setvalidationText] = useState(
+    "Please answer this question in order to proceed."
+  );
+  const [valudationError, setvaludationError] = useState(false);
 
-  const customStyles = {
-    content: {
-      backgroundColor: theme.grayColor,
-      width: "50%",
-      overflow: "scroll",
-      height: "calc(100 % - 130px)",
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-      display: "block",
-      zIndex: "99999",
-    },
-  };
 
   /******************************************
    *
@@ -92,8 +77,22 @@ export default function AccountAndContactDetails() {
    *
    *
    ******************************************/
+
   const nextpageFunction = () => {
-    setCountSteps(7);
+    if (
+      yourPolicy.yourEmail == "" ||
+      yourPolicy.refText == "" ||
+      yourPolicy.insuranceProvidersAnswerQueries == "" ||
+      yourPolicy.TermsConditions == false
+
+    ) {
+      // fill up the info to go forward
+      setvaludationError(true);
+    } else {
+      // go to next step
+      setvaludationError(false);
+      setCountSteps(7);
+    }
   };
 
   // handle onchange function
@@ -101,19 +100,58 @@ export default function AccountAndContactDetails() {
     setyourPolicy({ ...yourPolicy, [e.target.name]: e.target.value });
   };
 
-  // modal
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
 
   return (
     <div>
       <Navbar navItem={3} navpassed={false} />
       <Title color={theme.blackColor}>Your account and contact details</Title>
+
+      {/* show validation error*/}
+      {valudationError === true
+        ? [
+          <MainWrapper>
+            <ValidationAlert
+              primaryColor={theme.primaryColor}
+              whiteColor={theme.whiteColor}
+              blackColor={theme.blackColor}
+            >
+              <h4>Oops! We have a problem</h4>
+
+              {yourPolicy.refText == "" ? (
+                <h5>
+                  {" "}
+                  Reference:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+              {yourPolicy.yourEmail == "" ? (
+                <h5>
+                  {" "}
+                  Email :
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+
+              {yourPolicy.insuranceProvidersAnswerQueries == "" ? (
+                <h5>
+                  {" "}
+                  Let the insurance providers answer your queries :
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+
+              {yourPolicy.TermsConditions == false ? (
+                <h5>
+                  {" "}
+                  Terms and Conditions:
+                  <span className="text-light">{validationText}</span>
+                </h5>
+              ) : null}
+
+            </ValidationAlert>
+          </MainWrapper>,
+        ]
+        : null}
 
       <MainWrapper liteBlackColor={theme.liteBlackColor}>
         <div className="add_product_section">
@@ -158,8 +196,33 @@ export default function AccountAndContactDetails() {
             <input
               type="email"
               className="text_input"
-              name="YourEmail"
+              name="yourEmail"
               placeholder="Email"
+              onChange={handleOnchangeYourData}
+            />
+          </div>
+        </ContentWrapper>
+      </MainWrapper>
+
+      {/* Refrence*/}
+      <MainWrapper
+        primaryColor={theme.primaryColor}
+        whiteColor={theme.whiteColor}
+      >
+        <ContentWrapper
+          liteBlackColor={theme.liteBlackColor}
+          borderColor={theme.liteBlackColor}
+          whiteColor={theme.whiteColor}
+          blackColor={theme.blackColor}
+          secondaryColor={theme.secondaryColor}
+        >
+          <div className="content-left">Reference</div>
+          <div className="content-right">
+            <input
+              type="text"
+              className="text_input"
+              name="refText"
+              placeholder="Refrence text"
               onChange={handleOnchangeYourData}
             />
           </div>
@@ -223,7 +286,7 @@ export default function AccountAndContactDetails() {
                   onChange={handleOnchangeYourData}
                   type="radio"
                   id="happyforInsurance1"
-                  name="personalAccidentCover"
+                  name="insuranceProvidersAnswerQueries"
                   value="Yes"
                 />
                 <label htmlFor="happyforInsurance1">Yes, please</label>
@@ -232,7 +295,7 @@ export default function AccountAndContactDetails() {
                   onChange={handleOnchangeYourData}
                   type="radio"
                   id="happyforInsurance2"
-                  name="personalAccidentCover"
+                  name="insuranceProvidersAnswerQueries"
                   value="No/I'll decide later"
                 />
                 <label htmlFor="happyforInsurance2">No, thanks</label>
