@@ -33,6 +33,12 @@ width: 100%;
   }
   .single_summary {
     padding: .75em 0;
+
+    p {
+      strong {
+        text-transform: capitalize;
+      }
+    }
   }
 
 }
@@ -135,11 +141,15 @@ border-left: 2px solid #FF6600;
     color: ${props.whiteColor}
   }
 }
+.thank-you {
+  text-align:center;
+  padding: 100px 30px;
+}
 .add_product_section {
   padding: 20px;
   border-radius: 5px;
   width: 80%;
-  background: ${props.liteBlackColor};
+  // background: ${props.liteBlackColor};
   .para_with_icons {
     position: relative;
     padding-left: 40px;
@@ -238,9 +248,9 @@ export const RegisterCarWrapper = styled.div(
     @media (max-width: 768px) {
       padding: 10px;
     }
-    &:hover {
-        background: ${props.liteBlackColor};
-    }
+    // &:hover {
+    //     background: ${props.liteBlackColor};
+    // }
 
     label {
       font-size: 19px;
@@ -278,6 +288,8 @@ export const RegisterCarWrapper = styled.div(
         font-weight: 700;
         color: ${props.whiteColor};
     }
+
+
     input {
         font-size: 35px;
         font-weight: 700;
@@ -297,7 +309,7 @@ export const RegisterCarWrapper = styled.div(
         font-weight: 400;
         font-size: 19px;
         color: #8D8E8F;
-        text-transform: lowercase;
+        text-transform: capitalize;
         }
     }
   }
@@ -333,7 +345,7 @@ export const ToolTipWrapper = styled.div(
     opacity: 0;
     visible: hidden;
     border-radius: 5px;
-    text-align: justify;
+    text-align: left;
     text-justify: inter-word;
 
     h4 {
@@ -360,7 +372,7 @@ export const ToolTipWrapper = styled.div(
       font-size: 17px;
       margin-right: 10px;
       margin-top: 18px;
-      margin-bottom: -5px;
+      margin-bottom: 5px;
 
     }
 
@@ -468,7 +480,7 @@ export const ContentWrapper = styled.div(
     }
 
     .selectClass {
-     max-width: 380px;
+     max-width: 600px;
     padding-bottom: 0.5px;
     padding-right: 37px;
     -webkit-appearance: none;
@@ -595,7 +607,9 @@ export const NextPrevWrapper = styled.div(
     box-shadow: rgba(33,35,38,0.1) 0px 10px 10px -10px;
     margin: 0 10px 10px 0;
     border: none;
-
+    &:hover {
+      background: ${props.primaryColor};
+    }
     &.active {
          background: ${props.primaryColor};
     color:${props.whiteColor};

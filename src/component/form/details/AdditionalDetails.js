@@ -77,7 +77,7 @@ export default function AdditionalDetails() {
                 </span>
                 <br />
                 <span className="small-text">
-                  ,held for  {yourDetails.howLongLicenceHeld}{" "} year{" "}
+                  Held for  {yourDetails.howLongLicenceHeld}{" "} year{" "}
                 </span>
                 <br />
                 <span className="small-text">

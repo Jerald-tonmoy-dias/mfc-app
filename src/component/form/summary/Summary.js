@@ -2,30 +2,16 @@ import React, { useContext, useState, useEffect } from "react";
 import { ThemeContext } from "styled-components";
 import Pdf from "react-to-pdf";
 
-
-
 import {
-  RegisterCarWrapper,
   Title,
-  SVGElement,
-  ToolTipWrapper,
   MainWrapper,
-  ContentWrapper,
-  RadioButtons,
   NextPrevWrapper,
   CheckBoxElement,
 } from "../Form.styled";
-import { BASE_URL } from "../../../BaseUrl";
+
 import { StoreContext } from "../../../context/Store";
-import {
-  AiFillCar,
-  AiTwotoneLock,
-  AiFillMail,
-  AiOutlineFileDone,
-} from "react-icons/ai";
+
 import Navbar from "../../navbar/Navbar";
-import { BsFillTelephoneFill } from "react-icons/bs";
-import { BiMessageRoundedDots } from "react-icons/bi";
 
 export default function Summary() {
   // gettting context value
@@ -35,7 +21,7 @@ export default function Summary() {
    *
    ******************************************/
   const theme = useContext(ThemeContext);
-  let { vehicleDetails, vehicleData, yourPolicy, setCountSteps, yourDetails } =
+  let { vehicleDetails, vehicleData, yourPolicy, setCountSteps, yourDetails ,checkVehicle, setcheckVehicle} =
     useContext(StoreContext);
 
   /******************************************
@@ -61,6 +47,23 @@ export default function Summary() {
     setCountSteps(7);
   };
 
+  const handleGetQuote = () => {
+    let requestOptions = {
+      method: "POST",
+      redirect: "follow",
+      data: {
+        vehicle: vehicleData,
+        yourDetails: yourDetails,
+        yourPolicy: yourPolicy,
+      },
+    };
+
+    fetch("google.com", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
+  };
+
   return (
     <div>
       <Navbar navItem={4} navpassed={false} />
@@ -84,14 +87,15 @@ export default function Summary() {
                   Vehicle:{" "}
                   <strong>
                     {`${VehicleRegistration.YearMonthFirstRegistered} ${VehicleRegistration.MakeModel} ${VehicleRegistration.Vrm} ${VehicleRegistration.EngineCapacity} ${VehicleRegistration.FuelType},`}
-                    { } VOLKSWAGEN SHARAN SEL BLUEMOTION TECH TDI (170), 1968cc
+                    {} VOLKSWAGEN SHARAN SEL BLUEMOTION TECH TDI (170), 1968cc
                     Diesel, 5DR, Automatic (KM12AKK)
                   </strong>
                 </p>
                 <p>
                   Exported:{" "}
-                  <strong>{`${VehicleRegistration.Exported == true ? "Yes" : "No"
-                    }`}</strong>
+                  <strong>{`${
+                    VehicleRegistration.Exported == true ? "Yes" : "No"
+                  }`}</strong>
                 </p>
                 <p>
                   Imported: <strong>{vehicleData.imported}</strong>
@@ -137,8 +141,7 @@ export default function Summary() {
                   Courtesy car: <strong>{yourPolicy.courtesyCar}</strong>
                 </p>
                 <p>
-                  Breakdown cover:{" "}
-                  <strong>{yourPolicy.breakdownCover}</strong>
+                  Breakdown cover: <strong>{yourPolicy.breakdownCover}</strong>
                 </p>
                 <p>
                   Motor legal protection:{" "}
@@ -150,8 +153,7 @@ export default function Summary() {
               <div className="single_summary">
                 <h3>Policyholder</h3>
                 <p>
-                  Licence type:{" "}
-                  <strong>{yourDetails.typeOfLicence}</strong>
+                  Licence type: <strong>{yourDetails.typeOfLicence}</strong>
                 </p>
                 <p>
                   Claims: <strong>{yourDetails.anyClaims}</strong>
@@ -159,7 +161,22 @@ export default function Summary() {
               </div>
             </div>
           </div>
+        </div>
+      </MainWrapper>
 
+      <MainWrapper>
+        <div className="add_product_section pdf_summary_wrapper thank-you">
+          <h1> Thank you</h1>
+          <p>your quote is sent to your email</p>
+
+          <button
+            className="btn"
+            onClick={() => {
+              setcheckVehicle(false);
+            }}
+          >
+            Find again
+          </button>
         </div>
       </MainWrapper>
 
@@ -167,11 +184,19 @@ export default function Summary() {
         whiteColor={theme.whiteColor}
         blackColor={theme.blackColor}
       >
+        <button className="btn" onClick={handleGetQuote}>
+          get quote
+        </button>
         {/* <button type="button" onClick={nextpageFunction} className="btn next ">
           get quote
         </button> */}
         <Pdf targetRef={ref} filename="code-example.pdf">
-          {({ toPdf }) => <button className="btn next" onClick={toPdf}> get quote</button>}
+          {({ toPdf }) => (
+            <button className="btn next" onClick={toPdf}>
+              {" "}
+              download pdf
+            </button>
+          )}
         </Pdf>
       </NextPrevWrapper>
     </div>

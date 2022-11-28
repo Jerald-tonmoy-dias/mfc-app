@@ -95,9 +95,9 @@ export default function CheckVehicle() {
                       placeholder="Enter registration..."
                     />
                   </div>
-                  <span className="Mark_icon">
+                  {/* <span className="Mark_icon">
                     <BsFillPencilFill />
-                  </span>
+                  </span> */}
                 </div>
 
                 <Button
@@ -117,8 +117,8 @@ export default function CheckVehicle() {
                 <div className="icon_p_wrapper">
                   <BsQuestionLg className="hint-icon" />
                   <p>
-                    Entering the registration is the quickest way to get a
-                    quote.
+                    <strong>Entering the registration is the quickest way to get a
+                    quote.</strong>
                   </p>
                 </div>
                 <p>
