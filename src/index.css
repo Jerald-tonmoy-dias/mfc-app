@@ -31,6 +31,8 @@ body {
 
 .inputWrapper .NumberPlate {
   font-family: "UKNumberPlate", "Roboto", sans-serif;
+  font-style: bold;
+  font-weight: 900;
 }
 
 code {

@@ -90,6 +90,7 @@ export default function CheckVehicle() {
                     <span className="country">UK</span>
                     <input
                       type="text"
+                      className="NumberPlate"
                       onChange={(e) => setModelNo(e.target.value)}
                       placeholder="Enter registration..."
                     />

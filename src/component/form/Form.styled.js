@@ -271,10 +271,10 @@ export const RegisterCarWrapper = styled.div(
       border-radius: 5px;
 
     .country {
-        font-size: 19px;
+        font-size: 16px;
         display: inline-block;
         background: #FF6600;
-        padding: 15px;
+        padding: 19px;
         font-weight: 700;
         color: ${props.whiteColor};
     }
@@ -289,6 +289,9 @@ export const RegisterCarWrapper = styled.div(
         text-transform: uppercase;
         flex: 1;
         width: 100%;
+        font-family: "UKNumberPlate";
+        font-style: bold;
+        font-weight: 900;
 
         &::placeholder {
         font-weight: 400;
