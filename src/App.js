@@ -45,7 +45,7 @@ function App() {
       case 8:
         return <Quotes />;
       default:
-        return <CheckVehicle />;
+        return <Vehicle />;
     }
   };
 

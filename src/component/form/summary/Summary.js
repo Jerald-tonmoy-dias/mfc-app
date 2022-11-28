@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { ThemeContext } from "styled-components";
 import Pdf from "react-to-pdf";
+import axios from "axios";
 
 import {
   Title,
@@ -33,6 +34,8 @@ export default function Summary() {
    ******************************************/
   let { VehicleRegistration } = vehicleDetails;
 
+  const [dataSuccess, setdataSuccess] = useState(false);
+  const [showquoteButton, setshowquoteButton] = useState(false);
   // create ref
   const ref = React.createRef();
 
@@ -48,21 +51,30 @@ export default function Summary() {
   };
 
   const handleGetQuote = () => {
-    let requestOptions = {
-      method: "POST",
-      redirect: "follow",
-      data: {
-        vehicle: vehicleData,
-        yourDetails: yourDetails,
-        yourPolicy: yourPolicy,
-      },
-    };
 
-    fetch("google.com", requestOptions)
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
+
+    const data = {
+      vehicle: vehicleData,
+      yourDetails: yourDetails,
+      yourPolicy: yourPolicy,
+    }
+
+    return axios
+      .post(data)
+      .then((res) => {
+        if (res.data === 'success') {
+          setdataSuccess(true)
+          setshowquoteButton(true);
+        } else {
+          setdataSuccess(false)
+          setshowquoteButton(false);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
+
 
   return (
     <div>
@@ -164,29 +176,28 @@ export default function Summary() {
         </div>
       </MainWrapper>
 
-      <MainWrapper>
-        <div className="add_product_section pdf_summary_wrapper thank-you">
-          <h1> Thank you</h1>
-          <p>your quote is sent to your email</p>
-
-          <button
-            className="btn"
-            onClick={() => {
-              setcheckVehicle(false);
-            }}
-          >
-            Find again
-          </button>
-        </div>
-      </MainWrapper>
+{dataSuccess == true ? [
+   (
+    <MainWrapper>
+    <div className="add_product_section pdf_summary_wrapper thank-you">
+      <h1> Thank you</h1>
+      <p>Your car information has been submitted!</p>
+    </div>
+     </MainWrapper>
+   )
+] : null}
+ 
 
       <NextPrevWrapper
         whiteColor={theme.whiteColor}
         blackColor={theme.blackColor}
       >
-        <button className="btn" onClick={handleGetQuote}>
-          get quote
-        </button>
+        {showquoteButton === false ? 
+         <button className="btn" onClick={handleGetQuote}>
+         get quote
+            </button> : null  
+      }
+     
         {/* <button type="button" onClick={nextpageFunction} className="btn next ">
           get quote
         </button> */}
