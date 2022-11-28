@@ -59,8 +59,10 @@ export default function Summary() {
       yourPolicy: yourPolicy,
     }
 
+    const url ="https://google.com";
+
     return axios
-      .post(data)
+      .post(url, data)
       .then((res) => {
         if (res.data === 'success') {
           setdataSuccess(true)
